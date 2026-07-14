@@ -1,0 +1,5 @@
+.claude/
+.DS_Store
+*.pyc
+logos/knockout_cli.py
+fetch_logos.sh
