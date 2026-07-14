@@ -19,8 +19,9 @@
   --mono:'JetBrains Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--text);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:clip;max-width:100%}
+body{background:var(--ink);color:var(--text);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100%;overflow-wrap:break-word}
+img{max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
 section{padding:110px 0;border-top:1px solid var(--line)}
@@ -46,9 +47,15 @@ nav{position:sticky;top:0;z-index:60;background:rgba(14,18,32,.86);backdrop-filt
 .nav-links{display:flex;gap:30px;font-size:14px;font-weight:600;color:var(--muted)}
 .nav-links a:hover{color:var(--signal)}
 @media(max-width:940px){.nav-links{display:none}}
+/* Длинная кнопка «Пообщаться с основателем» — ужимаем на телефоне, разрешаем перенос, чтобы не рвала ширину */
+@media(max-width:560px){
+  nav .nav-in{padding-left:16px;padding-right:16px;gap:10px}
+  .logo{font-size:16px;white-space:nowrap;flex:none}
+  .nav-cta{font-size:11.5px;padding:9px 12px;line-height:1.2;text-align:center;white-space:normal;flex:0 1 auto;min-width:0}
+}
 
-.hero{padding:86px 0 84px;border-top:none;position:relative}
-.hero::after{content:"";position:absolute;top:-160px;right:-180px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,176,32,.13),transparent 62%);pointer-events:none}
+.hero{padding:86px 0 84px;border-top:none;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-160px;right:-180px;width:600px;height:600px;max-width:90vw;background:radial-gradient(circle,rgba(255,176,32,.13),transparent 62%);pointer-events:none}
 .hero h1{font-size:clamp(34px,5.4vw,66px);max-width:15ch;margin:22px 0 26px;position:relative}
 .hero h1 em{font-style:normal;color:var(--signal);display:block;margin-top:.22em}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
@@ -64,6 +71,8 @@ nav{position:sticky;top:0;z-index:60;background:rgba(14,18,32,.86);backdrop-filt
 .row:last-of-type{border-bottom:none}
 .lg{height:20px;display:flex;align-items:center}
 .lg img{max-height:20px;max-width:84px;object-fit:contain}
+/* Банк ДОМ.РФ — вертикальный логотип: даём больше высоты и центрируем, иначе висит мелко и криво */
+.lg img[src*="domrfbank"]{max-height:30px;max-width:34px;margin:-6px 0}
 .brand{font-family:var(--display);font-weight:700;font-size:16px}
 .role{color:var(--signal);font-size:14.5px;font-weight:600}
 .stat{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--live);text-transform:uppercase;white-space:nowrap}
@@ -148,6 +157,10 @@ nav{position:sticky;top:0;z-index:60;background:rgba(14,18,32,.86);backdrop-filt
 .nich .brands{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;align-items:center;justify-items:center}
 .nich .brands img{max-width:100%;max-height:24px;object-fit:contain;opacity:.9;transition:opacity .2s}
 .nich .brands img:hover{opacity:1}
+.nich .brands img[src*="domrfbank"]{max-height:40px}
+/* Телеком — шахматный порядок: МегаФон и Билайн сверху, МТС по центру снизу между ними */
+.nich.tel .brands{row-gap:22px}
+.nich.tel .brands img:nth-child(3){grid-column:1/-1;justify-self:center}
 
 .roles{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
 .rl{font-family:var(--display);font-weight:700;font-size:clamp(13px,1.4vw,18px);border:1px solid var(--signal);color:var(--signal);padding:11px 20px}
@@ -194,6 +207,9 @@ nav{position:sticky;top:0;z-index:60;background:rgba(14,18,32,.86);backdrop-filt
 .founder-ph{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:60px;color:var(--line-2);letter-spacing:-.03em}
 .founder h3{font-size:27px;margin-bottom:6px}
 .founder .frole{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:26px}
+/* Цитата основателя — оформлена как настоящая цитата: рамка, подложка, кавычка */
+.founder-q{position:relative;border:1px solid var(--line-2);border-left:3px solid var(--signal);background:linear-gradient(180deg,var(--panel),var(--panel-2));padding:clamp(26px,3.4vw,40px) clamp(24px,3vw,42px);padding-top:clamp(40px,5vw,58px)}
+.founder-q::before{content:"«";position:absolute;top:clamp(2px,1vw,10px);left:clamp(16px,2vw,26px);font-family:var(--display);font-weight:800;font-size:clamp(56px,7vw,88px);line-height:1;color:var(--signal);opacity:.32;pointer-events:none}
 .founder-q p{color:var(--text);font-size:clamp(16px,1.7vw,19px);line-height:1.62;margin-bottom:18px}
 .founder-q p:first-child{font-family:var(--display);font-weight:700;color:var(--text);letter-spacing:-.01em}
 .founder-q p:last-child{color:var(--signal);font-family:var(--display);font-weight:700;font-size:clamp(16px,1.7vw,19px);margin-bottom:0}
@@ -211,6 +227,12 @@ nav{position:sticky;top:0;z-index:60;background:rgba(14,18,32,.86);backdrop-filt
 
 footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;line-height:2.1}
 
+/* Anti-overflow: let grid/flex tracks shrink below content min-content (default min-width:auto
+   otherwise pushes cards wider than the viewport on narrow phones) + break long tokens. */
+.metrics,.cases,.niches,.whom,.sys,.steps,.grid,.roles,.hero-cta,.nav-in,.board-head{min-width:0}
+.m,.case,.nich,.w,.sys-box,.step,.cell,.q,.founder,.founder>*{min-width:0;overflow-wrap:break-word}
+.m .n{min-width:0}
+
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
 .reveal.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.row{opacity:1!important;transform:none!important}}
@@ -227,12 +249,12 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
     <a href="#niches">Ниши и ЛПР</a>
     <a href="#faq">Вопросы</a>
   </div>
-  <a href="https://t.me/mihailgabitov242" class="btn" style="padding:12px 22px;font-size:14px">Написать</a>
+  <a href="https://t.me/mihailgabitov242" class="btn nav-cta" style="padding:12px 22px;font-size:14px">Пообщаться с основателем</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
   <span class="eyebrow">Выход на ЛПР в холодную · система внутри отдела продаж</span>
-  <h1>Ваши менеджеры не могут регулярно приводить на встречу нужных ЛПРов.<em>Мы внедряем технологию, которая исправляет эту проблему.</em></h1>
+  <h1>Ваши менеджеры не могут регулярно приводить на встречу нужных ЛПРов.<em>Мы ставим технологию, которая исправляет это навсегда.</em></h1>
   <p class="lead">
     <span class="l">Технология вывода ЛПРов по вашему продукту на встречу в холодную</span>
     <span class="l">переносится внутрь вашего отдела продаж</span>
@@ -256,7 +278,7 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
     <div class="row" style="animation-delay:.33s" data-d="kaspersky.ru" data-n="Касперский"><span class="lg"></span><span class="brand">Касперский</span><span class="role">директор по маркетингу</span><span class="stat">Встреча состоялась</span></div>
     <div class="row" style="animation-delay:.40s" data-d="megafon.ru" data-n="МегаФон"><span class="lg"></span><span class="brand">МегаФон</span><span class="role">digital-маркетинг мобильного приложения</span><span class="stat">Встреча состоялась</span></div>
     <div class="row" style="animation-delay:.47s" data-d="domrfbank.ru" data-n="Банк ДОМ.РФ"><span class="lg"></span><span class="brand">Банк ДОМ.РФ</span><span class="role">маркетинг розницы и премиума</span><span class="stat">Встреча состоялась</span></div>
-    <div class="row" style="animation-delay:.54s" data-d="biocad.ru" data-n="BIOCAD"><span class="lg"></span><span class="brand">BIOCAD</span><span class="role">маркетинг</span><span class="stat">Встреча состоялась</span></div>
+    <div class="row" style="animation-delay:.54s" data-d="evalar.ru" data-n="Эвалар"><span class="lg"></span><span class="brand">Эвалар</span><span class="role">директор по маркетингу</span><span class="stat">Встреча состоялась</span></div>
     <div class="row" style="animation-delay:.61s" data-d="samolet.ru" data-n="ГК Самолет"><span class="lg"></span><span class="brand">ГК Самолет</span><span class="role">маркетинг</span><span class="stat">Встреча состоялась</span></div>
     <div class="board-foot">Это не «база контактов». Это люди, которые сели и стали слушать.</div>
   </div>
@@ -271,8 +293,8 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
   <span class="eyebrow">Продукт</span>
   <h2>Что мы даём</h2>
   <p class="lead" style="margin-top:20px">
-    <span class="l">Я не сдаю лидов в аренду и не сажаю вас на себя.</span>
-    <span class="l">Я переношу в ваш отдел продаж всю механику: как найти настоящего ЛПР, как до него дотянуться, что написать, что сказать, как довести до встречи.</span>
+    <span class="l">Мы не сдаём лидов в аренду и не сажаем вас на нас.</span>
+    <span class="l">Мы переносим в ваш отдел продаж всю механику: как найти настоящего ЛПР, как до него дотянуться, что написать, что сказать, как довести до встречи.</span>
     <span class="l">Дальше это делают ваши менеджеры. Самостоятельно.</span>
   </p>
 
@@ -314,11 +336,11 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
     <span class="l">За несколько дней система оказывается внутри вашего отдела продаж — и остаётся там.</span>
   </p>
   <div class="steps">
-    <div class="step"><div class="sn">01</div><div><div class="st">Разбор</div><div class="sd">Смотрю ваши переписки, инструменты, команду. Готовлю программу под вашу нишу.</div></div></div>
+    <div class="step"><div class="sn">01</div><div><div class="st">Разбор</div><div class="sd">Смотрим ваши переписки, инструменты, команду. Готовим программу под вашу нишу.</div></div></div>
     <div class="step"><div class="sn">02</div><div><div class="st">Интенсив</div><div class="sd">Длительность подбирается под задачу — от одного дня до нескольких. Онлайн или живьём, всё пишется.</div></div></div>
     <div class="step"><div class="sn">03</div><div><div class="st">Практика вживую</div><div class="sd">Берём ваши реальные компании в моменте: находим ЛПР, пишем касание, доводим до встречи.</div></div></div>
     <div class="step"><div class="sn">04</div><div><div class="st">Фиксация системы</div><div class="sd">Плейбук, библиотеки, скрипты, воронка в вашей CRM — остаётся у вас.</div></div></div>
-    <div class="step"><div class="sn">05</div><div><div class="st">Сопровождение <em>по желанию</em></div><div class="sd">Две недели: менеджеры делают реальные касания, я правлю на ходу.</div></div></div>
+    <div class="step"><div class="sn">05</div><div><div class="st">Сопровождение <em>по желанию</em></div><div class="sd">Две недели: менеджеры делают реальные касания, мы правим на ходу.</div></div></div>
   </div>
   <div class="step-need">
     <b>От вас нужно</b>
@@ -431,7 +453,6 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
       <div class="niche">PR · коммуникации</div>
       <div class="res">37 встреч за месяц</div>
       <div class="who">
-        <span class="l">Основатель — Анастасия Егорова.</span>
         <span class="l">Выводили на встречи PR-директоров и PR-менеджеров.</span>
       </div>
       <div class="term">1 месяц</div>
@@ -458,7 +479,7 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
       <div class="niche">Логистика · грузоперевозки</div>
       <div class="res">12 директоров по логистике выведено, 4 просчёта сметы</div>
       <div class="who">
-        <span class="l">Холодный выход на директоров по логистике крупных грузоотправителей.</span>
+        <span class="l">Холодный выход на директоров по логистике.</span>
         <span class="l">Доводили до встречи и просчёта сметы под конкретный груз.</span>
       </div>
       <div class="term">На потоке</div>
@@ -504,7 +525,11 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
   <div class="niches">
     <div class="nich"><h3>Банки и страхование</h3><div class="brands" data-bn="Банк ДОМ.РФ|domrfbank.ru;Альфа-Банк|alfabank;Ингосстрах|ingosstrah;Абсолют Страхование|absolutins.ru"></div></div>
     <div class="nich"><h3>IT и экосистемы</h3><div class="brands" data-bn="Яндекс|yandex.ru;Касперский|kaspersky.ru;Skillbox|skillbox;Нетология|netology"></div></div>
-    <div class="nich"><h3>Телеком</h3><div class="brands" data-bn="МегаФон|megafon.ru;МТС|mts.ru;Билайн|beeline"></div></div>
+    <div class="nich tel"><h3>Телеком</h3><div class="brands">
+      <img src="logos/megafon.ru.png" alt="МегаФон" loading="lazy">
+      <img src="logos/beeline.png" alt="Билайн" loading="lazy">
+      <img src="logos/mts.ru.png" alt="МТС" loading="lazy">
+    </div></div>
     <div class="nich"><h3>Ритейл и e-commerce</h3><div class="brands" data-bn="Ozon|ozon.ru;Wildberries|wildberries;Магнит|magnit.ru;ДНС|dns"></div></div>
     <div class="nich"><h3>Электроника и DIY</h3><div class="brands" data-bn="М.Видео|mvideo;Ситилинк|citilink.ru;Лемана Про|lemanapro;Сима-ленд|simaland.ru"></div></div>
     <div class="nich"><h3>Рестораны и фастфуд</h3><div class="brands" data-bn="Бургер Кинг|burgerking;Додо Пицца|dodopizza;Ростикс|rostics;Кофемания|kofemania"></div></div>
@@ -519,12 +544,12 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
 
 <section><div class="wrap">
   <span class="eyebrow">Для кого это работает</span>
-  <h2>Если ваш менеджер закрывает одну сделку в месяц с холодных — дело не в его умении продавать. У него просто мало встреч.</h2>
-  <p class="jab">Ваш план по выручке напрямую зависит от того, сколько встреч смогли назначить менеджеры. Всё остальное — следствие.<span>В хороший месяц кажется, что всё работает. В плохой — что рынок упал.</span><span>Не менялось ничего: у вас просто нет входа, которым можно управлять.</span></p>
+  <h2>Если ваш менеджер закрывает одну сделку в месяц с холодных — дело не в его умении продавать.<br>У него просто мало встреч.</h2>
+  <p class="jab">В хороший месяц кажется, что всё работает.<span>В плохой — что «рынок упал».</span><span>На самом деле не менялось ничего.</span><span>Просто ваша коммуникация с ЛПРами обрубается на самом первом этапе.</span></p>
   <div class="whom">
     <div class="w"><h3>Агентства и продакшны</h3><p>
       <span class="l">Бренд есть. Регалии есть. Кейсы с федеральными брендами есть.</span>
-      <span class="l">А новый клиент приходит, когда сам захочет.</span></p></div>
+      <span class="l">А новый клиент приходит, когда сам захочет — а не когда вы решили, что хотите с ним работать.</span></p></div>
     <div class="w"><h3>B2B-компании и разработка</h3><p>
       <span class="l">Дорогой продукт, длинный цикл, ЛПР — первые лица.</span>
       <span class="l">Они не читают рассылок и не оставляют заявок на вашем сайте.</span></p></div>
@@ -546,9 +571,9 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
       <h3>Михаил Габитов</h3>
       <div class="frole">Основатель MEETENGINE</div>
       <div class="founder-q">
-        <p>Мне надоело смотреть, как компании с реально сильными продуктами не могут их нормально продавать. Не потому что продукт плохой. А потому что менеджер пишет директору по маркетингу что-то такое, от чего хочется закрыть чат.</p>
-        <p>Я хочу, чтобы B2B-коммуникация в России стала адекватной. Чтобы не только топы умели говорить на одном языке — а любая команда знала, как зайти к человеку, чтобы он захотел с ней работать. Годами.</p>
-        <p>Мы не учим «продавать». Мы даём отделу продаж тон, с которым с вами хотят строить отношения.</p>
+        <p>Я насмотрелся историй, где компании с достойными продуктами продают их в 5-10 раз меньше, чем могли бы.<br>Не потому что продукт плохой.<br>А потому что менеджер пишет директору по маркетингу что-то такое, от чего хочется закрыть чат.</p>
+        <p>Я хочу, чтобы B2B-коммуникация в России стала адекватной. Чтобы не только топы умели говорить на одном языке друг с другом — а любая команда знала, как зайти к человеку, чтобы он захотел с ней работать. Годами.</p>
+        <p>Мы не учим «продавать». Мы даём отделу продаж тон, благодаря которому с вами хотят строить отношения.»</p>
       </div>
     </div>
   </div>
@@ -563,13 +588,13 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
       <p>
         <span class="l">Нет.</span>
         <span class="l">Лиды заканчиваются, а зависимость от подрядчика остаётся.</span>
-        <span class="l"><b>Я ставлю технологию внутрь вашего отдела продаж.</b> Дальше поток встреч ваша команда создаёт сама.</span>
+        <span class="l"><b>Мы ставим технологию внутрь вашего отдела продаж.</b> Дальше поток встреч ваша команда создаёт сама.</span>
       </p>
     </div>
     <div class="q">
       <h3>Сколько это стоит?</h3>
       <p>
-        <span class="l">Я предложу сесть и посчитать вместе. Вот цепочка, по которой мы идём:</span>
+        <span class="l">Мы предложим сесть и посчитать вместе. Вот цепочка, по которой мы идём:</span>
         <span class="l">Какую прибыль вы хотите вытащить → какая нужна выручка → сколько нужно продаж → сколько нужно встреч → сколько встреч должен назначать один менеджер в месяц.</span>
         <span class="l">Дальше смотрим ваш чек, вашу маржу, LTV, конверсию встречи в сделку — и получаем стоимость одной целевой встречи.</span>
         <span class="l">И тогда становится видно главное: система, которая позволит вашим менеджерам назначать столько встреч, стоит примерно как <b style="color:var(--signal)">1 месячный план одного менеджера</b>. Один раз. А работает — всегда и у всех менеджеров.</span>
@@ -625,7 +650,7 @@ const LOCAL='logos/';
 /* Тёмные логотипы — плохо читаются на тёмном фоне без подложки. Их НЕ показываем совсем. */
 const DARK=new Set(["ivi.ru","gillette.com","relouis.by","okko.tv","thesaem.ru","gedelix.ru","delimobil.ru","mirra.ru","sminex.com","abbott.com","tochka.com","sberdevices.ru","bork.ru","ikontyres.ru","finn-flare.ru","sokolov.ru","yota.ru","vkusnoitochka.ru","tutu.ru","avito.ru"]);
 /* Логотипы-вордмарки: название уже написано внутри логотипа — подпись под ним не дублируем. */
-const WORDMARK=new Set(["yandex.ru","magnit.ru","mts.ru","megafon.ru","ozon.ru","wildberries","sportmaster.ru","kaspersky.ru","alfabank","s7","beeline","vkusvill","mvideo","pik","dodopizza","burgerking","aviasales","dns","samokat.ru","fix-price.com","citilink.ru","okmarket.ru","petrovich.ru","domrfbank.ru","sberhealth.ru","ingosstrah","borjomi","rostics","skillbox","netology","invitro","gemotest","lemanapro","dellin","tsum","cherkizovo.com","growfood.pro","flowwow.com","simaland.ru","biocad.ru","evalar.ru","pharmstd.ru","r-pharm.com","binnopharmgroup.ru","promomed.ru","geropharm.ru","pharmasyntez.com","naturasiberica.ru","splat.ru","rocs.ru","ormatek.com","cottonclub.ru","synergetic.ru","polisorb.com","kofemania","fsk.ru","samolet.ru"]);
+const WORDMARK=new Set(["yandex.ru","magnit.ru","mts.ru","megafon.ru","ozon.ru","wildberries","sportmaster.ru","kaspersky.ru","alfabank","s7","beeline","vkusvill","mvideo","pik","dodopizza","burgerking","aviasales","dns","samokat.ru","fix-price.com","citilink.ru","okmarket.ru","petrovich.ru","domrfbank.ru","sberhealth.ru","ingosstrah","borjomi","rostics","skillbox","netology","invitro","gemotest","lemanapro","dellin","tsum","cherkizovo.com","growfood.pro","flowwow.com","simaland.ru","biocad.ru","evalar.ru","pharmstd.ru","r-pharm.com","binnopharmgroup.ru","promomed.ru","geropharm.ru","pharmasyntez.com","naturasiberica.ru","splat.ru","rocs.ru","ormatek.com","cottonclub.ru","synergetic.ru","polisorb.com","kofemania","fsk.ru","samolet.ru","ostrovok.ru","start.ru","tanuki.ru","yango.yandex.com","absolutins.ru","4fresh.ru"]);
 
 function loadLogo(domain,onOk,onFail){
   const i=new Image(); i.alt='';
@@ -647,15 +672,15 @@ document.querySelectorAll('.brands[data-bn]').forEach(box=>{
 
 /* СТЕНА — по убыванию известности. Логотип + подпись. */
 const WALL=[
-["Яндекс","yandex.ru"],["Магнит","magnit.ru"],["МТС","mts.ru"],["МегаФон","megafon.ru"],["Ozon","ozon.ru"],
-["Wildberries","wildberries"],["Спортмастер","sportmaster.ru"],["Касперский","kaspersky.ru"],["Альфа-Банк","alfabank"],["Аэрофлот","aeroflot"],
+["HeadHunter","hh.ru"],["Островок","ostrovok.ru"],["МТС","mts.ru"],["START","start.ru"],["Ozon","ozon.ru"],
+["Wildberries","wildberries"],["Тануки","tanuki.ru"],["YANGO","yango.yandex.com"],["Альфа-Банк","alfabank"],["Аэрофлот","aeroflot"],
 ["S7 Airlines","s7"],["Билайн","beeline"],["ВкусВилл","vkusvill"],["М.Видео","mvideo"],["ПИК","pik"],
-["Додо Пицца","dodopizza"],["Бургер Кинг","burgerking"],["Aviasales","aviasales"],["Procter & Gamble","pg.com"],["ДНС","dns"],
+["Додо Пицца","dodopizza"],["Бургер Кинг","burgerking"],["Aviasales","aviasales"],["ФСК","fsk.ru"],["ДНС","dns"],
 ["Самокат","samokat.ru"],["Fix Price","fix-price.com"],["Ситилинк","citilink.ru"],["Окей","okmarket.ru"],["Петрович","petrovich.ru"],
-["Банк ДОМ.РФ","domrfbank.ru"],["Сберздоровье","sberhealth.ru"],["Ингосстрах","ingosstrah"],["Боржоми","borjomi"],["Ростикс","rostics"],
+["Абсолют Страхование","absolutins.ru"],["Сберздоровье","sberhealth.ru"],["Ингосстрах","ingosstrah"],["Боржоми","borjomi"],["Ростикс","rostics"],
 ["Skillbox","skillbox"],["Нетология","netology"],["Медси","medsi"],["Инвитро","invitro"],["Гемотест","gemotest"],
 ["Лемана Про","lemanapro"],["Деловые Линии","dellin"],["ЦУМ","tsum"],["Черкизово","cherkizovo.com"],["GrowFood","growfood.pro"],
-["Flowwow","flowwow.com"],["Сима-ленд","simaland.ru"],["BIOCAD","biocad.ru"],["Эвалар","evalar.ru"],["Фармстандарт","pharmstd.ru"],
+["Flowwow","flowwow.com"],["Сима-ленд","simaland.ru"],["BIOCAD","biocad.ru"],["4fresh","4fresh.ru"],["Фармстандарт","pharmstd.ru"],
 ["Р-Фарм","r-pharm.com"],["Биннофарм","binnopharmgroup.ru"],["Промомед","promomed.ru"],["Герофарм","geropharm.ru"],["Фармасинтез","pharmasyntez.com"],
 ["Natura Siberica","naturasiberica.ru"],["SPLAT","splat.ru"],["R.O.C.S.","rocs.ru"],["ARAVIA","aravia-prof.ru"],["Ormatek","ormatek.com"],
 ["Cotton Club","cottonclub.ru"],["Синергетик","synergetic.ru"],["Полисорб","polisorb.com"],["Отисифарм","otcpharm.ru"],["Кофемания","kofemania"]
