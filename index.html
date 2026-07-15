@@ -207,12 +207,12 @@ nav{position:sticky;top:0;z-index:60;background:rgba(14,18,32,.86);backdrop-filt
 .founder-ph{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:60px;color:var(--line-2);letter-spacing:-.03em}
 .founder h3{font-size:27px;margin-bottom:6px}
 .founder .frole{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:26px}
-/* Цитата основателя — оформлена как настоящая цитата: рамка, подложка, кавычка */
-.founder-q{position:relative;border:1px solid var(--line-2);border-left:3px solid var(--signal);background:linear-gradient(180deg,var(--panel),var(--panel-2));padding:clamp(26px,3.4vw,40px) clamp(24px,3vw,42px);padding-top:clamp(40px,5vw,58px)}
-.founder-q::before{content:"«";position:absolute;top:clamp(2px,1vw,10px);left:clamp(16px,2vw,26px);font-family:var(--display);font-weight:800;font-size:clamp(56px,7vw,88px);line-height:1;color:var(--signal);opacity:.32;pointer-events:none}
-.founder-q p{color:var(--text);font-size:clamp(16px,1.7vw,19px);line-height:1.62;margin-bottom:18px}
-.founder-q p:first-child{font-family:var(--display);font-weight:700;color:var(--text);letter-spacing:-.01em}
-.founder-q p:last-child{color:var(--signal);font-family:var(--display);font-weight:700;font-size:clamp(16px,1.7vw,19px);margin-bottom:0}
+/* Цитата основателя — рамка, подложка, аккуратная SVG-кавычка за текстом */
+.founder-q{position:relative;border:1px solid var(--line-2);border-left:3px solid var(--signal);background:linear-gradient(180deg,var(--panel),var(--panel-2));padding:clamp(46px,6vw,66px) clamp(22px,3vw,42px) clamp(26px,3.4vw,40px);overflow:hidden}
+.founder-q .q-mark{position:absolute;top:clamp(12px,1.6vw,18px);left:clamp(16px,2vw,24px);width:clamp(54px,6.2vw,68px);height:auto;color:var(--signal);opacity:.9;z-index:0;pointer-events:none}
+.founder-q p{position:relative;z-index:1;color:var(--text);font-size:clamp(16px,1.7vw,19px);line-height:1.62;margin-bottom:18px;overflow-wrap:break-word}
+.founder-q p:first-of-type{font-family:var(--display);font-weight:700;color:var(--text);letter-spacing:-.01em}
+.founder-q p:last-of-type{color:var(--signal);font-family:var(--display);font-weight:700;font-size:clamp(16px,1.7vw,19px);margin-bottom:0}
 
 /* отзыв внутри карточки кейса */
 .case-rev{margin-top:22px;padding-top:18px;border-top:1px solid var(--line-2)}
@@ -572,9 +572,14 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--dim);font-fam
       <h3>Михаил Габитов</h3>
       <div class="frole">Основатель MEETENGINE</div>
       <div class="founder-q">
-        <p>Я насмотрелся историй, где компании с достойными продуктами продают их в 5-10 раз меньше, чем могли бы.<br>Не потому что продукт плохой.<br>А потому что менеджер пишет директору по маркетингу что-то такое, от чего хочется закрыть чат.</p>
-        <p>Я хочу, чтобы B2B-коммуникация в России стала адекватной. Чтобы не только топы умели говорить на одном языке друг с другом — а любая команда знала, как зайти к человеку, чтобы он захотел с ней работать. Годами.</p>
-        <p>Мы не учим «продавать». Мы даём отделу продаж тон, благодаря которому с вами хотят строить отношения.»</p>
+        <svg class="q-mark" viewBox="0 0 30 24" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M7 7h4c.55 0 1 .45 1 1v4c0 .31-.07.61-.21.89l-1.42 2.84c-.22.45-.69.74-1.2.74-1 0-1.65-1.05-1.2-1.94L9 13H7c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1z"/>
+          <path transform="translate(9 0)" d="M7 7h4c.55 0 1 .45 1 1v4c0 .31-.07.61-.21.89l-1.42 2.84c-.22.45-.69.74-1.2.74-1 0-1.65-1.05-1.2-1.94L9 13H7c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1z"/>
+        </svg>
+        <p>Я вижу компании с сильными продуктами, которые приносят в разы меньше, чем могли бы — просто потому, что менеджер пишет директору по маркетингу что-то, от чего хочется закрыть чат.</p>
+        <p>Продукт хороший. Заход — нет.</p>
+        <p>Я хочу, чтобы вся B2B-коммуникация в России стала адекватной. Чтобы не только топы умели говорить на одном языке — а любая команда знала, как зайти к человеку так, чтобы он захотел работать с ней. Годами.</p>
+        <p>Я не учу «продавать». Я ставлю отделу продаж тон, из-за которого с вами хотят строить отношения.</p>
       </div>
     </div>
   </div>
