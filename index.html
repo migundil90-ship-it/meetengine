@@ -107,8 +107,8 @@
   .live{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--go);letter-spacing:.1em}
   .dot{width:8px;height:8px;border-radius:50%;background:var(--go);box-shadow:0 0 0 0 rgba(55,211,153,.5);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(55,211,153,.45)}70%{box-shadow:0 0 0 7px rgba(55,211,153,0)}100%{box-shadow:0 0 0 0 rgba(55,211,153,0)}}
-  .trow{display:grid;grid-template-columns:88px 1fr auto;gap:12px;align-items:center;padding:11px 18px;border-bottom:1px solid var(--line-soft)}
-  .tlogo{width:88px;height:32px}
+  .trow{display:grid;grid-template-columns:140px 1fr auto;gap:20px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line-soft)}
+  .tlogo{width:140px;height:48px}
   .trow:last-child{border-bottom:none}
   .tco b{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px}
   .tco span{display:block;font-size:12.5px;color:var(--tx-dim);margin-top:1px}
@@ -117,9 +117,9 @@
   .tablo-foot{padding:12px 18px;font-size:12.5px;color:var(--tx-dim);background:var(--ink-2)}
   @media(prefers-reduced-motion:reduce){.dot{animation:none}}
   /* телефон: уменьшаем крупное лого в табло, чтобы статус справа не обрезался */
-  @media(max-width:560px){
-    .trow{gap:10px;padding:11px 14px;grid-template-columns:56px 1fr auto}
-    .tlogo{width:56px;height:26px}
+  @media(max-width:430px){
+    .trow{gap:12px;padding:11px 14px;grid-template-columns:100px 1fr auto}
+    .tlogo{width:100px;height:36px}
   }
 
   /* GENERIC section head */
@@ -228,6 +228,17 @@
   .chip.role{border-color:rgba(255,176,32,.28);color:var(--amber-soft)}
   .chips-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--tx-dim);margin:26px 0 12px}
   .niche-note{margin-top:22px;color:var(--tx-mut);font-size:15.5px}
+  /* niche cards with icons */
+  .niche-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:8px}
+  .niche-card{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:border-color .2s,transform .2s}
+  .niche-card:hover{border-color:rgba(255,176,32,.35);transform:translateY(-2px)}
+  .niche-icon{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(255,176,32,.12);border-radius:10px}
+  .niche-icon svg{width:28px;height:28px;color:var(--amber);stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .niche-card .nm{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;line-height:1.25}
+  @media(max-width:600px){
+    .niche-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .niche-card{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}
+  }
 
   /* FOUNDER */
   .founder{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
@@ -539,8 +550,19 @@
       <span class="chip role">Директор по маркетингу</span><span class="chip role">Гендиректор</span><span class="chip role">Собственник</span><span class="chip role">Digital-директор</span><span class="chip role">Руководитель performance</span><span class="chip role">Медиа-директор</span><span class="chip role">Инфлюенс-лид</span><span class="chip role">Бренд-директор</span><span class="chip role">Директор по продукту</span><span class="chip role">IR-директор</span>
     </div>
     <div class="chips-lbl">Ниши, под которые адаптировали</div>
-    <div class="chips">
-      <span class="chip">Банки и страхование</span><span class="chip">IT и экосистемы</span><span class="chip">Телеком</span><span class="chip">Ритейл и e-com</span><span class="chip">Электроника и DIY</span><span class="chip">Рестораны</span><span class="chip">Продукты и напитки</span><span class="chip">Фарма</span><span class="chip">Медицина и лаборатории</span><span class="chip">Красота и уход</span><span class="chip">Девелопмент</span><span class="chip">Логистика</span>
+    <div class="niche-grid">
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span><span class="nm">Банки и страхование</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></span><span class="nm">IT и экосистемы</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"/><path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5"/><circle cx="12" cy="9" r="2"/><path d="M16.2 4.8c2 2 2.26 5.11.8 7.47"/><path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1"/><path d="M9.5 18h5"/><path d="m8 22 4-11 4 11"/></svg></span><span class="nm">Телеком</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span><span class="nm">Ритейл и e-com</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span><span class="nm">Электроника и DIY</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span><span class="nm">Рестораны</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="nm">Продукты и напитки</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg></span><span class="nm">Фарма</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></span><span class="nm">Медицина и лаборатории</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3z"/><path d="M19 3v4"/><path d="M21 5h-4"/></svg></span><span class="nm">Красота и уход</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v3"/></svg></span><span class="nm">Девелопмент</span></div>
+      <div class="niche-card"><span class="niche-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a1 1 0 0 0-.29-.7l-2.67-2.67A1 1 0 0 0 18.34 10H14v7h2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><span class="nm">Логистика</span></div>
     </div>
   </div>
 </section>
