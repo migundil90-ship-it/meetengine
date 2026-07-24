@@ -130,7 +130,6 @@ li.no span,li.minus span{color:var(--muted)}
   font-size:clamp(38px,4.6vw,64px);
 }
 .num-xl{font-size:clamp(56px,11vw,150px)}
-.case .num-xl{font-size:clamp(48px,8.6vw,124px)}
 .metric small{display:block;margin-top:14px;color:var(--muted);font-size:clamp(12.5px,1.05vw,15px);line-height:1.5;font-family:var(--body);font-weight:500}
 .metric small b{color:var(--ink)}
 
@@ -245,11 +244,6 @@ img.lg.tall{max-height:clamp(34px,4.4vh,58px)}
   .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
   .slide.center{justify-content:center}
   #hint{display:none}
-}
-/* Короткие экраны (ноутбуки 768p): ужимаем крупные цифры, чтобы слайд не скроллился */
-@media (min-width:861px) and (max-height:820px){
-  .case .num-xl{font-size:clamp(42px,7vw,96px)}
-  .price{font-size:clamp(56px,12.5vw,168px)}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:opacity .2s!important}
