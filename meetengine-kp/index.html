@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MEETENGINE — отдел продаж, который сам выводит на встречи с ЛПР</title>
+<meta name="description" content="Ставлю станок холодного вывода на встречи внутрь вашей команды — и он остаётся у вас, работает без меня.">
+<meta property="og:title" content="MEETENGINE — станок холодного вывода на встречи с ЛПР">
+<meta property="og:description" content="Ставлю станок внутрь вашей команды. Остаётся у вас и работает без меня.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0B0D;
+  --panel:#14171C;
+  --panel-2:#1A1E25;
+  --line:rgba(255,255,255,.08);
+  --ink:#F3F5F8;
+  --muted:#9AA3AF;
+  --dim:#6B7280;
+  --acc:#F79A21;
+  --acc-2:#FFB84D;
+  --red:#FF5C63;
+  --green:#3ED6A0;
+  --blue:#7FA6F0;
+  --pink:#FF4D9D;
+  --display:'Unbounded',system-ui,sans-serif;
+  --body:'Manrope',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --pad: clamp(20px, 5vw, 92px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--body);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior:none;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(70vw 60vh at 82% 8%, rgba(247,154,33,.13), transparent 60%),
+    radial-gradient(60vw 50vh at 8% 92%, rgba(247,154,33,.07), transparent 60%);
+}
+
+/* ---------- Каркас ---------- */
+#deck{position:fixed;inset:0;z-index:1}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--pad) + 14px) var(--pad) calc(var(--pad) + 34px);
+  opacity:0;visibility:hidden;
+  transform:translateY(26px) scale(.985);
+  transition:opacity .5s ease, transform .6s cubic-bezier(.16,.84,.34,1), visibility .5s;
+  overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:none;
+}
+.slide::-webkit-scrollbar{display:none}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.slide.center{align-items:center;text-align:center}
+
+/* Появление блоков */
+.slide.active .r{animation:rise .62s cubic-bezier(.16,.84,.34,1) both;animation-delay:calc(var(--i,0) * 70ms + 90ms)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ---------- Типографика ---------- */
+.eyebrow{
+  font-family:var(--mono);font-size:clamp(10px,1vw,12px);letter-spacing:.28em;
+  text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:14px;margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--acc);flex:none}
+.eyebrow.red{color:var(--red)}.eyebrow.red::before{background:var(--red)}
+.eyebrow.center{justify-content:center}
+
+h1{
+  font-family:var(--display);font-weight:800;line-height:.98;letter-spacing:-.02em;
+  font-size:clamp(30px,5.6vw,74px);
+}
+h2{
+  font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:-.02em;
+  font-size:clamp(25px,4.2vw,56px);margin-bottom:clamp(20px,3vh,38px);
+}
+h3{font-family:var(--body);font-weight:800;font-size:clamp(17px,1.6vw,23px);letter-spacing:-.01em;margin-bottom:10px}
+.o{color:var(--acc)}
+.rd{color:var(--red)}
+.ul{box-shadow:inset 0 -.09em 0 var(--acc)}
+.lead{font-size:clamp(15px,1.35vw,20px);color:var(--muted);line-height:1.55;max-width:62ch}
+.note{font-size:clamp(13px,1.05vw,15.5px);color:var(--dim);line-height:1.6;margin-top:clamp(18px,3vh,32px);max-width:78ch}
+.note b{color:var(--ink);font-weight:700}
+strong{color:var(--ink);font-weight:800}
+
+/* ---------- Плитки ---------- */
+.grid{display:grid;gap:clamp(12px,1.4vw,20px)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;
+  padding:clamp(16px,1.9vw,28px);
+}
+.card p{color:var(--muted);font-size:clamp(13.5px,1.1vw,16px);line-height:1.55}
+.card.acc{border-color:rgba(247,154,33,.42);background:linear-gradient(160deg,rgba(247,154,33,.09),rgba(247,154,33,.02) 55%,transparent)}
+.card.bad{border-color:rgba(255,92,99,.28)}
+
+.tag{
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;padding:8px 14px;border-radius:999px;
+  border:1px solid var(--line);color:var(--muted);margin-bottom:16px;
+}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.tag.o{color:var(--acc);border-color:rgba(247,154,33,.4)}
+.tag.b{color:var(--blue);border-color:rgba(127,166,240,.35)}
+.tag.g{color:var(--green);border-color:rgba(62,214,160,.35)}
+.tag.r{color:var(--red);border-color:rgba(255,92,99,.35)}
+
+ul.list{list-style:none;display:flex;flex-direction:column;gap:12px}
+ul.list li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(13.5px,1.15vw,16.5px);color:var(--ink);line-height:1.45}
+ul.list li i{font-style:normal;flex:none;font-weight:800;width:16px}
+li.no i{color:var(--red)} li.yes i{color:var(--acc)} li.plus i{color:var(--green)}
+li.no span,li.minus span{color:var(--muted)}
+
+/* ---------- Цифры ---------- */
+.num{
+  font-family:var(--display);font-weight:900;color:var(--acc);line-height:.86;letter-spacing:-.03em;
+  font-size:clamp(38px,4.6vw,64px);
+}
+.num-xl{font-size:clamp(56px,11vw,150px)}
+.case .num-xl{font-size:clamp(48px,8.6vw,124px)}
+.metric small{display:block;margin-top:14px;color:var(--muted);font-size:clamp(12.5px,1.05vw,15px);line-height:1.5;font-family:var(--body);font-weight:500}
+.metric small b{color:var(--ink)}
+
+/* ---------- Обложка ---------- */
+.logo{font-family:var(--display);font-weight:800;letter-spacing:-.01em;font-size:clamp(20px,2.4vw,34px)}
+.logo span{color:var(--acc)}
+.foot{font-family:var(--mono);font-size:clamp(10px,.95vw,12.5px);color:var(--dim);letter-spacing:.1em;line-height:1.9}
+
+/* ---------- Табло брендов ---------- */
+.brands{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1vw,14px)}
+.brands div{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:clamp(12px,2.2vh,24px) clamp(10px,1.4vw,20px);
+  font-weight:800;font-size:clamp(12px,1.15vw,17px);color:#DBE0E7;letter-spacing:-.01em;
+  min-height:clamp(64px,9vh,104px);
+}
+/* Логотипы: файл кладётся в /logos, alt остаётся текстовым фолбэком */
+img.lg{
+  max-width:100%;max-height:clamp(26px,3.4vh,44px);width:auto;height:auto;
+  object-fit:contain;display:block;
+}
+img.lg.inv{filter:brightness(0) invert(1);opacity:.92}   /* для тёмных/чёрных лого */
+img.lg.tall{max-height:clamp(34px,4.4vh,58px)}
+.lgf{font-weight:800;font-size:clamp(12px,1.15vw,17px);color:#DBE0E7;letter-spacing:-.01em}
+.caselogo{height:clamp(22px,2.6vh,34px);width:auto;object-fit:contain;display:block;margin:18px 0 0}
+.caselogo.inv{filter:brightness(0) invert(1);opacity:.9}
+
+/* ---------- Схема станка ---------- */
+.machine{display:grid;grid-template-columns:1fr auto 1.25fr;gap:clamp(16px,2.5vw,44px);align-items:center}
+.chip{
+  font-family:var(--mono);font-size:clamp(11px,1vw,13.5px);color:var(--ink);
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:inline-block;
+}
+.chip.on{border-color:var(--acc);color:var(--acc)}
+.box{
+  width:clamp(120px,13vw,178px);aspect-ratio:1;border-radius:22px;
+  border:1px solid rgba(247,154,33,.45);
+  background:radial-gradient(120% 120% at 50% 0%,rgba(247,154,33,.22),rgba(247,154,33,.03));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 70px rgba(247,154,33,.16);
+}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:clamp(20px,3.4vh,40px)}
+.flow b{color:var(--acc);font-size:18px;line-height:1}
+
+/* ---------- Кейсы ---------- */
+.case{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(18px,3vw,52px);align-items:center}
+.step{border-left:3px solid var(--acc);border-radius:14px;background:var(--panel);padding:clamp(14px,1.6vw,22px);margin-bottom:12px}
+.step.a{border-color:var(--red)} .step.b{border-color:var(--blue)} .step.c{border-color:var(--acc)}
+.step h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:9px;font-weight:500}
+.step p{color:#D7DCE3;font-size:clamp(13px,1.1vw,15.5px);line-height:1.5}
+.step.c p{color:var(--ink);font-weight:700}
+.hand{
+  font-family:var(--display);font-weight:600;font-style:italic;color:var(--pink);
+  font-size:clamp(15px,1.5vw,22px);margin-top:22px;display:flex;gap:12px;align-items:center;
+}
+.round{
+  width:clamp(46px,4.6vw,66px);aspect-ratio:1;border:2px solid var(--acc);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;
+  color:var(--acc);font-size:clamp(16px,1.7vw,24px);flex:none;
+}
+.case-head{display:flex;align-items:center;gap:16px;margin-bottom:clamp(14px,2.4vh,30px);flex-wrap:wrap}
+
+/* ---------- Цена ---------- */
+.price{font-family:var(--display);font-weight:900;color:var(--acc);letter-spacing:-.045em;line-height:.8;font-size:clamp(64px,15.5vw,210px)}
+.pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(20px,3.4vh,36px)}
+
+/* ---------- CTA ---------- */
+.cta{
+  display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(96deg,var(--acc),var(--acc-2));
+  color:#141005;font-weight:800;font-size:clamp(15px,1.4vw,19px);
+  padding:18px 34px;border-radius:14px;text-decoration:none;
+  box-shadow:0 16px 44px rgba(247,154,33,.3);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 22px 56px rgba(247,154,33,.42)}
+
+/* ---------- Управление ---------- */
+#bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc-2));width:0;z-index:40;transition:width .45s cubic-bezier(.16,.84,.34,1)}
+#nav{
+  position:fixed;bottom:clamp(14px,2.2vh,26px);right:clamp(14px,2.4vw,34px);z-index:40;
+  display:flex;align-items:center;gap:10px;
+}
+#nav button{
+  width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:rgba(20,23,28,.72);
+  backdrop-filter:blur(10px);color:var(--ink);font-size:17px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:.18s;
+}
+#nav button:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}
+#nav button:disabled{opacity:.3;cursor:default}
+#count{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.14em;min-width:56px;text-align:right}
+#count b{color:var(--acc);font-weight:500}
+#hint{
+  position:fixed;bottom:clamp(14px,2.2vh,26px);left:clamp(14px,2.4vw,34px);z-index:40;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim);
+  transition:opacity .5s;
+}
+#hint.gone{opacity:0}
+.brandmark{position:fixed;top:clamp(14px,2.2vh,26px);left:clamp(14px,2.4vw,34px);z-index:40;font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.02em;color:rgba(255,255,255,.45)}
+.brandmark span{color:var(--acc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+/* ---------- Мобилка ---------- */
+@media (max-width:860px){
+  .g3,.g4{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
+  .machine{grid-template-columns:1fr;text-align:left}
+  .box{margin:0 auto}
+  .case{grid-template-columns:1fr}
+  .brands{grid-template-columns:repeat(3,1fr)}
+  .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
+  .slide.center{justify-content:center}
+  #hint{display:none}
+}
+/* Короткие экраны (ноутбуки 768p): ужимаем крупные цифры, чтобы слайд не скроллился */
+@media (min-width:861px) and (max-height:820px){
+  .case .num-xl{font-size:clamp(42px,7vw,96px)}
+  .price{font-size:clamp(56px,12.5vw,168px)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:opacity .2s!important}
+}
+</style>
+<script>
+// Если файла лого нет — вместо битой картинки остаётся текстовое название.
+function lgFail(el){
+  var s = document.createElement('span');
+  s.className = 'lgf';
+  s.textContent = el.getAttribute('alt') || '';
+  if(el.parentNode) el.parentNode.replaceChild(s, el);
+}
+</script>
+</head>
+<body>
+
+<div id="bar"></div>
+<div class="brandmark">MEET<span>ENGINE</span></div>
+<div id="hint">← → ЛИСТАТЬ</div>
+<div id="nav">
+  <button id="prev" aria-label="Назад">‹</button>
+  <button id="next" aria-label="Вперёд">›</button>
+  <div id="count"><b>01</b> / 21</div>
+</div>
+
+<main id="deck">
+
+<!-- 01 ОБЛОЖКА -->
+<section class="slide center">
+  <div class="logo r" style="--i:0">MEET<span>ENGINE</span></div>
+  <h1 class="r" style="--i:1;margin:clamp(22px,4vh,40px) 0 clamp(18px,3vh,28px)">
+    Отдел продаж, который<br><span class="o">сам выводит на встречи</span><br>с нужными ЛПР
+  </h1>
+  <p class="lead r" style="--i:2;margin:0 auto">Ставлю станок холодного вывода на встречи внутрь вашей команды — и он остаётся у вас, работает без меня.</p>
+  <div class="foot r" style="--i:3;margin-top:clamp(26px,5vh,50px)">Агентство для агентств · Telegram @mihailgabitov242</div>
+</section>
+
+<!-- 02 СОЦПРУФ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Соцпруф · табло</div>
+  <h2 class="r" style="--i:1">Их ЛПР <span class="o">сели и стали слушать</span></h2>
+  <p class="lead r" style="--i:2;margin-bottom:clamp(18px,3vh,30px)">Компании, чьих ЛПР эта механика привела на Zoom-встречу:</p>
+  <div class="brands r" style="--i:3">
+    <div><img class="lg" src="logos/magnit.png" alt="Магнит" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/yandex.png" alt="Яндекс" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/pg.png" alt="P&amp;G" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/sportmaster.png" alt="Спортмастер" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/kaspersky.png" alt="Kaspersky" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/megafon.png" alt="МегаФон" onerror="lgFail(this)"></div>
+    <div><img class="lg inv tall" src="logos/domrf.png" alt="ДОМ.РФ" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/evalar.png" alt="Эвалар" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/samolet.png" alt="Самолёт" onerror="lgFail(this)"></div>
+    <div style="border-color:rgba(247,154,33,.35);color:var(--acc);font-family:var(--mono);font-size:11px;letter-spacing:.1em">РЕАЛЬНЫЕ ВСТРЕЧИ</div>
+  </div>
+  <p class="note r" style="--i:4">Это не «база контактов». Это люди, которые сели и стали слушать.</p>
+</section>
+
+<!-- 03 ПРОБЛЕМА -->
+<section class="slide">
+  <div class="eyebrow red r" style="--i:0">Проблема</div>
+  <h2 class="r" style="--i:1">Поток встреч держится<br><span class="rd">на одной звезде</span></h2>
+  <div class="grid g3">
+    <div class="card bad r" style="--i:2"><h3>«Мы ещё одно агентство»</h3><p>Менеджеры пишут шаблон — ЛПР не отвечает. Компания тонет в общем потоке одинаковых писем.</p></div>
+    <div class="card bad r" style="--i:3"><h3>То густо, то пусто</h3><p>Поток встреч непредсказуем. План по выручке зависит от того, сколько встреч случайно назначили в этом месяце.</p></div>
+    <div class="card bad r" style="--i:4"><h3>Ушла звезда — обвал</h3><p>Весь холодный выход живёт в голове одного человека. Он уходит — поток встреч обрушивается.</p></div>
+  </div>
+  <p class="note r" style="--i:5">«В хороший месяц кажется, что всё работает. В плохой — что рынок упал.» <b>На самом деле не менялось ничего.</b></p>
+</section>
+
+<!-- 04 СДВИГ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Сдвиг</div>
+  <h2 class="r" style="--i:1">Это не конкурент вашему обучению.<br><span class="o ul">Это слой, которого в нём нет.</span></h2>
+  <div class="grid g2">
+    <div class="card r" style="--i:2"><span class="tag b">Ваши тренеры</span><h3>Учат продавать НА встрече</h3><p>Презентация, работа с возражениями, закрытие. Всё это — уже когда ЛПР сидит напротив.</p></div>
+    <div class="card acc r" style="--i:3"><span class="tag o">Meetengine</span><h3>Ставим то, что ДО встречи</h3><p>Как холодно выйти на нужного ЛПР, вытащить навстречу и довести предложение до принимающего. Узкий навык из сотен боёв — остаётся у вас книгой знаний.</p></div>
+  </div>
+  <p class="note r" style="--i:4">Не заменяем ваших тренеров — усиливаем: новый менеджер входит в это за дни, а не за месяцы.</p>
+</section>
+
+<!-- 05 СТАНОК -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Как это работает</div>
+  <h2 class="r" style="--i:1">Станок, который ставим внутрь вашего отдела</h2>
+  <div class="machine">
+    <div class="r" style="--i:2">
+      <div class="foot" style="margin-bottom:16px">ЧТО ЗАХОДИТ</div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+        <span class="chip">Компания-цель</span><span class="chip">Настоящий ЛПР</span><span class="chip">Точка входа</span>
+      </div>
+    </div>
+    <div class="r" style="--i:3;text-align:center">
+      <div class="box"><div class="logo" style="font-size:clamp(13px,1.3vw,18px)">MEET<span>ENGINE</span></div></div>
+      <div class="foot" style="margin-top:12px">СТАНОК</div>
+    </div>
+    <div class="r" style="--i:4">
+      <div class="foot" style="color:var(--acc);margin-bottom:10px">НА ВЫХОДЕ</div>
+      <div class="num num-xl" style="font-size:clamp(44px,8.4vw,116px)">Встречи</div>
+      <p class="lead" style="margin-top:14px">Назначенные встречи с нужными ЛПР — на потоке, руками вашей команды.</p>
+    </div>
+  </div>
+  <div class="flow r" style="--i:5">
+    <span class="chip">Компания</span><b>→</b><span class="chip">ЛПР</span><b>→</b><span class="chip">Касание</span><b>→</b><span class="chip">Дожим</span><b>→</b><span class="chip on">Встреча</span>
+  </div>
+  <p class="note r" style="--i:6">Ставим этот путь внутрь вашего отдела. Остаётся у вас — и работает без нас.</p>
+</section>
+
+<!-- 06 ОТСТРОЙКА -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Отстройка</div>
+  <h2 class="r" style="--i:1">Это <span class="o ul">не лидген в аренду</span></h2>
+  <div class="grid g2">
+    <div class="card bad r" style="--i:2"><span class="tag r">Обычный подрядчик</span>
+      <ul class="list">
+        <li class="no"><i>✕</i><span>вы арендуете чужих лидов</span></li>
+        <li class="no"><i>✕</i><span>привязаны к подрядчику</span></li>
+        <li class="no"><i>✕</i><span>перестали платить — поток кончился</span></li>
+        <li class="no"><i>✕</i><span>вы на крючке</span></li>
+      </ul>
+    </div>
+    <div class="card acc r" style="--i:3"><span class="tag o">Meetengine</span>
+      <ul class="list">
+        <li class="yes"><i>✓</i><span>ставлю станок внутрь вашей команды</span></li>
+        <li class="yes"><i>✓</i><span>отдаю методику, скрипты, библиотеки касаний</span></li>
+        <li class="yes"><i>✓</i><span>ухожу — станок остаётся у вас</span></li>
+        <li class="yes"><i>✓</i><span>работает без меня, годами</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="note r" style="--i:4">Не сажаю вас на себя. Отдаю станок — и ухожу.</p>
+</section>
+
+<!-- 07 РАЗЛОМ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Разлом</div>
+  <h2 class="r" style="--i:1">Это не тренинг. <span class="o">Это станок,<br>который остаётся у вас.</span></h2>
+  <div class="r" style="--i:2;display:flex;align-items:center;gap:clamp(16px,3vw,44px);flex-wrap:wrap;margin-bottom:clamp(20px,3.4vh,36px)">
+    <div>
+      <div style="font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,46px);color:var(--dim);text-decoration:line-through;text-decoration-color:var(--red)">Событие</div>
+      <div class="foot">послушали и забыли</div>
+    </div>
+    <b style="color:var(--acc);font-size:26px">→</b>
+    <div>
+      <div class="num" style="font-size:clamp(26px,3.6vw,50px)">Актив на балансе</div>
+      <div class="foot" style="color:var(--acc)">работает без нас · обучает новых</div>
+    </div>
+  </div>
+  <div class="r" style="--i:3;display:flex;flex-wrap:wrap;gap:10px">
+    <span class="chip">Playbook верха воронки</span><span class="chip">Методика поиска ЛПР</span><span class="chip">Библиотеки касаний и дожимов</span>
+    <span class="chip">Матрица возражений</span><span class="chip">Скрипт звонка</span><span class="chip">Промпт под вашу ценность</span><span class="chip">Воронка в вашей CRM</span>
+  </div>
+  <p class="note r" style="--i:4">Сейчас поток встреч живёт в голове у одного человека. Который однажды уволится — и унесёт его с собой вместе с базой, скриптами и вашим планом на квартал.</p>
+</section>
+
+<!-- 08 КОМУ ПОДХОДИТ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Честно, до звонка</div>
+  <h2 class="r" style="--i:1">Кому подходит — и кому нет</h2>
+  <div class="grid g2">
+    <div class="card r" style="--i:2;border-color:rgba(62,214,160,.3)"><span class="tag g">Подходит</span>
+      <ul class="list">
+        <li class="plus"><i>+</i><span style="color:var(--ink)">агентства, которые продают услуги брендам</span></li>
+        <li class="plus"><i>+</i><span style="color:var(--ink)">есть отдел продаж или менеджеры, которым можно передать механику</span></li>
+        <li class="plus"><i>+</i><span style="color:var(--ink)">хотят системный поток встреч, а не разовых звёзд</span></li>
+      </ul>
+    </div>
+    <div class="card bad r" style="--i:3"><span class="tag r">Не подходит</span>
+      <ul class="list">
+        <li class="minus"><i style="color:var(--red)">—</i><span>только частники / B2C</span></li>
+        <li class="minus"><i style="color:var(--red)">—</i><span>кто не готов внедрять систему у себя</span></li>
+        <li class="minus"><i style="color:var(--red)">—</i><span>кто ищет готовых лидов в аренду, а не свою технологию</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="note r" style="--i:4">Мы прямо говорим «не подходит», когда это так, — чтобы верили остальному.</p>
+</section>
+
+<!-- 09 ДОКАЗАТЕЛЬСТВА -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Доказательства</div>
+  <h2 class="r" style="--i:1">Сначала доказательства.<br><span class="o">Потом всё остальное.</span></h2>
+  <div class="grid g4">
+    <div class="card metric r" style="--i:2"><div class="num">56/70</div><small>целевых CMO навстречу за 4 мес · <b>Impression</b></small></div>
+    <div class="card metric r" style="--i:3"><div class="num">84</div><small>встречи за 3 мес — CMO, гендиры, IR · <b>Бизнес-форум</b></small></div>
+    <div class="card metric r" style="--i:4"><div class="num">6→2</div><small>встреч за 2 недели → 2 сделки · <b>Digitali</b></small></div>
+    <div class="card metric r" style="--i:5"><div class="num">6–7<span style="font-size:.45em">/нед</span></div><small>с гендиректорами — самый тяжёлый заход · <b>B2Boost</b></small></div>
+  </div>
+  <div class="r" style="--i:6;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:clamp(18px,3vh,30px)">
+    <span class="tag o" style="margin:0">Табло ЛПР</span>
+    <span style="color:var(--muted);font-size:clamp(13px,1.1vw,16px)">Магнит · Яндекс · P&amp;G · Касперский · МегаФон · Спортмастер · ДОМ.РФ · Эвалар · Самолёт</span>
+  </div>
+  <p class="note r" style="--i:7"><span class="foot">Компании настоящие · сайты открыты · цифры реальные · клиенты на связи.</span></p>
+</section>
+
+<!-- 10 КЕЙС 01 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">01</div><span class="tag b" style="margin:0">Impression · инфлюенс · автоблогеры</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">ОХВАТ — ВЕСЬ СПИСОК, А НЕ ЕДИНИЧНЫЕ УДАЧИ</div>
+      <div class="num num-xl r" style="--i:2">56 из 70</div>
+      <p class="lead r" style="--i:3;margin-top:18px">целевых CMO выведено на встречу за 4 месяца — <strong>80% списка</strong>.</p>
+      <img class="caselogo inv r" style="--i:4" src="logos/impression.png" alt="Impression Agency" onerror="lgFail(this)">
+      <div class="hand r" style="--i:4">↳ 80% списка — не единичные удачи</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Точка А</h4><p>Выходили на CMO так же, как ещё десять агентств — одинаковыми письмами. Тонули в общем потоке, до встречи доходили единицы.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Заход, из-за которого CMO приходит именно к ним. Методика точек входа + касание под сегмент — и прогон по всему списку.</p></div>
+      <div class="step c r" style="--i:5"><h4>Результат</h4><p>56 из 70 целевых CMO на встрече за 4 месяца.</p></div>
+      <div class="grid g2 r" style="--i:6;margin-top:14px">
+        <div class="card bad"><h4 class="foot" style="color:var(--red);margin-bottom:8px">СЛАБЫЙ ЗАХОД</h4><p style="font-style:italic">«Здравствуйте! Мы агентство, работаем с блогерами. Хотели бы предложить сотрудничество…»</p></div>
+        <div class="card" style="border-color:rgba(62,214,160,.28)"><h4 class="foot" style="color:var(--green);margin-bottom:8px">СИЛЬНЫЙ ЗАХОД</h4><p style="font-style:italic">Заход через конкретную задачу бренда и точку входа под сегмент — CMO видит смысл сесть.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 КЕЙС 02 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">02</div><span class="tag b" style="margin:0">Digitali · performance · adtech · топ-8 AdIndex</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">СКОРОСТЬ ДО ДЕНЕГ</div>
+      <div class="num num-xl r" style="--i:2">6 встреч<br>→ 2 сделки</div>
+      <p class="lead r" style="--i:3;margin-top:18px">за первые 2 недели. Дальше — 5–7 встреч в неделю на потоке.</p>
+      <img class="caselogo inv r" style="--i:4" src="logos/digitali.png" alt="Digitali" onerror="lgFail(this)">
+      <div class="hand r" style="--i:4">↳ встречи → деньги за 2 недели</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Точка А</h4><p>Холодные касания давали редкие ответы, поток встреч непредсказуем, сделки — от случая к случаю.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Станок вывода на ЛПР + дожим до слота встречи.</p></div>
+      <div class="step c r" style="--i:5"><h4>Результат</h4><p>Первые 6 встреч за 2 недели → 2 сделки: федеральная сеть ресторанов и магазин товаров для гор ~300 000 ₽. Дальше 5–7 встреч в неделю.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 КЕЙС 03 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">03</div><span class="tag b" style="margin:0">Международный бизнес-форум · event</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">ВЫСОТА ЛПР — ДОХОДИМ ДО САМОГО ВЕРХА</div>
+      <div class="num num-xl r" style="--i:2">84<br>встречи</div>
+      <p class="lead r" style="--i:3;margin-top:18px">за 3 месяца — самый высокий уровень ЛПР из возможных, на потоке.</p>
+      <div class="foot r" style="--i:4;margin-top:10px">Название — на созвоне</div>
+      <div class="hand r" style="--i:5">↳ самый верх, и на потоке</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Точка А</h4><p>Длинный цикл, дорогое решение, высший уровень ЛПР. Поток спонсоров нестабилен — держался на личных связях.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Адресный холодный заход на CMO, гендиректоров, IR- и event-директоров.</p></div>
+      <div class="step c r" style="--i:5"><h4>Результат</h4><p>84 встречи за 3 месяца на самом высоком уровне ЛПР.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 КЕЙС 04 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">04</div><span class="tag b" style="margin:0">B2Boost · построение B2B-отделов продаж</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">СЛОЖНОСТЬ ЗАХОДА — РАБОТАЕТ ДАЖЕ САМЫЙ ТЯЖЁЛЫЙ</div>
+      <div class="num num-xl r" style="--i:2">6–7 встреч<br>в неделю</div>
+      <p class="lead r" style="--i:3;margin-top:18px">с генеральными директорами — в холодную.</p>
+      <img class="caselogo inv r" style="--i:4" src="logos/b2boost.png" alt="B2Boost" onerror="lgFail(this)">
+      <div class="hand r" style="--i:4">↳ если сюда зашли — к вам тем более</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Точка А</h4><p>Самый тяжёлый заход: в холодную выйти на собственника и продать ему встречу, где скажут, что его отдел продаж надо перестраивать. В лоб такое не заходит.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Заход, из-за которого собственник сам приходит на такую встречу.</p></div>
+      <div class="step c r" style="--i:5"><h4>Результат</h4><p>6–7 встреч в неделю с гендиректорами. Если зашли сюда — к вашим ЛПР зайдём тем более.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 ЕЩЁ КЕЙСЫ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Ещё кейсы</div>
+  <h2 class="r" style="--i:1">Та же механика — в разных нишах</h2>
+  <div class="grid g3">
+    <div class="card r" style="--i:2"><img class="caselogo inv" style="margin:0 0 14px" src="logos/thejames.png" alt="THE JAMES" onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">37 встреч<span style="font-size:.5em;color:var(--muted)"> / месяц</span></div><p style="margin-top:12px">PR-директора и PR-менеджеры · PR и коммуникации</p></div>
+    <div class="card r" style="--i:3"><img class="caselogo inv" style="margin:0 0 14px" src="logos/easydigital.png" alt="easy." onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">27 встреч<span style="font-size:.5em;color:var(--muted)"> / 1,5 мес</span></div><p style="margin-top:12px">Маркдиры и руководители digital · digital полного цикла</p></div>
+    <div class="card r" style="--i:4"><img class="caselogo inv" style="margin:0 0 14px" src="logos/secretgang.png" alt="Secret Gang" onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">10 встреч<span style="font-size:.5em;color:var(--muted)"> / 14 дней</span></div><p style="margin-top:12px">CMO и креативные директора · креатив, брендинг</p></div>
+    <div class="card r" style="--i:5"><img class="caselogo inv" style="margin:0 0 14px" src="logos/romashka.png" alt="Ромашка Медиа" onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">до 40 встреч<span style="font-size:.5em;color:var(--muted)"> / месяц</span></div><p style="margin-top:12px">Банки, ритейл, телеком, фарма, красота — в один поток</p></div>
+    <div class="card r" style="--i:6"><img class="caselogo inv" style="margin:0 0 14px" src="logos/hardlogistic.png" alt="Хард Логистик" onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">12 директоров → 4 сметы</div><p style="margin-top:12px">Директора по логистике → просчёт сметы · логистика</p></div>
+    <div class="card acc r" style="--i:7"><p style="color:var(--ink)">Компании настоящие · сайты открыты · цифры реальные · клиенты на связи. <span class="o">Спрашивайте.</span></p></div>
+  </div>
+</section>
+
+<!-- 15 РАЗВИЛКА -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Развилка</div>
+  <h2 class="r" style="--i:1">У вас уже есть встречи с нужными ЛПР?</h2>
+  <div class="grid g2">
+    <div class="card r" style="--i:2"><span class="tag b">Потока нет</span><h3>Наполняем верх воронки</h3><p>Ставим станок, который выводит нужных ЛПР на встречу — на потоке, руками вашей команды. Тот случай, где «больше встреч» и есть ответ.</p></div>
+    <div class="card acc r" style="--i:3"><span class="tag o">Поток есть</span><h3>Тогда вопрос не в количестве</h3>
+      <p style="margin-bottom:12px">Деньги утекают в двух точках:</p>
+      <ul class="list">
+        <li class="yes"><i>1</i><span style="color:var(--muted)">предложение застревает у менеджеров-мидлов и не доходит до принимающего;</span></li>
+        <li class="yes"><i>2</i><span style="color:var(--muted)">на встрече внимание ЛПР не удерживается — заход не матчит его боль.</span></li>
+      </ul>
+      <p style="margin-top:14px;color:var(--ink);font-weight:700">Чиним качество захода и доведение — не количество.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 ДОВЕДЕНИЕ -->
+<section class="slide">
+  <div class="eyebrow red r" style="--i:0">Доведение</div>
+  <h2 class="r" style="--i:1">Ваше предложение <span class="rd">умирает у мидлов</span></h2>
+  <div class="card bad r" style="--i:2"><div style="font-family:var(--mono);font-size:clamp(12px,1.15vw,16px);display:flex;gap:10px;align-items:center;flex-wrap:wrap">Вы <b style="color:var(--red)">→</b> мидл <b style="color:var(--red)">→</b> мидл <b style="color:var(--red)">→</b> <span style="color:var(--red)">✕ до ЛПР не дошло</span></div></div>
+  <div class="card acc r" style="--i:3;margin:12px 0 clamp(18px,3vh,28px)"><div style="font-family:var(--mono);font-size:clamp(12px,1.15vw,16px);display:flex;gap:10px;align-items:center;flex-wrap:wrap">Вы <b class="o">→</b> <span class="o">настоящий ЛПР</span> <b class="o">✓</b> напрямую · и мидл сам донёс</div></div>
+  <div class="grid g2">
+    <div class="card r" style="--i:4"><h3>Выходим на решающего</h3><p>Заходим так, чтобы выйти на настоящего принимающего, минуя воронку менеджеров.</p></div>
+    <div class="card r" style="--i:5"><h3>Мидл сам несёт наверх</h3><p>Упаковываем заход как бизнес-задачу его босса — потому мидл сам доносит, а не хоронит.</p></div>
+  </div>
+  <p class="note r" style="--i:6">«Индивидуальный подход», «комплексное решение», «повысим эффективность» — три фразы, после которых ЛПР точно знает: писали не ему. И мидл это чувствует — потому наверх не несёт.</p>
+</section>
+
+<!-- 17 ФОРМА -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Отстройка от «дело в продукте»</div>
+  <h2 class="r" style="--i:1">В B2B форма — <span class="o ul">это часть продукта</span></h2>
+  <p class="lead r" style="--i:2">Лучший продукт не покупают, если его ценность не долетает до ЛПР без искажения и не удерживает внимание. Мы не трогаем ваш продукт — делаем так, чтобы его ценность доходила до принимающего <strong>целой</strong>, а не размывалась на воронке менеджеров и слабых заходах.</p>
+  <div class="r" style="--i:3;display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap;margin:clamp(22px,4vh,42px) 0">
+    <div><div style="font-family:var(--display);font-weight:800;font-size:clamp(18px,2.2vw,30px)">Ценность продукта</div><div class="foot">какая есть</div></div>
+    <div style="font-family:var(--display);font-weight:700;font-style:italic;color:var(--red);font-size:clamp(16px,2vw,26px)">— слабый заход →</div>
+    <div><div style="font-family:var(--display);font-weight:800;font-size:clamp(18px,2.2vw,30px);color:var(--dim)">долетает размытой</div><div class="foot" style="color:var(--red)">ЛПР не купил</div></div>
+  </div>
+  <div class="card r" style="--i:4;border-left:3px solid var(--acc)"><p style="color:var(--ink)">«Форма косвенно связана с продуктом и тем, как ты его презентуешь» — их же слова. Именно эту «форму» мы и ставим.</p></div>
+</section>
+
+<!-- 18 ВНЕДРЕНИЕ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Внедрение</div>
+  <h2 class="r" style="--i:1">Быстро — и <span class="o ul">остаётся у вас</span></h2>
+  <div class="grid g3">
+    <div class="card r" style="--i:2"><div class="round" style="margin-bottom:18px">1</div><h3>Интенсив с отделом</h3><p>Разбираем ваши переписки и команду, ставим механику вживую — на ваших реальных компаниях.</p></div>
+    <div class="card r" style="--i:3"><div class="round" style="margin-bottom:18px">2</div><h3>Отдаём систему</h3><p>Плейбук, библиотеки первых касаний и follow-up, скрипт звонка, матрица возражений — остаётся у вас.</p></div>
+    <div class="card r" style="--i:4"><div class="round" style="margin-bottom:18px">3</div><h3>Ставим в вашу CRM</h3><p>Воронка верха под вашу CRM + точки контроля руководителя: видно, где именно ломается процесс.</p></div>
+  </div>
+  <p class="note r" style="--i:5">Не проект на полгода — рабочая система, команда использует сразу.</p>
+</section>
+
+<!-- 19 ДВА ПУТИ -->
+<section class="slide">
+  <div class="eyebrow center r" style="--i:0">Развилка</div>
+  <h2 class="r" style="--i:1;text-align:center">Отсюда два пути</h2>
+  <div class="grid g2">
+    <div class="card r" style="--i:2"><div style="font-size:34px;color:var(--dim);line-height:1;margin-bottom:22px">⟩⟩</div><div class="foot" style="margin-bottom:10px">ПУТЬ А</div><h3 style="font-size:clamp(18px,2vw,26px)">Остаться на сарафане и паре звёзд</h3>
+      <ul class="list" style="margin-top:16px">
+        <li class="no"><i style="color:var(--dim)">↘</i><span>поток встреч скачет: то густо, то пусто</span></li>
+        <li class="no"><i style="color:var(--dim)">↘</i><span>всё держится на одном человеке</span></li>
+        <li class="no"><i style="color:var(--dim)">↘</i><span>ушёл — обвал, и снова с нуля</span></li>
+      </ul>
+    </div>
+    <div class="card acc r" style="--i:3"><div style="font-size:34px;color:var(--acc);line-height:1;margin-bottom:22px">↗</div><div class="foot" style="color:var(--acc);margin-bottom:10px">ПУТЬ Б</div><h3 style="font-size:clamp(18px,2vw,26px)">Поставить станок с MEETENGINE</h3>
+      <ul class="list" style="margin-top:16px">
+        <li class="yes"><i>↗</i><span>предсказуемый поток встреч с ЛПР</span></li>
+        <li class="yes"><i>↗</i><span>работает у любого менеджера</span></li>
+        <li class="yes"><i>↗</i><span>остаётся у вас и работает годами</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 20 ЦЕНА -->
+<section class="slide center">
+  <div class="eyebrow center r" style="--i:0">Цена</div>
+  <div class="price r" style="--i:1">100 000 ₽</div>
+  <div class="r" style="--i:2;font-family:var(--display);font-weight:700;font-size:clamp(18px,2.2vw,30px);margin-top:18px">фикс · один раз</div>
+  <p class="lead r" style="--i:3;margin:clamp(18px,3vh,30px) auto 0;text-align:center">Один оклад менеджера — а не кот в мешке. Это <strong>не расход на холодную воронку — это станок на балансе</strong>: адресность вместо пачек холода, до дорогого тендера доходит квалифицированный интерес, а не случайный.</p>
+  <div class="pills r" style="--i:4">
+    <span class="tag o" style="margin:0">Разово · остаётся навсегда</span>
+    <span class="tag b" style="margin:0">Актив, а не строка расходов</span>
+    <span class="tag g" style="margin:0">Адресность вместо холода наугад</span>
+  </div>
+  <p class="note r" style="--i:5;text-align:center;margin-left:auto;margin-right:auto">Если бизнес чисто тендерный и заходы адресные единичные — честно скажу, что не фит. Но чаще «нам холод дорого» = холод делался неадресно.</p>
+</section>
+
+<!-- 21 ФИНАЛ -->
+<section class="slide center">
+  <div class="logo r" style="--i:0">MEET<span>ENGINE</span></div>
+  <h1 class="r" style="--i:1;margin:clamp(22px,4vh,40px) 0 clamp(18px,3vh,26px)">Станок, который<br>остаётся <span class="o ul">у вас навсегда</span></h1>
+  <p class="lead r" style="--i:2;margin:0 auto">Запустите внедрение — покажу на ваших реальных ЛПР, как поток встреч создаёт ваша команда.</p>
+  <a class="cta r" style="--i:3;margin-top:clamp(26px,4.5vh,44px)" href="https://t.me/mihailgabitov242" target="_blank" rel="noopener">Запустить внедрение →</a>
+  <div class="foot r" style="--i:4;margin-top:clamp(26px,4.5vh,44px)">
+    Telegram @mihailgabitov242 · основатель Михаил Габитов<br>
+    ИП Габитов Михаил Вадимович · ИНН 720320014854
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var bar = document.getElementById('bar');
+  var count = document.getElementById('count');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+  var hint = document.getElementById('hint');
+  var i = 0, lock = false;
+
+  function pad(n){ return (n<10?'0':'')+n; }
+
+  function go(n, push){
+    n = Math.max(0, Math.min(slides.length-1, n));
+    if(n === i && push !== 'init') return;
+    slides[i].classList.remove('active');
+    i = n;
+    slides[i].classList.add('active');
+    slides[i].scrollTop = 0;
+    bar.style.width = ((i+1)/slides.length*100) + '%';
+    count.innerHTML = '<b>'+pad(i+1)+'</b> / '+slides.length;
+    prev.disabled = (i===0);
+    next.disabled = (i===slides.length-1);
+    if(push !== 'init') history.replaceState(null,'','#'+(i+1));
+    if(i>0) hint.classList.add('gone');
+  }
+
+  next.addEventListener('click', function(){ go(i+1); });
+  prev.addEventListener('click', function(){ go(i-1); });
+
+  document.addEventListener('keydown', function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){ e.preventDefault(); go(i+1); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){ e.preventDefault(); go(i-1); }
+    else if(e.key==='Home'){ go(0); }
+    else if(e.key==='End'){ go(slides.length-1); }
+    else if(e.key==='f'||e.key==='F'){
+      if(!document.fullscreenElement){ document.documentElement.requestFullscreen(); } else { document.exitFullscreen(); }
+    }
+  });
+
+  // Колесо / трекпад
+  var acc = 0, t;
+  window.addEventListener('wheel', function(e){
+    var s = slides[i];
+    if(s.scrollHeight > s.clientHeight + 4){
+      var atTop = s.scrollTop <= 0, atBottom = s.scrollTop + s.clientHeight >= s.scrollHeight - 2;
+      if((e.deltaY > 0 && !atBottom) || (e.deltaY < 0 && !atTop)) return;
+    }
+    if(lock) return;
+    acc += e.deltaY;
+    clearTimeout(t); t = setTimeout(function(){ acc = 0; }, 180);
+    if(Math.abs(acc) > 60){
+      lock = true; go(acc > 0 ? i+1 : i-1); acc = 0;
+      setTimeout(function(){ lock = false; }, 620);
+    }
+  }, {passive:true});
+
+  // Свайп
+  var x0=null, y0=null;
+  window.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', function(e){
+    if(x0===null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? i+1 : i-1);
+    x0 = null;
+  }, {passive:true});
+
+  var start = parseInt((location.hash||'').replace('#',''),10);
+  go(isNaN(start) ? 0 : start-1, 'init');
+})();
+</script>
+</body>
+</html>
