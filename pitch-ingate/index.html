@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MEETENGINE × Ingate - верх воронки без БДМов</title>
+<meta name="description" content="Машина, которая выводит на директоров по маркетингу крупных брендов и доводит до слота в календаре. Встраивается в перестройку привлечения. 200 000 ₽ навсегда.">
+<meta property="og:title" content="MEETENGINE × Ingate">
+<meta property="og:description" content="Верх воронки без людей: находит маркдиров крупных брендов, пишет персонально, доводит до встречи. 200 000 ₽ один раз.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0B0D;
+  --panel:#14171C;
+  --panel-2:#1A1E25;
+  --line:rgba(255,255,255,.08);
+  --ink:#F3F5F8;
+  --muted:#9AA3AF;
+  --dim:#6B7280;
+  --acc:#F79A21;
+  --acc-2:#FFB84D;
+  --red:#FF5C63;
+  --green:#3ED6A0;
+  --blue:#7FA6F0;
+  --display:'Unbounded',system-ui,sans-serif;
+  --body:'Manrope',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --pad: clamp(20px, 5vw, 92px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);overflow:hidden;
+  -webkit-font-smoothing:antialiased;overscroll-behavior:none}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(70vw 60vh at 82% 8%, rgba(247,154,33,.13), transparent 60%),
+    radial-gradient(60vw 50vh at 8% 92%, rgba(247,154,33,.07), transparent 60%);
+}
+#deck{position:fixed;inset:0;z-index:1}
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--pad) + 14px) var(--pad) calc(var(--pad) + 34px);
+  opacity:0;visibility:hidden;transform:translateY(26px) scale(.985);
+  transition:opacity .5s ease, transform .6s cubic-bezier(.16,.84,.34,1), visibility .5s;
+  overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
+}
+.slide::-webkit-scrollbar{display:none}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.slide.center{align-items:center;text-align:center}
+.slide.active .r{animation:rise .62s cubic-bezier(.16,.84,.34,1) both;animation-delay:calc(var(--i,0) * 70ms + 90ms)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-family:var(--mono);font-size:clamp(10px,1vw,12px);letter-spacing:.28em;
+  text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--acc);flex:none}
+.eyebrow.red{color:var(--red)}.eyebrow.red::before{background:var(--red)}
+.eyebrow.green{color:var(--green)}.eyebrow.green::before{background:var(--green)}
+.eyebrow.center{justify-content:center}
+h1{font-family:var(--display);font-weight:800;line-height:.98;letter-spacing:-.02em;font-size:clamp(30px,5.6vw,74px)}
+h2{font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:-.02em;
+  font-size:clamp(25px,4.2vw,56px);margin-bottom:clamp(20px,3vh,38px)}
+h3{font-family:var(--body);font-weight:800;font-size:clamp(17px,1.6vw,23px);letter-spacing:-.01em;margin-bottom:10px}
+.o{color:var(--acc)} .rd{color:var(--red)} .gr{color:var(--green)}
+.lead{font-size:clamp(15px,1.35vw,20px);color:var(--muted);line-height:1.55;max-width:64ch}
+.note{font-size:clamp(13px,1.05vw,15.5px);color:var(--dim);line-height:1.6;margin-top:clamp(18px,3vh,32px);max-width:80ch}
+.note b{color:var(--ink);font-weight:700}
+strong{color:var(--ink);font-weight:800}
+
+.grid{display:grid;gap:clamp(12px,1.4vw,20px)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(16px,1.9vw,28px)}
+.card p{color:var(--muted);font-size:clamp(13.5px,1.1vw,16px);line-height:1.55}
+.card.acc{border-color:rgba(247,154,33,.42);background:linear-gradient(160deg,rgba(247,154,33,.09),rgba(247,154,33,.02) 55%,transparent)}
+.card.bad{border-color:rgba(255,92,99,.28)}
+.card.good{border-color:rgba(62,214,160,.3);background:linear-gradient(160deg,rgba(62,214,160,.06),transparent 60%)}
+
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;padding:8px 14px;border-radius:999px;
+  border:1px solid var(--line);color:var(--muted);margin-bottom:16px}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.tag.o{color:var(--acc);border-color:rgba(247,154,33,.4)}
+.tag.g{color:var(--green);border-color:rgba(62,214,160,.35)}
+.tag.r{color:var(--red);border-color:rgba(255,92,99,.35)}
+
+ul.list{list-style:none;display:flex;flex-direction:column;gap:12px}
+ul.list li{display:flex;gap:12px;align-items:flex-start;font-size:clamp(13.5px,1.15vw,16.5px);color:var(--ink);line-height:1.45}
+ul.list li i{font-style:normal;flex:none;font-weight:800;width:16px}
+li.no i{color:var(--red)} li.yes i{color:var(--acc)} li.plus i{color:var(--green)}
+li.no span{color:var(--muted)}
+
+.num{font-family:var(--display);font-weight:900;color:var(--acc);line-height:.86;letter-spacing:-.03em;
+  font-size:clamp(38px,4.6vw,64px)}
+.num.g{color:var(--green)} .num.r{color:var(--red)}
+.num-xl{font-size:clamp(56px,11vw,150px)}
+.metric small{display:block;margin-top:14px;color:var(--muted);font-size:clamp(12.5px,1.05vw,15px);line-height:1.5;font-weight:500}
+.metric small b{color:var(--ink)}
+.logo{font-family:var(--display);font-weight:800;letter-spacing:-.01em;font-size:clamp(20px,2.4vw,34px)}
+.logo span{color:var(--acc)}
+.foot{font-family:var(--mono);font-size:clamp(10px,.95vw,12.5px);color:var(--dim);letter-spacing:.1em;line-height:1.9}
+
+/* цитата клиента */
+.quote{border-left:3px solid var(--acc);background:linear-gradient(100deg,rgba(247,154,33,.09),transparent 70%);
+  border-radius:0 16px 16px 0;padding:clamp(16px,2vw,26px) clamp(18px,2.2vw,32px)}
+.quote p{font-size:clamp(15px,1.5vw,22px);line-height:1.5;color:var(--ink);font-weight:600}
+.quote cite{display:block;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);font-style:normal}
+
+/* схема веток */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(10px,1.2vw,16px)}
+.tr{border:1px solid var(--line);border-radius:14px;padding:clamp(14px,1.6vw,20px);background:var(--panel);
+  display:flex;flex-direction:column;gap:8px}
+.tr .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.tr .v{font-size:clamp(13px,1.1vw,15.5px);font-weight:700;line-height:1.35}
+.tr.stay{border-color:rgba(127,166,240,.3)}
+.tr.stay .k{color:var(--blue)}
+.tr.free{border-color:rgba(62,214,160,.35);background:linear-gradient(160deg,rgba(62,214,160,.08),transparent)}
+.tr.free .k{color:var(--green)}
+.tr.new{border-color:rgba(247,154,33,.45);background:linear-gradient(160deg,rgba(247,154,33,.14),rgba(247,154,33,.02));
+  box-shadow:0 0 50px rgba(247,154,33,.1)}
+.tr.new .k{color:var(--acc)}
+
+/* поток */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:clamp(18px,3vh,32px)}
+.chip{font-family:var(--mono);font-size:clamp(11px,1vw,13.5px);color:var(--ink);background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:inline-block}
+.chip.on{border-color:var(--acc);color:var(--acc)}
+.flow b{color:var(--acc);font-size:18px;line-height:1}
+
+.cta{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(120deg,var(--acc),var(--acc-2));
+  color:#0A0B0D;font-weight:800;font-size:clamp(14px,1.25vw,17px);padding:16px 30px;border-radius:14px;
+  text-decoration:none;box-shadow:0 16px 44px rgba(247,154,33,.3);transition:transform .18s ease, box-shadow .18s ease}
+.cta:hover{transform:translateY(-2px);box-shadow:0 22px 56px rgba(247,154,33,.42)}
+
+#bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc-2));width:0;z-index:40;
+  transition:width .45s cubic-bezier(.16,.84,.34,1)}
+#nav{position:fixed;bottom:clamp(14px,2.2vh,26px);right:clamp(14px,2.4vw,34px);z-index:40;display:flex;align-items:center;gap:10px}
+#nav button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:rgba(20,23,28,.72);
+  backdrop-filter:blur(10px);color:var(--ink);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.18s}
+#nav button:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}
+#nav button:disabled{opacity:.3;cursor:default}
+#count{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.14em;min-width:56px;text-align:right}
+#count b{color:var(--acc);font-weight:500}
+#hint{position:fixed;bottom:clamp(14px,2.2vh,26px);left:clamp(14px,2.4vw,34px);z-index:40;font-family:var(--mono);
+  font-size:11px;letter-spacing:.14em;color:var(--dim);transition:opacity .5s}
+#hint.gone{opacity:0}
+.brandmark{position:fixed;top:clamp(14px,2.2vh,26px);left:clamp(14px,2.4vw,34px);z-index:40;font-family:var(--display);
+  font-weight:800;font-size:13px;letter-spacing:.02em;color:rgba(255,255,255,.45)}
+.brandmark span{color:var(--acc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+@media (max-width:860px){
+  .g3,.g4,.g2{grid-template-columns:1fr}
+  .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
+  .slide.center{justify-content:center}
+  #hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:opacity .2s!important}}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+<div class="brandmark">MEET<span>ENGINE</span> × INGATE</div>
+<div id="hint">← → ЛИСТАТЬ</div>
+<div id="nav">
+  <button id="prev" aria-label="Назад">‹</button>
+  <button id="next" aria-label="Вперёд">›</button>
+  <div id="count"><b>01</b> / 11</div>
+</div>
+
+<main id="deck">
+
+<!-- 01 ОБЛОЖКА -->
+<section class="slide center">
+  <div class="logo r" style="--i:0">MEET<span>ENGINE</span> × Ingate</div>
+  <h1 class="r" style="--i:1;margin:clamp(22px,4vh,40px) 0 clamp(18px,3vh,28px)">
+    Верх воронки,<br>который работает<br><span class="o">без БДМов</span>
+  </h1>
+  <p class="lead r" style="--i:2;margin:0 auto">Евгения, вы сказали главное: вы перестраиваете формат привлечения и вам важно понять, куда это встраивается. Дальше - ответ ровно на этот вопрос, без технической части.</p>
+  <div class="foot r" style="--i:3;margin-top:clamp(26px,5vh,50px)">Для Евгении Фетисовой, коммерческого директора · 200 000 ₽ навсегда</div>
+</section>
+
+<!-- 02 ВАША ЗАДАЧА -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Ваша формулировка</div>
+  <h2 class="r" style="--i:1">Вопрос не в продукте.<br>Вопрос в <span class="o">месте</span></h2>
+  <div class="quote r" style="--i:2">
+    <p>«Дело не в том, над чем я буду думать. Я сейчас полностью реорганизую структуру и формат привлечения, и мне важно посмотреть, будет ли эта история вписываться, как накладываться и в какой момент это должно случиться».</p>
+    <cite>Евгения Фетисова, встреча 29 июля</cite>
+  </div>
+  <div class="grid g3 r" style="--i:3;margin-top:clamp(20px,3.4vh,34px)">
+    <div class="card"><h3>Как вписывается</h3><p>Занимает только верх воронки: поиск, контакты, первое касание и переписка до согласия на встречу. Дальше отдаёт вам.</p></div>
+    <div class="card"><h3>Как накладывается</h3><p>Ничего не ломает. Ветки, которые у вас работают, продолжают работать. Машина не заменяет их, а снимает с людей ту часть, где люди не нужны.</p></div>
+    <div class="card acc"><h3>В какой момент</h3><p>Именно сейчас. Пока схема ещё не застыла, новый источник встраивается вместе с остальными, а не пристраивается сбоку через полгода.</p></div>
+  </div>
+</section>
+
+<!-- 03 ВАШИ ВЕТКИ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Ваша схема привлечения</div>
+  <h2 class="r" style="--i:1">Что остаётся,<br>что <span class="gr">освобождается</span></h2>
+  <p class="lead r" style="--i:2;margin-bottom:clamp(18px,3vh,30px)">Вы назвали свои ветки: БДМы в холодную, колл-центр, аутрич в Telegram, прогрев базы. Плюс агентства и SaaS по подписке.</p>
+  <div class="tracks r" style="--i:3">
+    <div class="tr free"><div class="k">Освобождается</div><div class="v">БДМы уходят от аутрича к встречам и мероприятиям</div></div>
+    <div class="tr new"><div class="k">Встаёт сюда</div><div class="v">MEETENGINE: поиск, контакт, первое касание, переписка до слота</div></div>
+    <div class="tr stay"><div class="k">Остаётся</div><div class="v">Колл-центр</div></div>
+    <div class="tr stay"><div class="k">Остаётся</div><div class="v">Прогрев базы и касания</div></div>
+    <div class="tr stay"><div class="k">Остаётся</div><div class="v">Аккаунт-менеджеры</div></div>
+  </div>
+  <p class="note r" style="--i:4"><b>БДМ нужен там, где нужен человек:</b> провести встречу, поехать на мероприятие, дожать в разговоре. Аутрич - это та часть его работы, которая съедает время и не требует человека. Её и снимаем.</p>
+</section>
+
+<!-- 04 КОГО ДОСТАЁТ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Ваши ЛПР</div>
+  <h2 class="r" style="--i:1">Директора по маркетингу<br><span class="o">крупных брендов</span></h2>
+  <div class="quote r" style="--i:2">
+    <p>«Мы работаем с биг бизом, средний плюс, энтерпрайз. Общаемся с дирами по маркетингу в крупных бизнесах, иногда с коммерческими директорами. Диры по маркетингу принимают решения, у них бюджеты».</p>
+    <cite>Ваши слова на встрече</cite>
+  </div>
+  <div class="grid g4 r" style="--i:3;margin-top:clamp(18px,3vh,30px)">
+    <div class="card"><h3>Находит</h3><p>Компании по вашим критериям: отрасль, оборот, регион, признаки того, что бюджет на маркетинг есть и подрядчик может меняться.</p></div>
+    <div class="card"><h3>Достаёт</h3><p>Не info@ и не приёмную. Прямой контакт конкретного директора по маркетингу: имя, должность, личный мессенджер.</p></div>
+    <div class="card"><h3>Пишет</h3><p>Персонально под его компанию и его задачу, а не «здравствуйте, мы ещё одно агентство». Тональностью живого человека.</p></div>
+    <div class="card acc"><h3>Доводит</h3><p>Ведёт переписку, отвечает на встречные вопросы и доводит до слота в календаре. Ваш человек подключается, когда уже ответили.</p></div>
+  </div>
+</section>
+
+<!-- 05 ЧТО ПРОИСХОДИТ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Как это материализуется</div>
+  <h2 class="r" style="--i:1">Вы описали это <span class="o">точнее нас</span></h2>
+  <div class="quote r" style="--i:2">
+    <p>«Система подбирает релевантную выборку контактов ЛПР, создаёт списки, генерирует цепочку сообщений, рассылает в определённом порядке. При положительном ответе лид фиксируется в CRM. Дальше мы подхватываем и работаем».</p>
+    <cite>Ваше резюме на встрече - так и есть</cite>
+  </div>
+  <div class="flow r" style="--i:3">
+    <span class="chip">список компаний</span><b>→</b>
+    <span class="chip">контакт маркдира</span><b>→</b>
+    <span class="chip">персональное сообщение</span><b>→</b>
+    <span class="chip">переписка и ответы</span><b>→</b>
+    <span class="chip on">слот в календаре</span><b>→</b>
+    <span class="chip">ваша CRM</span>
+  </div>
+  <p class="note r" style="--i:4">На вашей стороне ничего настраивать и осваивать не нужно. Машина ставится и работает; вы получаете встречи и данные в свою систему. Всё, что до ответа клиента, - не ваша работа.</p>
+</section>
+
+<!-- 06 ГЛАВНОЕ ВОЗРАЖЕНИЕ -->
+<section class="slide">
+  <div class="eyebrow red r" style="--i:0">Ваш вопрос про подрядчика</div>
+  <h2 class="r" style="--i:1">Разница не в цене лида.<br>Разница в том, что <span class="o">остаётся</span></h2>
+  <div class="grid g2 r" style="--i:2">
+    <div class="card bad">
+      <div class="tag r">Агентство по лидам</div>
+      <ul class="list" style="margin-top:14px">
+        <li class="no"><i>×</i><span>Платите каждый месяц или за каждый лид</span></li>
+        <li class="no"><i>×</i><span>Перестали платить - поток кончился в тот же день</span></li>
+        <li class="no"><i>×</i><span>Их наработки, их база, их доступы остаются у них</span></li>
+        <li class="no"><i>×</i><span>Цена и правила меняются не вами</span></li>
+        <li class="no"><i>×</i><span>Через три года заплачено много, актива ноль</span></li>
+      </ul>
+    </div>
+    <div class="card acc">
+      <div class="tag o">MEETENGINE</div>
+      <ul class="list" style="margin-top:14px">
+        <li class="yes"><i>›</i><span>Платите один раз, 200 000 ₽</span></li>
+        <li class="yes"><i>›</i><span>Работает у вас и остаётся у вас навсегда</span></li>
+        <li class="yes"><i>›</i><span>Контакты, переписки и наработки - ваши</span></li>
+        <li class="yes"><i>›</i><span>Расходники платите напрямую, без наценки</span></li>
+        <li class="yes"><i>›</i><span>Через три года это по-прежнему ваш инструмент</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="note r" style="--i:3">Это не спор с вашим подрядчиком. Он делает свою работу, и пока вы платите, он её делает. Вопрос в другом: <b>после трёх лет оплат у вас на руках либо актив, либо только счета.</b></p>
+</section>
+
+<!-- 07 ЭКОНОМИКА -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Счёт</div>
+  <h2 class="r" style="--i:1">Один платёж против<br><span class="o">ежемесячных</span></h2>
+  <div class="grid g3 r" style="--i:2">
+    <div class="card metric acc">
+      <div class="tag o">Вход</div>
+      <div class="num">200 000 ₽</div>
+      <small>Один раз, фиксированная цена. Дальше платежей нам нет</small>
+    </div>
+    <div class="card metric">
+      <div class="tag">Дальше</div>
+      <div class="num">~15 000 ₽</div>
+      <small>Расходники в месяц, напрямую поставщикам, без нашей наценки</small>
+    </div>
+    <div class="card metric good">
+      <div class="tag g">Что снимается</div>
+      <div class="num g">Аутрич</div>
+      <small>Часть работы БДМов, которая не требует человека, и часть счетов подрядчику</small>
+    </div>
+  </div>
+  <p class="note r" style="--i:3">Точную окупаемость посчитаем на ваших цифрах: <b>сколько сейчас стоит один лид у подрядчика и сколько их в месяц.</b> При enterprise-чеках разговор обычно закрывается одной сделкой - дальше это чистая экономия каждый месяц.</p>
+</section>
+
+<!-- 08 РЕЗУЛЬТАТ -->
+<section class="slide">
+  <div class="eyebrow green r" style="--i:0">Что было на таком же заходе</div>
+  <h2 class="r" style="--i:1"><span class="o">17 встреч</span><br>за полтора месяца</h2>
+  <div class="grid g3 r" style="--i:2">
+    <div class="card metric"><div class="num">17</div><small>встреч за полтора месяца, <b>34 за три</b></small></div>
+    <div class="card metric"><div class="num">маркдиры</div><small>директора по маркетингу и руководители диджитал - тот же слой, что нужен вам</small></div>
+    <div class="card metric"><div class="num">0</div><small>человек на холодном аутриче в этот период</small></div>
+  </div>
+  <p class="note r" style="--i:3">Цифра консервативная и проверяемая. Мы не обещаем конверсию звёздного продавца: <b>обещаем поток, который не зависит от того, кто сегодня в отпуске и кто уволился.</b></p>
+</section>
+
+<!-- 09 ЧТО НЕ ТАК -->
+<section class="slide">
+  <div class="eyebrow red r" style="--i:0">Честно, до вопросов</div>
+  <h2 class="r" style="--i:1">Где машина <span class="rd">не поможет</span></h2>
+  <div class="grid g3 r" style="--i:2">
+    <div class="card bad"><h3>Не проведёт встречу</h3><p>Разговор, чтение зала, работа с сомнением на созвоне - это ваш БДМ. Машина доводит до слота и уходит.</p></div>
+    <div class="card bad"><h3>Не заменит бренд</h3><p>Если бренд Ingate открывает двери сам, часть встреч вы получите и без неё. Машина полезна там, где нужен адресный выход, а не входящий поток.</p></div>
+    <div class="card bad"><h3>Не сделает 7 из 10</h3><p>Такую конверсию давала связка опытных людей вручную. Машина берёт объёмом и постоянством, а не выдающейся конверсией на касание.</p></div>
+  </div>
+  <p class="note r" style="--i:3">Говорим это до того, как вы спросите: <b>инструмент закрывает конкретную задачу</b> - снять с людей верх воронки и сделать поток встреч независимым от людей. Всё остальное остаётся вашим.</p>
+</section>
+
+<!-- 10 ПЕРВЫЕ 30 ДНЕЙ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Если решаете «да»</div>
+  <h2 class="r" style="--i:1">Первые <span class="o">30 дней</span></h2>
+  <div class="grid g4 r" style="--i:2">
+    <div class="card"><div class="tag">Неделя 1</div><h3>Настройка под вас</h3><p>Портрет ваших целевых: отрасли, обороты, признаки. Список должностей, кого достаём. Ваши услуги и чем вы отличаетесь.</p></div>
+    <div class="card"><div class="tag">Неделя 2</div><h3>Первые касания</h3><p>Машина выходит на первых маркдиров. Смотрим, кто отвечает и на что, правим заходы по факту.</p></div>
+    <div class="card"><div class="tag">Неделя 3</div><h3>Первые слоты</h3><p>Появляются встречи в календаре. Ваш БДМ подключается только на этом шаге.</p></div>
+    <div class="card acc"><div class="tag o">Неделя 4</div><h3>Поток</h3><p>Заходы отобраны по отклику, объём выходит на норму. Дальше система работает и учится на ваших ответах.</p></div>
+  </div>
+  <p class="note r" style="--i:3">Ваше участие: один разговор на старте про портрет клиента и услуги, дальше - только исходы встреч, чтобы система понимала, что считать хорошим лидом.</p>
+</section>
+
+<!-- 11 ФИНАЛ -->
+<section class="slide center">
+  <div class="eyebrow center r" style="--i:0">Дальше</div>
+  <h1 class="r" style="--i:1">Посчитаем на<br><span class="o">ваших цифрах</span></h1>
+  <p class="lead r" style="--i:2;margin:clamp(20px,3.4vh,32px) auto clamp(24px,4vh,40px)">Пришлите два числа: сколько сейчас стоит лид у подрядчика и сколько их выходит в месяц. Верну расклад по Ingate - за сколько отбивается и что остаётся после. Без встречи и без презентаций.</p>
+  <a class="cta r" style="--i:3" href="https://t.me/mihailgabitov242">Написать в Telegram →</a>
+  <div class="foot r" style="--i:4;margin-top:clamp(26px,5vh,50px)">
+    MEETENGINE · 200 000 ₽ навсегда · около 15 000 ₽ в месяц расходники<br>
+    Собрано после встречи 29 июля для Евгении Фетисовой, Ingate
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var bar = document.getElementById('bar');
+  var count = document.getElementById('count');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+  var hint = document.getElementById('hint');
+  var i = 0, lock = false;
+  function pad(n){ return (n<10?'0':'')+n; }
+  function go(n, push){
+    n = Math.max(0, Math.min(slides.length-1, n));
+    if(n === i && push !== 'init') return;
+    slides[i].classList.remove('active');
+    i = n;
+    slides[i].classList.add('active');
+    slides[i].scrollTop = 0;
+    bar.style.width = ((i+1)/slides.length*100) + '%';
+    count.innerHTML = '<b>'+pad(i+1)+'</b> / '+slides.length;
+    prev.disabled = (i===0);
+    next.disabled = (i===slides.length-1);
+    if(push !== 'init') history.replaceState(null,'','#'+(i+1));
+    if(i>0) hint.classList.add('gone');
+  }
+  next.addEventListener('click', function(){ go(i+1); });
+  prev.addEventListener('click', function(){ go(i-1); });
+  document.addEventListener('keydown', function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){ e.preventDefault(); go(i+1); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){ e.preventDefault(); go(i-1); }
+    else if(e.key==='Home'){ go(0); }
+    else if(e.key==='End'){ go(slides.length-1); }
+    else if(e.key==='f'||e.key==='F'){
+      if(!document.fullscreenElement){ document.documentElement.requestFullscreen(); } else { document.exitFullscreen(); }
+    }
+  });
+  var acc = 0, t;
+  window.addEventListener('wheel', function(e){
+    var s = slides[i];
+    if(s.scrollHeight > s.clientHeight + 4){
+      var atTop = s.scrollTop <= 0, atBottom = s.scrollTop + s.clientHeight >= s.scrollHeight - 2;
+      if((e.deltaY > 0 && !atBottom) || (e.deltaY < 0 && !atTop)) return;
+    }
+    if(lock) return;
+    acc += e.deltaY;
+    clearTimeout(t); t = setTimeout(function(){ acc = 0; }, 180);
+    if(Math.abs(acc) > 60){
+      lock = true; go(acc > 0 ? i+1 : i-1); acc = 0;
+      setTimeout(function(){ lock = false; }, 620);
+    }
+  }, {passive:true});
+  var x0=null, y0=null;
+  window.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', function(e){
+    if(x0===null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? i+1 : i-1);
+    x0 = null;
+  }, {passive:true});
+  var start = parseInt((location.hash||'').replace('#',''),10);
+  go(isNaN(start) ? 0 : start-1, 'init');
+})();
+</script>
+</body>
+</html>
