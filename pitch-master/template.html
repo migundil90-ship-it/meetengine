@@ -53,7 +53,7 @@ h1,h2{font-family:var(--display);font-weight:600;line-height:1.12;letter-spacing
 ul.plain{list-style:none;display:flex;flex-direction:column;gap:10px}
 ul.plain li{position:relative;padding-left:22px;color:#D6DBE6;font-size:15px}
 ul.plain li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--amber);opacity:.75}
-/* tablo — grid: логотип фикс. ширины + текст 1fr (без position:absolute) */
+/* tablo - grid: логотип фикс. ширины + текст 1fr (без position:absolute) */
 .tablo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .brow{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .brow .lg{width:76px;height:34px;display:flex;align-items:center}
@@ -146,7 +146,7 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:9px;width:7px;heig
   <div class="ui-btn" id="prev">↑</div>
   <div class="ui-btn" id="next">↓</div>
 </div>
-<div class="hint">← → / скролл · S — заметки</div>
+<div class="hint">← → / скролл · S - заметки</div>
 <div class="notes" id="notes"><div class="nk">Заметки</div><div class="nt" id="notesText"></div></div>
 
 <script>window.DECK_DATA = __DECK_DATA__;</script>
@@ -175,7 +175,7 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:9px;width:7px;heig
       +'<h2 class="rv h-md" style="margin-bottom:24px;max-width:24ch">'+esc(D.brands.tablo_caption)+'</h2>'
       +'<div class="rv tablo-grid">'+rows+'</div>'
       +(wall?'<div class="rv" style="margin-top:6px"><div class="note" style="margin:16px 0 10px">'+esc(D.brands.wall_caption)+'</div><div class="wall">'+wall+'</div></div>':''),
-      'Каждый бренд — реальная встреча. Держать поимённо: первый вопрос будет про конкретную встречу.'));
+      'Каждый бренд - реальная встреча. Держать поимённо: первый вопрос будет про конкретную встречу.'));
   }
 
   function heroCase(c,i){
@@ -227,9 +227,9 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:9px;width:7px;heig
   function priceLadder(){
     var tiers=(D.prices.ladder||[]).map(function(t){return '<div class="tier'+(t.active?' active':'')+'"><div class="tp">'+esc(t.price)+'</div><div class="tt">'+esc(t.title)+'</div><div class="ts">'+esc(t.scope)+'</div></div>';}).join('');
     return slide('<span class="rv eyebrow">Цена</span>'
-      +'<h2 class="rv h-md" style="margin-bottom:8px">Активная модель — '+esc(D.prices.ladder[0].price)+', один раз</h2>'
-      +'<p class="rv note" style="margin-bottom:22px">Это примерно оклад одного менеджера. Ниже — вся лестница как склад; берём нужный тир.</p>'
-      +'<div class="rv ladder">'+tiers+'</div>','Активный якорь — из meta.default_anchor. Скидка = режем скоуп, не роняем цену.');
+      +'<h2 class="rv h-md" style="margin-bottom:8px">Активная модель - '+esc(D.prices.ladder[0].price)+', один раз</h2>'
+      +'<p class="rv note" style="margin-bottom:22px">Это примерно оклад одного менеджера. Ниже - вся лестница как склад; берём нужный тир.</p>'
+      +'<div class="rv ladder">'+tiers+'</div>','Активный якорь - из meta.default_anchor. Скидка = режем скоуп, не роняем цену.');
   }
   function calc(){
     var c=D.prices.calculator, e=c.example;
@@ -257,9 +257,9 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:9px;width:7px;heig
   function fork(){
     return slide('<span class="rv eyebrow" style="display:flex;justify-content:center">Два пути</span><h2 class="rv h-md" style="text-align:center;margin-bottom:26px">Отсюда два варианта</h2>'
       +'<div class="rv fork"><div class="path dim"><div class="pl">Как есть</div><h3>Оставить поток встреч на паре людей</h3>'
-      +'<ul><li>то густо, то пусто</li><li>держится на одном человеке</li><li>ушёл — начинать заново</li></ul></div>'
+      +'<ul><li>то густо, то пусто</li><li>держится на одном человеке</li><li>ушёл - начинать заново</li></ul></div>'
       +'<div class="path win"><div class="pl">С системой</div><h3>Поставить станок, который остаётся у вас</h3>'
-      +'<ul><li>предсказуемый поток встреч с ЛПР</li><li>работает у любого менеджера</li><li>остаётся у вас и работает годами</li></ul></div></div>','Оригинальная развилка, без образов «Матрицы». Финал — один вопрос на следующий шаг.');
+      +'<ul><li>предсказуемый поток встреч с ЛПР</li><li>работает у любого менеджера</li><li>остаётся у вас и работает годами</li></ul></div></div>','Оригинальная развилка, без образов «Матрицы». Финал - один вопрос на следующий шаг.');
   }
   function cta(){
     return '<section class="slide" data-notes="Спокойный следующий шаг, без нажима.">'+orbs()+'<div class="inner" style="text-align:center">'
