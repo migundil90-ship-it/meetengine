@@ -411,14 +411,14 @@ input[type=range]::-moz-range-thumb{
     <div class="barrow">
       <div class="top">
         <div class="lbl">MEETENGINE, первый год<em>разовое вложение плюс расходники напрямую поставщикам</em></div>
-        <div class="val o">380 000 ₽</div>
+        <div class="val o">ваш расчёт</div>
       </div>
       <div class="track"><div class="fill a" style="--w:63.3%"></div></div>
     </div>
     <div class="barrow">
       <div class="top">
         <div class="lbl">MEETENGINE, второй год и дальше<em>только расходники, машина уже ваша</em></div>
-        <div class="val o">180 000 ₽</div>
+        <div class="val o">только расходники</div>
       </div>
       <div class="track"><div class="fill a" style="--w:30%"></div></div>
     </div>
@@ -595,12 +595,16 @@ input[type=range]::-moz-range-thumb{
         <div class="kh"><div class="kt">Насколько сожмётся человек на машине</div><div class="kv" id="v4">полностью</div></div>
         <input type="range" id="s4" min="0" max="100" step="25" value="100">
       </div>
+      <div class="knob">
+        <div class="kh"><div class="kt">Разовое вложение в систему</div><div class="kv" id="v5">300 000 ₽</div></div>
+        <input type="range" id="s5" min="50000" max="600000" step="10000" value="300000">
+      </div>
     </div>
     <div class="out">
       <div class="outrow s"><div class="ol">Сейчас, в год</div><div class="ov" id="o1">600 000 ₽</div></div>
       <div class="outrow s"><div class="ol">Сейчас, цена 1 горячего контакта</div><div class="ov" id="o2">2 500 ₽</div></div>
-      <div class="outrow a"><div class="ol">На машине, первый год</div><div class="ov" id="o3">380 000 ₽</div></div>
-      <div class="outrow a"><div class="ol">На машине, второй год и дальше</div><div class="ov" id="o4">180 000 ₽</div></div>
+      <div class="outrow a"><div class="ol">На машине, первый год</div><div class="ov" id="o3">ваш расчёт</div></div>
+      <div class="outrow a"><div class="ol">На машине, второй год и дальше</div><div class="ov" id="o4">только расходники</div></div>
       <div class="outrow hi"><div class="ol">Разница за 3 года</div><div class="ov" id="o5">1 060 000 ₽</div></div>
       <div class="outrow hi"><div class="ol">Машина окупится на месяц</div><div class="ov" id="o6">6</div></div>
     </div>
@@ -639,7 +643,7 @@ input[type=range]::-moz-range-thumb{
       <text class="t-green" x="200" y="322">ОКУПАЕМОСТЬ · 6-Й МЕСЯЦ</text>
       <text class="t-steel" x="812" y="34">1 800 000 ₽</text>
       <text class="t-dim" x="812" y="52">Trigga + человек</text>
-      <text class="t-acc" x="812" y="222">740 000 ₽</text>
+      <text class="t-acc" x="812" y="222">MEETENGINE</text>
       <text class="t-dim" x="812" y="240">MEETENGINE</text>
       <path class="brace" d="M806,34 L806,218"/>
       <text class="t-green" x="822" y="128">РАЗНИЦА</text>
@@ -766,7 +770,11 @@ input[type=range]::-moz-range-thumb{
   go(isNaN(start) ? 0 : start-1, 'init');
 
   /* ---------- Калькулятор ---------- */
-  var MACHINE_ONCE = 200000, MACHINE_MONTH = 15000;
+  // Решение 31.07.2026: свою цену на общей странице мы не называем -
+  // человек сам ставит вложение, которое готов рассмотреть, и видит расклад.
+  var s5 = document.getElementById('s5');
+  function MACHINE_ONCE(){ return s5 ? +s5.value : 300000; }
+  var MACHINE_MONTH = 15000;
   var s1=document.getElementById('s1'), s2=document.getElementById('s2'),
       s3=document.getElementById('s3'), s4=document.getElementById('s4');
 
@@ -788,12 +796,13 @@ input[type=range]::-moz-range-thumb{
     document.getElementById('v2').textContent = rub(man);
     document.getElementById('v3').textContent = leads;
     document.getElementById('v4').textContent = SHRINK[shrink];
+    if(s5) document.getElementById('v5').textContent = rub(MACHINE_ONCE());
 
     document.getElementById('o1').textContent = rub(nowYear);
     document.getElementById('o2').textContent = leads ? rub(nowMonth / leads) : '-';
-    document.getElementById('o3').textContent = rub(MACHINE_ONCE + newMonth * 12);
+    document.getElementById('o3').textContent = rub(MACHINE_ONCE() + newMonth * 12);
     document.getElementById('o4').textContent = rub(newMonth * 12);
-    document.getElementById('o5').textContent = rub(nowMonth * 36 - (MACHINE_ONCE + newMonth * 36));
+    document.getElementById('o5').textContent = rub(nowMonth * 36 - (MACHINE_ONCE() + newMonth * 36));
 
     var saveMonth = nowMonth - newMonth;
     var pay = document.getElementById('o6');
@@ -801,11 +810,11 @@ input[type=range]::-moz-range-thumb{
       pay.textContent = 'не окупится';
       pay.style.fontSize = 'clamp(14px,1.4vw,20px)';
     } else {
-      pay.textContent = Math.ceil(MACHINE_ONCE / saveMonth);
+      pay.textContent = Math.ceil(MACHINE_ONCE() / saveMonth);
       pay.style.fontSize = '';
     }
   }
-  [s1,s2,s3,s4].forEach(function(el){ el.addEventListener('input', calc); });
+  [s1,s2,s3,s4,s5].forEach(function(el){ el.addEventListener('input', calc); });
   calc();
 })();
 </script>
