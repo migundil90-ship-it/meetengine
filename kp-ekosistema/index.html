@@ -50,7 +50,7 @@ body::before{
 #deck{position:fixed;inset:0;z-index:1}
 .slide{
   position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:flex-start;
+  display:flex;flex-direction:column;justify-content:safe center;
   padding:calc(var(--pad) + 14px) var(--pad) calc(var(--pad) + 34px);
   opacity:0;visibility:hidden;
   transform:translateY(26px) scale(.985);
@@ -60,8 +60,6 @@ body::before{
 }
 .slide::-webkit-scrollbar{display:none}
 .slide.active{opacity:1;visibility:visible;transform:none}
-.slide>*:first-child{margin-top:auto}
-.slide>*:last-child{margin-bottom:auto}
 .slide.center{align-items:center;text-align:center}
 
 /* Появление блоков */
@@ -244,9 +242,7 @@ img.lg.tall{max-height:clamp(34px,4.4vh,58px)}
   .case{grid-template-columns:1fr}
   .brands{grid-template-columns:repeat(3,1fr)}
   .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
-  .slide>*:first-child{margin-top:auto}
-.slide>*:last-child{margin-bottom:auto}
-.slide.center{justify-content:center}
+  .slide.center{justify-content:center}
   #hint{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -291,7 +287,7 @@ function lgFail(el){
   <div class="grid g4 r" style="--i:2">
     <div class="card"><h3>Машина холодного выхода на ЛПР</h3><p>Путь от названия компании до встречи в календаре: находит компании, достаёт прямые контакты первых лиц, пишет персонально и доводит до ответа.</p></div>
     <div class="card"><h3>Генератор предложений</h3><p>Собирает персональное коммерческое под конкретного клиента за минуты: его рынок, его язык, ваша продуктовая линейка и расчёты.</p></div>
-    <div class="card"><h3>Внедрение команды</h3><p>Ставим систему внутрь отдела и работаем с людьми: заходы, возражения, дожим, контроль. Тот же результат, только через вашу команду.</p></div>
+    <div class="card"><h3>Работа с вашей командой</h3><p>Ставим систему внутрь отдела и работаем с людьми: заходы, возражения, дожим, контроль. Тот же результат, только через вашу команду.</p></div>
     <div class="card"><h3>Инфраструктура</h3><p>Сервер, дашборд, интеграции с вашей CRM, аналитика и хранение - всё внутри вашего контура, данные не уходят наружу.</p></div>
   </div>
   <p class="note r" style="--i:3">Можно взять 1 продукт, можно всё вместе. Состав определяется вашей задачей, а не нашим прайсом.</p>

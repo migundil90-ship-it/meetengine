@@ -50,7 +50,7 @@ body::before{
 #deck{position:fixed;inset:0;z-index:1}
 .slide{
   position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:flex-start;
+  display:flex;flex-direction:column;justify-content:safe center;
   padding:calc(var(--pad) + 14px) var(--pad) calc(var(--pad) + 34px);
   opacity:0;visibility:hidden;
   transform:translateY(26px) scale(.985);
@@ -60,8 +60,6 @@ body::before{
 }
 .slide::-webkit-scrollbar{display:none}
 .slide.active{opacity:1;visibility:visible;transform:none}
-.slide>*:first-child{margin-top:auto}
-.slide>*:last-child{margin-bottom:auto}
 .slide.center{align-items:center;text-align:center}
 
 /* Появление блоков */
@@ -244,9 +242,7 @@ img.lg.tall{max-height:clamp(34px,4.4vh,58px)}
   .case{grid-template-columns:1fr}
   .brands{grid-template-columns:repeat(3,1fr)}
   .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
-  .slide>*:first-child{margin-top:auto}
-.slide>*:last-child{margin-bottom:auto}
-.slide.center{justify-content:center}
+  .slide.center{justify-content:center}
   #hint{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -339,15 +335,16 @@ function lgFail(el){
   </div>
 </section>
 
-<!-- 06 ГРАНИЦА -->
+<!-- 06 АУДИТ И РАСЧЁТЫ -->
 <section class="slide">
-  <div class="eyebrow r" style="--i:0">Честная граница</div>
-  <h2 class="r" style="--i:1">Чего машина не делает</h2>
-  <div class="grid g2 r" style="--i:2">
-    <div class="card"><h3>Не заменяет ваше производство</h3><p>Аудит и расчёты остаются у ваших специалистов. Машина собирает предложение после них, а не вместо них.</p></div>
-    <div class="card"><h3>Не отправляет сама</h3><p>Документ уходит клиенту только после того, как его открыл и проверил человек. Это ваш документ и ваша подпись под ним.</p></div>
+  <div class="eyebrow r" style="--i:0">Самое тяжёлое</div>
+  <h2 class="r" style="--i:1">Аудит и расчёты машина делает сама</h2>
+  <div class="grid g3 r" style="--i:2">
+    <div class="card"><h3>Разбирает сайт клиента</h3><p>Сплошной обход вместо выборки: скорость, разметка, содержание, спрос. Каждая цифра получена замером и воспроизводима.</p></div>
+    <div class="card"><h3>Считает экономику</h3><p>Подтягивает ваши тарифы и нормативы и собирает расчёт под его объём: что делаем, сколько это стоит и что он с этого получит.</p></div>
+    <div class="card"><h3>Собирает документ</h3><p>Ваш дизайн, ваши формулировки, ваши цифры. На выходе готовое предложение, а не заготовка для менеджера.</p></div>
   </div>
-  <p class="note r" style="--i:3">Эту границу провёл сам клиент, для которого продукт собирался первым. Мы её приняли: так честнее и так надёжнее.</p>
+  <p class="note r" style="--i:3">Человек проверяет и отправляет: подпись под документом всё равно ваша.</p>
 </section>
 
 <!-- 07 ЧТО ОСТАЁТСЯ -->

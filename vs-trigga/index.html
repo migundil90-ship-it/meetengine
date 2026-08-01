@@ -51,7 +51,7 @@ body::before{
 #deck{position:fixed;inset:0;z-index:1}
 .slide{
   position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:flex-start;
+  display:flex;flex-direction:column;justify-content:safe center;
   padding:calc(var(--pad) + 14px) var(--pad) calc(var(--pad) + 34px);
   opacity:0;visibility:hidden;
   transform:translateY(26px) scale(.985);
@@ -61,8 +61,6 @@ body::before{
 }
 .slide::-webkit-scrollbar{display:none}
 .slide.active{opacity:1;visibility:visible;transform:none}
-.slide>*:first-child{margin-top:auto}
-.slide>*:last-child{margin-bottom:auto}
 .slide.center{align-items:center;text-align:center}
 
 .slide.active .r{animation:rise .62s cubic-bezier(.16,.84,.34,1) both;animation-delay:calc(var(--i,0) * 70ms + 90ms)}
@@ -273,9 +271,7 @@ input[type=range]::-moz-range-thumb{
   .duel{grid-template-columns:1fr;gap:18px}
   .vs{justify-self:center}
   .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
-  .slide>*:first-child{margin-top:auto}
-.slide>*:last-child{margin-bottom:auto}
-.slide.center{justify-content:center}
+  .slide.center{justify-content:center}
   #hint{display:none}
   .link{flex:1 1 100%}
 }
