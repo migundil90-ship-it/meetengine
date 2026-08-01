@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MEETENGINE × ADVANZA</title>
-<meta name="description" content="Машина аутрича: сама выводит на настоящих ЛПР и доводит предложение до принимающего.">
+<meta name="description" content="машина холодного выхода на ЛПР: сама выводит на настоящих ЛПР и доводит предложение до принимающего.">
 <style>
 :root{
   --bg:#0E0F14; --bg2:#14161F; --panel:#181B26; --panel2:#1E2231;
@@ -197,6 +197,16 @@ h1,h2{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing
   .ui,.pdf,.dots,.notes,.hint{display:none!important}
 }
 </style>
+
+<style>
+/* Полоса логотипов, добавлено 01.08.2026 */
+.melogos{margin:clamp(30px,6vh,64px) auto;max-width:1180px;padding:0 20px}
+.melogos-t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:16px;text-align:center}
+.melogos-g{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(10px,1.4vw,20px);align-items:center}
+.melogos-g img{width:100%;height:34px;object-fit:contain;opacity:.72;filter:grayscale(1) brightness(1.7);transition:opacity .25s,filter .25s}
+.melogos-g img:hover{opacity:1;filter:none}
+@media(max-width:900px){.melogos-g{grid-template-columns:repeat(4,1fr)}}
+</style>
 </head>
 <body>
 <div class="deck" id="deck">
@@ -300,7 +310,7 @@ h1,h2{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing
     <div class="rv chain" style="justify-content:flex-start">
       <span class="lnk">Playbook верха воронки</span><span class="lnk">Методика поиска ЛПР</span><span class="lnk">Библиотеки касаний и дожимов</span><span class="lnk">Матрица возражений</span><span class="lnk">Скрипт звонка</span><span class="lnk">Воронка в вашей CRM</span>
     </div>
-    <p class="rv" style="color:var(--mut);margin-top:24px;font-size:15px;max-width:66ch">Тренинг забывается. Машина остаётся у вас на балансе - и не уходит вместе с человеком, у которого сейчас в голове база, скрипты и заходы.</p>
+    <p class="rv" style="color:var(--mut);margin-top:24px;font-size:15px;max-width:66ch">Подрядчик уходит вместе с потоком. Система остаётся у вас на балансе - и не уходит вместе с человеком, у которого сейчас в голове база, скрипты и заходы.</p>
   </div>
 </section>
 
@@ -546,5 +556,28 @@ h1,h2{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing
   });
 })();
 </script>
+
+<section class="melogos">
+  <div class="melogos-t">Их первых лиц эта система вывела на встречу</div>
+  <div class="melogos-g">
+    <img src="logos/magnit.png" alt="" loading="lazy">
+    <img src="logos/yandex.png" alt="" loading="lazy">
+    <img src="logos/pg.png" alt="" loading="lazy">
+    <img src="logos/sportmaster.png" alt="" loading="lazy">
+    <img src="logos/kaspersky.png" alt="" loading="lazy">
+    <img src="logos/megafon.png" alt="" loading="lazy">
+    <img src="logos/domrf.png" alt="" loading="lazy">
+    <img src="logos/evalar.png" alt="" loading="lazy">
+    <img src="logos/samolet.png" alt="" loading="lazy">
+    <img src="logos/impression.png" alt="" loading="lazy">
+    <img src="logos/digitali.png" alt="" loading="lazy">
+    <img src="logos/b2boost.png" alt="" loading="lazy">
+    <img src="logos/thejames.png" alt="" loading="lazy">
+    <img src="logos/easydigital.png" alt="" loading="lazy">
+    <img src="logos/secretgang.png" alt="" loading="lazy">
+    <img src="logos/romashka.png" alt="" loading="lazy">
+  </div>
+</section>
+
 </body>
 </html>

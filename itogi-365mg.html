@@ -133,6 +133,16 @@ footer b{color:var(--amber)}
   .nx{grid-template-columns:1fr;gap:8px}
 }
 </style>
+
+<style>
+/* Полоса логотипов, добавлено 01.08.2026 */
+.melogos{margin:clamp(30px,6vh,64px) auto;max-width:1180px;padding:0 20px}
+.melogos-t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:16px;text-align:center}
+.melogos-g{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(10px,1.4vw,20px);align-items:center}
+.melogos-g img{width:100%;height:34px;object-fit:contain;opacity:.72;filter:grayscale(1) brightness(1.7);transition:opacity .25s,filter .25s}
+.melogos-g img:hover{opacity:1;filter:none}
+@media(max-width:900px){.melogos-g{grid-template-columns:repeat(4,1fr)}}
+</style>
 </head>
 <body>
 
@@ -196,7 +206,7 @@ footer b{color:var(--amber)}
     <p class="sub">Предмет тут общий: выйти на нужных людей и заговорить с ними так, чтобы садились за стол. Способа 2, и они дают разную скорость</p>
     <div class="grid2">
       <div class="card hi"><h3>Интенсив с вашими людьми · 200 000 ₽</h3><p>2 сессии, ваши двое забирают навык себе: где искать первое лицо и технического, как заходить в 3 двери, что подсвечивать каждому, как звучать, чтобы отвечали. Работаем на ваших живых компаниях, а не на учебных примерах. Быстрее по результату и остаётся в людях</p><div class="who" style="font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:10px;letter-spacing:.05em">мой выбор для вас: у вас всё держится на живом разговоре, и продавцы у вас сильные</div></div>
-      <div class="card"><h3>Машина аутрича · 200 000 ₽</h3><p>то же самое делает система: сама ищет компании и людей, сама пишет и дожимает, ваш человек включается на ответе. Дольше на старте, зато верх воронки уходит с людей совсем. 1 раз, остаётся у вас навсегда</p><div class="who" style="font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:10px;letter-spacing:.05em">хорошо ложится вторым шагом, когда навык уже внутри</div></div>
+      <div class="card"><h3>машина холодного выхода на ЛПР · 200 000 ₽</h3><p>то же самое делает система: сама ищет компании и людей, сама пишет и дожимает, ваш человек включается на ответе. Дольше на старте, зато верх воронки уходит с людей совсем. 1 раз, остаётся у вас навсегда</p><div class="who" style="font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:10px;letter-spacing:.05em">хорошо ложится вторым шагом, когда навык уже внутри</div></div>
     </div>
     <div class="annot">можно взять оба, но начинать лучше с того, что даёт результат быстрее)</div>
   </div>
@@ -309,6 +319,29 @@ footer b{color:var(--amber)}
     <div>итоги встречи 30 июля 2026 · Михаил Габитов · Telegram <b>@mihailgabitov242</b></div>
   </div>
 </footer>
+
+
+<section class="melogos">
+  <div class="melogos-t">Их первых лиц эта система вывела на встречу</div>
+  <div class="melogos-g">
+    <img src="logos/magnit.png" alt="" loading="lazy">
+    <img src="logos/yandex.png" alt="" loading="lazy">
+    <img src="logos/pg.png" alt="" loading="lazy">
+    <img src="logos/sportmaster.png" alt="" loading="lazy">
+    <img src="logos/kaspersky.png" alt="" loading="lazy">
+    <img src="logos/megafon.png" alt="" loading="lazy">
+    <img src="logos/domrf.png" alt="" loading="lazy">
+    <img src="logos/evalar.png" alt="" loading="lazy">
+    <img src="logos/samolet.png" alt="" loading="lazy">
+    <img src="logos/impression.png" alt="" loading="lazy">
+    <img src="logos/digitali.png" alt="" loading="lazy">
+    <img src="logos/b2boost.png" alt="" loading="lazy">
+    <img src="logos/thejames.png" alt="" loading="lazy">
+    <img src="logos/easydigital.png" alt="" loading="lazy">
+    <img src="logos/secretgang.png" alt="" loading="lazy">
+    <img src="logos/romashka.png" alt="" loading="lazy">
+  </div>
+</section>
 
 </body>
 </html>

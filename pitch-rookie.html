@@ -197,6 +197,16 @@ h1,h2{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing
   .ui,.pdf,.dots,.notes,.hint{display:none!important}
 }
 </style>
+
+<style>
+/* Полоса логотипов, добавлено 01.08.2026 */
+.melogos{margin:clamp(30px,6vh,64px) auto;max-width:1180px;padding:0 20px}
+.melogos-t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:16px;text-align:center}
+.melogos-g{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(10px,1.4vw,20px);align-items:center}
+.melogos-g img{width:100%;height:34px;object-fit:contain;opacity:.72;filter:grayscale(1) brightness(1.7);transition:opacity .25s,filter .25s}
+.melogos-g img:hover{opacity:1;filter:none}
+@media(max-width:900px){.melogos-g{grid-template-columns:repeat(4,1fr)}}
+</style>
 </head>
 <body>
 <div class="deck" id="deck">
@@ -274,7 +284,7 @@ h1,h2{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing
         </ul>
       </div>
       <div class="card" style="border-color:rgba(245,166,35,.4);background:linear-gradient(180deg,rgba(245,166,35,.06),var(--panel))">
-        <span class="pill sol" style="margin-bottom:14px">Машина аутрича MEETENGINE</span>
+        <span class="pill sol" style="margin-bottom:14px">машина холодного выхода на ЛПР MEETENGINE</span>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
           <li style="padding-left:22px;position:relative;color:#E4E8F0;font-size:14.5px"><span style="position:absolute;left:0;color:var(--amber);font-family:var(--mono)">✓</span>заход под сегмент и боль конкретного ЛПР</li>
           <li style="padding-left:22px;position:relative;color:#E4E8F0;font-size:14.5px"><span style="position:absolute;left:0;color:var(--amber);font-family:var(--mono)">✓</span>5 этапов дожима, а не одно письмо</li>
@@ -543,5 +553,28 @@ h1,h2{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing
   });
 })();
 </script>
+
+<section class="melogos">
+  <div class="melogos-t">Их первых лиц эта система вывела на встречу</div>
+  <div class="melogos-g">
+    <img src="logos/magnit.png" alt="" loading="lazy">
+    <img src="logos/yandex.png" alt="" loading="lazy">
+    <img src="logos/pg.png" alt="" loading="lazy">
+    <img src="logos/sportmaster.png" alt="" loading="lazy">
+    <img src="logos/kaspersky.png" alt="" loading="lazy">
+    <img src="logos/megafon.png" alt="" loading="lazy">
+    <img src="logos/domrf.png" alt="" loading="lazy">
+    <img src="logos/evalar.png" alt="" loading="lazy">
+    <img src="logos/samolet.png" alt="" loading="lazy">
+    <img src="logos/impression.png" alt="" loading="lazy">
+    <img src="logos/digitali.png" alt="" loading="lazy">
+    <img src="logos/b2boost.png" alt="" loading="lazy">
+    <img src="logos/thejames.png" alt="" loading="lazy">
+    <img src="logos/easydigital.png" alt="" loading="lazy">
+    <img src="logos/secretgang.png" alt="" loading="lazy">
+    <img src="logos/romashka.png" alt="" loading="lazy">
+  </div>
+</section>
+
 </body>
 </html>
