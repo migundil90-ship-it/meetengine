@@ -7,7 +7,7 @@
 <title>MEETENGINE - экосистема B2B маркетинга на искусственном интеллекте</title>
 <meta name="description" content="Экосистема B2B маркетинга: лидогенерация, персональные предложения, обучение отдела продаж и инфраструктура в вашем контуре.">
 <meta property="og:title" content="MEETENGINE - экосистема B2B маркетинга на ИИ">
-<meta property="og:description" content="Четыре продукта в одной системе. Ставится в ваш контур и остаётся у вас.">
+<meta property="og:description" content="4 продукта в одной системе. Ставится в ваш контур и остаётся у вас.">
 <meta property="og:type" content="website">
 <style>
 :root{
@@ -24,7 +24,7 @@
   --green:#3ED6A0;
   --blue:#7FA6F0;
   --pink:#FF4D9D;
-  --display:'Unbounded',system-ui,sans-serif;
+  --display:'Manrope',system-ui,sans-serif;
   --body:'Manrope',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --pad: clamp(20px, 5vw, 92px);
@@ -50,7 +50,7 @@ body::before{
 #deck{position:fixed;inset:0;z-index:1}
 .slide{
   position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:center;
+  display:flex;flex-direction:column;justify-content:flex-start;
   padding:calc(var(--pad) + 14px) var(--pad) calc(var(--pad) + 34px);
   opacity:0;visibility:hidden;
   transform:translateY(26px) scale(.985);
@@ -60,6 +60,8 @@ body::before{
 }
 .slide::-webkit-scrollbar{display:none}
 .slide.active{opacity:1;visibility:visible;transform:none}
+.slide>*:first-child{margin-top:auto}
+.slide>*:last-child{margin-bottom:auto}
 .slide.center{align-items:center;text-align:center}
 
 /* Появление блоков */
@@ -242,7 +244,9 @@ img.lg.tall{max-height:clamp(34px,4.4vh,58px)}
   .case{grid-template-columns:1fr}
   .brands{grid-template-columns:repeat(3,1fr)}
   .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
-  .slide.center{justify-content:center}
+  .slide>*:first-child{margin-top:auto}
+.slide>*:last-child{margin-bottom:auto}
+.slide.center{justify-content:center}
   #hint{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -266,7 +270,7 @@ function lgFail(el){
 <div id="nav">
   <button id="prev" aria-label="Назад">‹</button>
   <button id="next" aria-label="Вперёд">›</button>
-  <div id="count"><b>01</b> / 11</div>
+  <div id="count"><b>01</b> / 18</div>
 </div>
 <main id="deck">
 
@@ -283,15 +287,36 @@ function lgFail(el){
 <!-- 02 ЧТО ВНУТРИ -->
 <section class="slide">
   <div class="eyebrow r" style="--i:0">Линейка</div>
-  <h2 class="r" style="--i:1">Четыре продукта, один контур</h2>
+  <h2 class="r" style="--i:1">4 продукта, 1 контур</h2>
   <div class="grid g4 r" style="--i:2">
-    <div class="card"><h3>Машина аутрича</h3><p>Путь от названия компании до встречи в календаре: находит компании, достаёт прямые контакты первых лиц, пишет персонально и доводит до ответа.</p></div>
+    <div class="card"><h3>Машина холодного выхода на ЛПР</h3><p>Путь от названия компании до встречи в календаре: находит компании, достаёт прямые контакты первых лиц, пишет персонально и доводит до ответа.</p></div>
     <div class="card"><h3>Генератор предложений</h3><p>Собирает персональное коммерческое под конкретного клиента за минуты: его рынок, его язык, ваша продуктовая линейка и расчёты.</p></div>
-    <div class="card"><h3>Обучение отдела</h3><p>Как разговаривать с первыми лицами: заходы, возражения, дожим, контроль. Чтобы поток встреч не упирался в того, кто их проводит.</p></div>
+    <div class="card"><h3>Внедрение команды</h3><p>Ставим систему внутрь отдела и работаем с людьми: заходы, возражения, дожим, контроль. Тот же результат, только через вашу команду.</p></div>
     <div class="card"><h3>Инфраструктура</h3><p>Сервер, дашборд, интеграции с вашей CRM, аналитика и хранение - всё внутри вашего контура, данные не уходят наружу.</p></div>
   </div>
   <p class="note r" style="--i:3">Можно взять один продукт, можно всё вместе. Состав определяется вашей задачей, а не нашим прайсом.</p>
 </section>
+
+<!-- 02 СОЦПРУФ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Кого уже вывели</div>
+  <h2 class="r" style="--i:1">Их ЛПР <span class="o">сели и стали слушать</span></h2>
+  <p class="lead r" style="--i:2;margin-bottom:clamp(18px,3vh,30px)">Компании, чьих первых лиц эта система привела на встречу:</p>
+  <div class="brands r" style="--i:3">
+    <div><img class="lg" src="logos/magnit.png" alt="Магнит" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/yandex.png" alt="Яндекс" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/pg.png" alt="P&amp;G" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/sportmaster.png" alt="Спортмастер" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/kaspersky.png" alt="Kaspersky" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/megafon.png" alt="МегаФон" onerror="lgFail(this)"></div>
+    <div><img class="lg inv tall" src="logos/domrf.png" alt="ДОМ.РФ" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/evalar.png" alt="Эвалар" onerror="lgFail(this)"></div>
+    <div><img class="lg" src="logos/samolet.png" alt="Самолёт" onerror="lgFail(this)"></div>
+    <div style="border-color:rgba(247,154,33,.35);color:var(--acc);font-family:var(--mono);font-size:11px;letter-spacing:.1em">РЕАЛЬНЫЕ ВСТРЕЧИ</div>
+  </div>
+  <p class="note r" style="--i:4">Это не "база контактов". Это люди, которые сели и стали слушать.</p>
+</section>
+
 
 <!-- 03 ПРОБЛЕМА -->
 <section class="slide">
@@ -392,7 +417,120 @@ function lgFail(el){
   <p class="note r" style="--i:3">Платите один раз за то, что остаётся у вас. Расходники за подписки и сервисы идут напрямую поставщикам, без наценки с нашей стороны.</p>
 </section>
 
-<!-- 11 ФИНАЛ -->
+<!-- 09 ДОКАЗАТЕЛЬСТВА -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Доказательства</div>
+  <h2 class="r" style="--i:1">Сначала доказательства.<br><span class="o">Потом всё остальное.</span></h2>
+  <p class="lead r" style="--i:1;margin-bottom:clamp(16px,2.6vh,26px)">Эти цифры дала <strong>та самая технология, которая теперь работает внутри экосистемы</strong>: те же критерии отбора компаний, те же точки входа на ЛПР, те же дожимы. Раньше её запускали руками и упирались в 20 касаний в день, теперь она идёт сама и делает 60.</p>
+  <div class="grid g4">
+    <div class="card metric r" style="--i:2"><div class="num">56/70</div><small>целевых CMO навстречу за 4 мес · <b>Impression</b></small></div>
+    <div class="card metric r" style="--i:3"><div class="num">84</div><small>встречи за 3 мес - CMO, гендиры, IR · <b>Бизнес-форум</b></small></div>
+    <div class="card metric r" style="--i:4"><div class="num">6→2</div><small>встреч за 2 недели → 2 сделки · <b>Digitali</b></small></div>
+    <div class="card metric r" style="--i:5"><div class="num">6-7<span style="font-size:.45em">/нед</span></div><small>с гендиректорами - самый тяжёлый заход · <b>B2Boost</b></small></div>
+  </div>
+  <div class="r" style="--i:6;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:clamp(18px,3vh,30px)">
+    <span class="tag o" style="margin:0">Табло ЛПР</span>
+    <span style="color:var(--muted);font-size:clamp(13px,1.1vw,16px)">Магнит · Яндекс · P&amp;G · Касперский · МегаФон · Спортмастер · ДОМ.РФ · Эвалар · Самолёт</span>
+  </div>
+  <p class="note r" style="--i:7"><span class="foot">Компании настоящие · сайты открыты · цифры реальные · клиенты на связи.</span></p>
+</section>
+
+<!-- 10 КЕЙС 01 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">01</div><span class="tag b" style="margin:0">Impression · инфлюенс · автоблогеры</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">ОХВАТ - ВЕСЬ СПИСОК, А НЕ ЕДИНИЧНЫЕ УДАЧИ</div>
+      <div class="num num-xl r" style="--i:2">56 из 70</div>
+      <p class="lead r" style="--i:3;margin-top:18px">целевых CMO выведено на встречу за 4 месяца - <strong>80% списка</strong>.</p>
+      <img class="caselogo inv r" style="--i:4" src="logos/impression.png" alt="Impression Agency" onerror="lgFail(this)">
+      <div class="hand r" style="--i:4">↳ 80% списка - не единичные удачи</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Было</h4><p>Список 70 целевых CMO. Выходили теми же письмами, что и ещё 10 агентств. До встречи доходили <strong>единицы - около 8 из 70</strong>, и почти все через знакомых. Полторы встречи в месяц.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Заход, из-за которого CMO приходит именно к ним: точки входа под сегмент и персональное касание - с прогоном по всему списку, а не по "удобным" контактам. Ровно этот путь машина теперь проходит сама.</p></div>
+      <div class="step c r" style="--i:5"><h4>Стало</h4><p><strong>56 из 70 CMO на встрече за 4 месяца</strong> - 14 встреч в месяц. Конверсия из целевого контакта во встречу выросла с 11% до 80%. Состав команды тот же.</p></div>
+      <div class="grid g2 r" style="--i:6;margin-top:14px">
+        <div class="card bad"><h4 class="foot" style="color:var(--red);margin-bottom:8px">СЛАБЫЙ ЗАХОД</h4><p style="font-style:italic">"Здравствуйте! Мы агентство, работаем с блогерами. Хотели бы предложить сотрудничество.."</p></div>
+        <div class="card" style="border-color:rgba(62,214,160,.28)"><h4 class="foot" style="color:var(--green);margin-bottom:8px">СИЛЬНЫЙ ЗАХОД</h4><p style="font-style:italic">Заход через конкретную задачу бренда и точку входа под сегмент - CMO видит смысл сесть.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 КЕЙС 02 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">02</div><span class="tag b" style="margin:0">Digitali · performance · adtech · топ-8 AdIndex</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">СКОРОСТЬ ДО ДЕНЕГ</div>
+      <div class="num num-xl r" style="--i:2">6 встреч<br>→ 2 сделки</div>
+      <p class="lead r" style="--i:3;margin-top:18px">за первые 2 недели. Дальше - 5-7 встреч в неделю на потоке.</p>
+      <img class="caselogo inv r" style="--i:4" src="logos/digitali.png" alt="Digitali" onerror="lgFail(this)">
+      <div class="hand r" style="--i:4">↳ встречи → деньги за 2 недели</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Было</h4><p>3 менеджера. Холодные касания шли, ответы редкие. <strong>2-3 встречи в месяц</strong> на всех троих, и половина - не с теми, кто принимает решение. Сделки от случая к случаю.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Адресный выход на ЛПР и дожим до слота встречи - ровно то, что машина теперь делает сама. Те же 3 менеджера, ни одного нового человека в отдел.</p></div>
+      <div class="step c r" style="--i:5"><h4>Стало</h4><p><strong>6 встреч за первые 2 недели → 2 сделки</strong>, конверсия встречи в сделку 33% на старте. Дальше <strong>5-7 встреч в неделю</strong> - это 20-28 в месяц против прежних 2-3.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 КЕЙС 03 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">03</div><span class="tag b" style="margin:0">Международный бизнес-форум · event</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">ВЫСОТА ЛПР - ДОХОДИМ ДО САМОГО ВЕРХА</div>
+      <div class="num num-xl r" style="--i:2">84<br>встречи</div>
+      <p class="lead r" style="--i:3;margin-top:18px">за 3 месяца - самый высокий уровень ЛПР из возможных, на потоке.</p>
+      <div class="foot r" style="--i:4;margin-top:10px">Название - на созвоне</div>
+      <div class="hand r" style="--i:5">↳ самый верх, и на потоке</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Было</h4><p>Поток спонсоров держался на личных связях основателя. <strong>3-5 встреч в месяц</strong>, все из своей сети. Новые компании в контуре не появлялись.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Адресный холодный заход на CMO, гендиректоров, IR- и event-директоров.</p></div>
+      <div class="step c r" style="--i:5"><h4>Стало</h4><p><strong>84 встречи за 3 месяца</strong> - 28 в месяц на высшем уровне ЛПР. Больше <strong>80% - компании, к которым раньше доступа не было</strong>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 КЕЙС 04 -->
+<section class="slide">
+  <div class="case">
+    <div>
+      <div class="case-head r" style="--i:0"><div class="round">04</div><span class="tag b" style="margin:0">B2Boost · построение B2B-отделов продаж</span></div>
+      <div class="foot r" style="--i:1;color:var(--acc);margin-bottom:12px">СЛОЖНОСТЬ ЗАХОДА - РАБОТАЕТ ДАЖЕ САМЫЙ ТЯЖЁЛЫЙ</div>
+      <div class="num num-xl r" style="--i:2">6-7 встреч<br>в неделю</div>
+      <p class="lead r" style="--i:3;margin-top:18px">с генеральными директорами - в холодную.</p>
+      <img class="caselogo inv r" style="--i:4" src="logos/b2boost.png" alt="B2Boost" onerror="lgFail(this)">
+      <div class="hand r" style="--i:4">↳ если сюда зашли - к вам тем более</div>
+    </div>
+    <div>
+      <div class="step a r" style="--i:3"><h4>Было</h4><p>Самый тяжёлый заход: в холодную вывести собственника на встречу, где ему скажут, что его отдел продаж надо перестраивать. <strong>1-2 встречи в неделю</strong>, и те по рекомендациям. В холодную гендира вытащить не получалось.</p></div>
+      <div class="step b r" style="--i:4"><h4>Что сделали</h4><p>Заход, из-за которого собственник сам приходит на такую встречу.</p></div>
+      <div class="step c r" style="--i:5"><h4>Стало</h4><p><strong>6-7 встреч в неделю с генеральными директорами, полностью в холодную</strong> - 26-30 в месяц. Если зашли сюда - к вашим ЛПР зайдём тем более.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 ЕЩЁ КЕЙСЫ -->
+<section class="slide">
+  <div class="eyebrow r" style="--i:0">Ещё кейсы</div>
+  <h2 class="r" style="--i:1">Та же механика - в разных нишах</h2>
+  <div class="grid g3">
+    <div class="card r" style="--i:2"><img class="caselogo inv" style="margin:0 0 14px" src="logos/thejames.png" alt="THE JAMES" onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">37 встреч<span style="font-size:.5em;color:var(--muted)"> / месяц</span></div><p style="margin-top:12px">PR-директора и PR-менеджеры · PR и коммуникации</p></div>
+    <div class="card r" style="--i:3"><img class="caselogo inv" style="margin:0 0 14px" src="logos/easydigital.png" alt="easy." onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">17 встреч<span style="font-size:.5em;color:var(--muted)"> / 1,5 мес</span></div><p style="margin-top:12px">Маркдиры и руководители digital · digital полного цикла</p></div>
+    <div class="card r" style="--i:4"><img class="caselogo inv" style="margin:0 0 14px" src="logos/secretgang.png" alt="Secret Gang" onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">10 встреч<span style="font-size:.5em;color:var(--muted)"> / 14 дней</span></div><p style="margin-top:12px">CMO и креативные директора · креатив, брендинг</p></div>
+    <div class="card r" style="--i:5"><img class="caselogo inv" style="margin:0 0 14px" src="logos/romashka.png" alt="Ромашка Медиа" onerror="lgFail(this)"><div class="num" style="font-size:clamp(24px,2.4vw,34px)">до 40 встреч<span style="font-size:.5em;color:var(--muted)"> / месяц</span></div><p style="margin-top:12px">Банки, ритейл, телеком, фарма, красота - в один поток</p></div>
+    <div class="card r" style="--i:6"><div class="caselogo-txt" style="margin:0 0 14px">Хард Логистик</div><div class="num" style="font-size:clamp(24px,2.4vw,34px)">12 директоров → 4 сметы</div><p style="margin-top:12px"><b>Было:</b> прямых встреч с директорами по логистике не было вовсе - заходили только через тендерные площадки. <b>Стало:</b> 12 встреч, 4 дошли до просчёта сметы - конверсия встречи в коммерческий расчёт 33%.</p></div>
+    <div class="card acc r" style="--i:7"><p style="color:var(--ink)">Компании настоящие · сайты открыты · цифры реальные · клиенты на связи. <span class="o">Спрашивайте.</span></p></div>
+  </div>
+</section>
+
+
+<!-- ФИНАЛ -->
 <section class="slide center">
   <div class="logo r" style="--i:0">MEET<span>ENGINE</span></div>
   <h2 class="r" style="--i:1;margin-top:clamp(20px,4vh,36px)">20 минут - и вы увидите систему в работе</h2>

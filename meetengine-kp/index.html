@@ -24,7 +24,7 @@
   --green:#3ED6A0;
   --blue:#7FA6F0;
   --pink:#FF4D9D;
-  --display:'Unbounded',system-ui,sans-serif;
+  --display:'Manrope',system-ui,sans-serif;
   --body:'Manrope',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --pad: clamp(20px, 5vw, 92px);
@@ -50,7 +50,7 @@ body::before{
 #deck{position:fixed;inset:0;z-index:1}
 .slide{
   position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:center;
+  display:flex;flex-direction:column;justify-content:flex-start;
   padding:calc(var(--pad) + 14px) var(--pad) calc(var(--pad) + 34px);
   opacity:0;visibility:hidden;
   transform:translateY(26px) scale(.985);
@@ -60,6 +60,8 @@ body::before{
 }
 .slide::-webkit-scrollbar{display:none}
 .slide.active{opacity:1;visibility:visible;transform:none}
+.slide>*:first-child{margin-top:auto}
+.slide>*:last-child{margin-bottom:auto}
 .slide.center{align-items:center;text-align:center}
 
 /* Появление блоков */
@@ -242,7 +244,9 @@ img.lg.tall{max-height:clamp(34px,4.4vh,58px)}
   .case{grid-template-columns:1fr}
   .brands{grid-template-columns:repeat(3,1fr)}
   .slide{justify-content:flex-start;padding-top:64px;padding-bottom:86px}
-  .slide.center{justify-content:center}
+  .slide>*:first-child{margin-top:auto}
+.slide>*:last-child{margin-bottom:auto}
+.slide.center{justify-content:center}
   #hint{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -284,7 +288,7 @@ function lgFail(el){
 
 <!-- 02 СОЦПРУФ -->
 <section class="slide">
-  <div class="eyebrow r" style="--i:0">Соцпруф · табло</div>
+  <div class="eyebrow r" style="--i:0">Кого уже вывели</div>
   <h2 class="r" style="--i:1">Их ЛПР <span class="o">сели и стали слушать</span></h2>
   <p class="lead r" style="--i:2;margin-bottom:clamp(18px,3vh,30px)">Компании, чьих ЛПР эта механика привела на Zoom-встречу:</p>
   <div class="brands r" style="--i:3">
@@ -307,7 +311,7 @@ function lgFail(el){
   <div class="eyebrow red r" style="--i:0">Проблема</div>
   <h2 class="r" style="--i:1">Верх воронки держится<br><span class="rd">на живых людях</span></h2>
   <div class="grid g3">
-    <div class="card bad r" style="--i:2"><h3>Менеджер дорогой и медленный</h3><p>1,2 млн ₽ в год со всеми налогами. Делает 15-20 холодных касаний в день, и то если не отвлекается. Через полгода выгорает, и всё заново.</p></div>
+    <div class="card bad r" style="--i:2"><h3>Менеджер дорогой и медленный</h3><p>От 2 млн ₽ в год со всеми налогами, бонусами и простоем. Делает 15-20 холодных касаний в день, и то если не отвлекается. Через полгода выгорает, и всё заново.</p></div>
     <div class="card bad r" style="--i:3"><h3>Персонально или много - выбирайте</h3><p>Руками можно написать либо многим одинаково, либо немногим лично. Первое не читают, второе не масштабируется.</p></div>
     <div class="card bad r" style="--i:4"><h3>Контакты ищутся вручную</h3><p>Найти компанию, пробить настоящего ЛПР, добыть прямой контакт - на каждого уходят минуты живого времени, и так по кругу каждый день.</p></div>
   </div>
@@ -317,7 +321,7 @@ function lgFail(el){
 <!-- 04 СДВИГ -->
 <section class="slide">
   <div class="eyebrow r" style="--i:0">Сдвиг</div>
-  <h2 class="r" style="--i:1">Это не парсер.<br><span class="o ul">Парсер - это первая пятая часть пути.</span></h2>
+  <h2 class="r" style="--i:1">Это не парсер.<br><span class="o ul">Парсер - это 1/5 пути.</span></h2>
   <div class="grid g2">
     <div class="card r" style="--i:2"><span class="tag b">Парсер</span><h3>Отдаёт список</h3><p>Собрал сайты, нашёл контакты, выгрузил таблицу. Дальше человек садится и пишет каждому руками, отвечает на встречные вопросы и дожимает до слота в календаре.</p></div>
     <div class="card acc r" style="--i:3"><span class="tag o">Meetengine</span><h3>Проходит весь путь до ответа</h3><p>Находит компании, достаёт ЛПР, пишет ему персонально под его компанию, ведёт переписку и доводит до встречи. Сбор контактов здесь примерно 20% работы, остальное - то, что после парсера обычно ложится на людей.</p></div>
@@ -426,7 +430,7 @@ function lgFail(el){
 <section class="slide">
   <div class="eyebrow r" style="--i:0">Доказательства</div>
   <h2 class="r" style="--i:1">Сначала доказательства.<br><span class="o">Потом всё остальное.</span></h2>
-  <p class="lead r" style="--i:1;margin-bottom:clamp(16px,2.6vh,26px)">Ни одна из этих цифр не сделана тренингом. Их дала <strong>технология захода - та самая, что теперь работает машиной</strong>: те же критерии отбора компаний, те же точки входа на ЛПР, те же дожимы. Разница одна: раньше её запускали руками и упирались в 20 касаний в день, теперь она идёт сама и делает 60.</p>
+  <p class="lead r" style="--i:1;margin-bottom:clamp(16px,2.6vh,26px)">Эти цифры дала <strong>технология захода - та самая, что теперь работает машиной</strong>: те же критерии отбора компаний, те же точки входа на ЛПР, те же дожимы. Раньше её запускали руками и упирались в 20 касаний в день, теперь она идёт сама и делает 60.</p>
   <div class="grid g4">
     <div class="card metric r" style="--i:2"><div class="num">56/70</div><small>целевых CMO навстречу за 4 мес · <b>Impression</b></small></div>
     <div class="card metric r" style="--i:3"><div class="num">84</div><small>встречи за 3 мес - CMO, гендиры, IR · <b>Бизнес-форум</b></small></div>
@@ -596,7 +600,7 @@ function lgFail(el){
   <div class="grid g2">
     <div class="card r" style="--i:2"><div style="font-size:34px;color:var(--dim);line-height:1;margin-bottom:22px">⟩⟩</div><div class="foot" style="margin-bottom:10px">ПУТЬ А</div><h3 style="font-size:clamp(18px,2vw,26px)">Держать верх воронки на людях</h3>
       <ul class="list" style="margin-top:16px">
-        <li class="no"><i style="color:var(--dim)">↘</i><span>1,2 млн ₽ в год за менеджера, и так каждый год</span></li>
+        <li class="no"><i style="color:var(--dim)">↘</i><span>2 млн ₽ в год за менеджера, и так каждый год</span></li>
         <li class="no"><i style="color:var(--dim)">↘</i><span>потолок 15-20 касаний в день</span></li>
         <li class="no"><i style="color:var(--dim)">↘</i><span>выгорел или ушёл - и снова с нуля</span></li>
       </ul>
@@ -616,7 +620,7 @@ function lgFail(el){
   <div class="eyebrow center r" style="--i:0">Цена</div>
   <div class="price r" style="--i:1">Считаем под задачу</div>
   <div class="r" style="--i:2;font-family:var(--display);font-weight:700;font-size:clamp(18px,2.2vw,30px);margin-top:18px">1 раз · навсегда</div>
-  <p class="lead r" style="--i:3;margin:clamp(18px,3vh,30px) auto 0;text-align:center">Стоимость зависит от состава: что именно ставим и какие задачи закрываем. Смету собираю после разговора. Для сравнения: менеджер на холоде обходится в <strong>1,2 млн ₽ в год</strong> со всеми налогами и упирается в 20 касаний в день.</p>
+  <p class="lead r" style="--i:3;margin:clamp(18px,3vh,30px) auto 0;text-align:center">Стоимость зависит от состава: что именно ставим и какие задачи закрываем. Смету собираю после разговора. Для сравнения: менеджер на холоде обходится в <strong>2 млн ₽ в год</strong> со всеми налогами и упирается в 20 касаний в день.</p>
   <div class="pills r" style="--i:4">
     <span class="tag o" style="margin:0">Не подписка · остаётся навсегда</span>
     <span class="tag b" style="margin:0">Можно 50 на 50</span>
