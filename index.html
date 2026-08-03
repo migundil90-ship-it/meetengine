@@ -24,9 +24,9 @@
     --maxw:1140px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;background:var(--ink)}
   body{
-    background:var(--ink);
+    background:transparent;
     color:var(--tx);
     font-family:'Manrope',system-ui,sans-serif;
     font-size:17px;line-height:1.6;
@@ -34,7 +34,7 @@
     overflow-x:hidden;
   }
   body::before{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     background:
       radial-gradient(60% 40% at 78% -5%, rgba(255,176,32,.10), transparent 60%),
       radial-gradient(50% 40% at 5% 8%, rgba(55,211,153,.05), transparent 60%);
@@ -315,9 +315,19 @@
 .vsect>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;z-index:0}
 .vsect>*:not(video){position:relative;z-index:1}
 @media(max-width:700px){.vband{height:70vh}}
+
+/* Живой фон всего сайта: то самое распыление с блока цены. 04.08.2026 */
+.bgvideo{position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;overflow:hidden;pointer-events:none}
+.bgvideo video{width:100%;height:100%;object-fit:cover;opacity:.22;
+  filter:saturate(.9) contrast(1.05)}
+.bgvideo::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 0%,rgba(11,14,19,.55),rgba(11,14,19,.86) 70%)}
+body::before{z-index:-1}
 </style>
 </head>
 <body>
+<div class="bgvideo"><video src="/video/gradient.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+
 
 <header class="nav">
   <div class="wrap nav-in">
@@ -335,7 +345,6 @@
 
 <!-- HERO -->
 <section class="wrap hero">
-  <div class="vhero"><video src="/video/volna.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
 
   <div class="hero-grid">
     <div>
@@ -498,8 +507,7 @@
 </section>
 
 <!-- PROOF -->
-<section class="vsect wrap sect" id="cases">
-  <video src="/video/tablo.mp4" autoplay muted loop playsinline preload="none"></video>
+<section class="wrap sect" id="cases">
   <div class="shead rv">
     <span class="eyebrow">Построено опытом</span>
     <h2>Она собрана из реальных заходов. Вот на чём.</h2>
@@ -526,8 +534,7 @@
 
 
 <!-- PRICE -->
-<section class="vsect wrap sect" id="price">
-  <video src="/video/gradient.mp4" autoplay muted loop playsinline preload="none"></video>
+<section class="wrap sect" id="price">
   <div class="shead rv">
     <span class="eyebrow">Цена</span>
     <h2>Сколько это стоит</h2>
@@ -625,7 +632,7 @@
   </div>
   <div class="faq">
     <details class="rv"><summary>Вы приводите лидов?</summary><p>Нет. Лиды заканчиваются, а зависимость от подрядчика остаётся. <b>Мы ставим технологию внутрь вашего отдела продаж.</b> Дальше поток встреч ваша команда создаёт сама.</p></details>
-    <details class="rv"><summary>Сколько это стоит?</summary><p><b>150 000 ₽ - один раз.</b> Это один оклад менеджера по продажам, только вместо кота в мешке вы получаете систему потока встреч, которая работает у всех менеджеров и остаётся у вас навсегда.</p></details>
+    <details class="rv"><summary>Сколько это стоит?</summary><p><b>150 000 ₽ - один раз.</b> Это полтора оклада менеджера по продажам, только вместо кота в мешке вы получаете систему потока встреч, которая работает у всех менеджеров и остаётся у вас навсегда.</p></details>
     <details class="rv"><summary>У нас узкая ниша и сложный продукт. Сработает?</summary><p>Уже адаптировали под FMCG, инфлюенс, PR, брендинг, веб-разработку, логистику, adtech и IT, event, построение B2B-отделов. Под любую нишу - потому что меняется не механика, а язык захода.</p></details>
     <details class="rv"><summary>Это заработает без звёздных менеджеров?</summary><p>Да. Постоянный поток встреч обычно умеют давать только звёздные - их мало, они дорогие и однажды уходят. Мы раскладываем этот навык на систему и передаём любому менеджеру.</p></details>
     <details class="rv"><summary>Кейсы можно проверить?</summary><p>Да. Компании настоящие, сайты открыты, цифры реальные, клиенты на связи. Спрашивайте.</p></details>
