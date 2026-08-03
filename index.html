@@ -317,7 +317,7 @@
 @media(max-width:700px){.vband{height:70vh}}
 
 /* Живой фон всего сайта: то самое распыление с блока цены. 04.08.2026 */
-.bgvideo{position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;overflow:hidden;pointer-events:none}
+.bgvideo{position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;overflow:hidden;pointer-events:none;contain:strict;will-change:transform}
 .bgvideo video{width:100%;height:100%;object-fit:cover;opacity:.85;
   filter:saturate(1.15) contrast(1.15) brightness(1.35)}
 .bgvideo::after{content:"";position:absolute;inset:0;
@@ -326,9 +326,6 @@ body::before{z-index:-1}
 </style>
 </head>
 <body>
-<div class="bgvideo"><video src="/video/gradient.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
-
-
 <header class="nav">
   <div class="wrap nav-in">
     <div class="brand">MEET<b>ENGINE</b></div>
@@ -661,6 +658,24 @@ body::before{z-index:-1}
 <script>
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+<div class="bgvideo" aria-hidden="true"><video src="/video/gradient.mp4" autoplay muted playsinline preload="metadata" tabindex="-1" disablepictureinpicture></video></div>
+
+<script>
+/* Фоновое видео крутим вручную: штатный loop перезапускал ролик и браузер
+   выкидывал страницу наверх. Перематываем до конца, скролл не трогаем. */
+(function(){
+  var v=document.querySelector('.bgvideo video');
+  if(!v) return;
+  v.addEventListener('timeupdate', function(){
+    if(v.duration && v.currentTime > v.duration - 0.25){
+      var y = window.scrollY;
+      v.currentTime = 0.01;
+      if(window.scrollY !== y) window.scrollTo(0, y);
+    }
+  });
+  v.addEventListener('seeked', function(){ /* позиция страницы не меняется */ });
+})();
 </script>
 </body>
 </html>
