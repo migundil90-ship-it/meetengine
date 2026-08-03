@@ -11,6 +11,25 @@
 .eco-card p{margin:0;color:var(--dim,#A8B0C0)}
 .eco-card a{margin-top:auto;padding-top:12px;color:var(--acc,#F79A21);text-decoration:none;font-weight:700}
 @media(max-width:760px){.eco{grid-template-columns:1fr}}
+
+/* Глубина продукта. 03.08.2026 */
+.deep{margin-top:clamp(30px,5vh,60px)}
+.deep .row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px)}
+.deep .b{background:var(--panel,#14171C);border:1px solid var(--line,rgba(255,255,255,.08));
+  border-radius:16px;padding:clamp(16px,1.8vw,24px)}
+.deep .b h4{margin:0 0 8px;font-size:16.5px;color:#EEF2F8}
+.deep .b p{margin:0;color:#B0BAC9;font-size:14.5px;line-height:1.55}
+.qa{margin-top:clamp(24px,4vh,44px)}
+.qa details{border-bottom:1px solid var(--line,rgba(255,255,255,.08));padding:16px 0}
+.qa summary{cursor:pointer;font-weight:800;font-size:clamp(16px,1.4vw,19px);color:#EEF2F8;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"+ ";color:var(--acc,#F79A21)}
+.qa details[open] summary::before{content:"− "}
+.qa p{margin:10px 0 0;color:#B0BAC9;max-width:78ch}
+.limits{margin-top:clamp(22px,3.4vh,36px);display:flex;flex-wrap:wrap;gap:10px}
+.limits span{border:1px solid rgba(255,92,99,.3);color:#D7B4B6;border-radius:999px;
+  padding:8px 14px;font-size:13.5px}
+@media(max-width:860px){.deep .row{grid-template-columns:1fr}}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -393,6 +412,56 @@
 
 
 
+
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Как проходит работа</h2></div>
+  <div class="deep">
+    <div class="row rv">
+      <div class="b"><h4>Разбор переписок</h4><p>Берём ваши реальные диалоги и смотрим, где обрывается ответ: заход, тон, момент, содержание.</p></div>
+      <div class="b"><h4>Механика захода</h4><p>Собираем библиотеку заходов под ваши ниши и роли. Не скрипт на все случаи, а набор, из которого менеджер собирает своё.</p></div>
+      <div class="b"><h4>Возражения</h4><p>Разбираем те, что реально приходят вам, а не из учебника. По каждому - ответ, который не спорит с человеком.</p></div>
+    </div>
+    <div class="row rv" style="margin-top:clamp(14px,1.6vw,20px)">
+      <div class="b"><h4>Доведение</h4><p>Как переводить интерес в согласованное время, не давя и не заискивая.</p></div>
+      <div class="b"><h4>Контроль</h4><p>Что руководитель смотрит каждый день и по каким цифрам понимает, что поток проседает.</p></div>
+      <div class="b"><h4>Сопровождение</h4><p>Первые недели правим на живых диалогах: смотрим, где заход не сработал.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Как проходит внедрение</h2></div>
+  <div class="deep">
+    <div class="row rv">
+      <div class="b"><h4>Смотрим как есть</h4><p>Разбираем текущие переписки и воронку.</p></div>
+      <div class="b"><h4>Ставим механику</h4><p>Заходы, возражения, доведение, контроль - под ваш рынок.</p></div>
+      <div class="b"><h4>Работаем на живых клиентах</h4><p>Не на учебных примерах, а на ваших реальных компаниях.</p></div>
+    </div>
+    <div class="row rv" style="margin-top:clamp(14px,1.6vw,20px)">
+      <div class="b"><h4>Оставляем в компании</h4><p>Всё записано и передано: новый человек входит за дни.</p></div>
+    </div>
+  </div>
+  <div class="limits rv">
+    <span>Чего не делаем:</span>
+    <span>не заменяем ваших людей</span>
+    <span>не берём на себя разговоры с клиентами</span>
+    <span>не переучиваем тех, кто не хочет</span>
+  </div>
+</section>
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Что спрашивают</h2></div>
+  <div class="qa rv">
+    <details><summary>«У нас есть сильный продавец, он и так умеет»</summary><p>Поэтому и рискованно: он уйдёт и унесёт умение с собой. Задача - положить это в компанию, а не в одного человека.</p></details>
+    <details><summary>«Мы уже проходили обучение, толку не было»</summary><p>Обучение заканчивается конспектом. Здесь остаётся механика, которой пользуются каждый день, и руководитель, который умеет её контролировать.</p></details>
+    <details><summary>«Люди не станут ничего менять»</summary><p>Менять всё сразу и не нужно. Начинаем с одного захода, который даёт ответы - дальше команда сама тянется к тому, что работает.</p></details>
+    <details><summary>«Заблокируют за рассылку?»</summary><p>Система не рассылает. Она пишет каждому отдельно, с паузами и в пределах дневного лимита аккаунта - так, как пишет человек. Лимиты и интервалы зашиты внутрь, выйти за них она физически не даст.</p></details>
+    <details><summary>«Откуда у вас мой номер?»</summary><p>Из открытых источников: сайт компании, отраслевые каталоги, профессиональные сети и реестры. Мы не покупаем базы и не берём данные, которые человек не публиковал сам.</p></details>
+    <details><summary>«У нас уже есть свой отдел продаж, они справляются»</summary><p>Значит вам не нужен ещё один канал лидов - вам нужно снять с людей ту часть, которая съедает их день. Система делает подготовительную работу, а разговоры остаются за вашими людьми.</p></details>
+    <details><summary>«Мы такое сами напишем»</summary><p>Собрать инструмент - это неделя. Собрать систему, которая работает годами, - это накопленные ошибки: лимиты, тон, отказы, каналы, что делать, когда человек ответил не по делу. Мы продаём не код, а прожитый путь.</p></details>
+  </div>
+</section>
 
 <section class="wrap sect">
   <div class="final rv">

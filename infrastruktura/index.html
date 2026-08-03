@@ -11,6 +11,25 @@
 .eco-card p{margin:0;color:var(--dim,#A8B0C0)}
 .eco-card a{margin-top:auto;padding-top:12px;color:var(--acc,#F79A21);text-decoration:none;font-weight:700}
 @media(max-width:760px){.eco{grid-template-columns:1fr}}
+
+/* Глубина продукта. 03.08.2026 */
+.deep{margin-top:clamp(30px,5vh,60px)}
+.deep .row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px)}
+.deep .b{background:var(--panel,#14171C);border:1px solid var(--line,rgba(255,255,255,.08));
+  border-radius:16px;padding:clamp(16px,1.8vw,24px)}
+.deep .b h4{margin:0 0 8px;font-size:16.5px;color:#EEF2F8}
+.deep .b p{margin:0;color:#B0BAC9;font-size:14.5px;line-height:1.55}
+.qa{margin-top:clamp(24px,4vh,44px)}
+.qa details{border-bottom:1px solid var(--line,rgba(255,255,255,.08));padding:16px 0}
+.qa summary{cursor:pointer;font-weight:800;font-size:clamp(16px,1.4vw,19px);color:#EEF2F8;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"+ ";color:var(--acc,#F79A21)}
+.qa details[open] summary::before{content:"− "}
+.qa p{margin:10px 0 0;color:#B0BAC9;max-width:78ch}
+.limits{margin-top:clamp(22px,3.4vh,36px);display:flex;flex-wrap:wrap;gap:10px}
+.limits span{border:1px solid rgba(255,92,99,.3);color:#D7B4B6;border-radius:999px;
+  padding:8px 14px;font-size:13.5px}
+@media(max-width:860px){.deep .row{grid-template-columns:1fr}}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -393,6 +412,56 @@
 
 
 
+
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Из чего состоит контур</h2></div>
+  <div class="deep">
+    <div class="row rv">
+      <div class="b"><h4>Сервер</h4><p>Машина под задачи компании: данные, переписки, документы и модели внутри периметра.</p></div>
+      <div class="b"><h4>Дашборд</h4><p>Клиенты, сделки, касания, встречи, деньги - в одном окне, а не в пяти сервисах.</p></div>
+      <div class="b"><h4>Интеграции</h4><p>Ваша CRM, сайт, телефония и почта работают вместе: данные ходят сами.</p></div>
+    </div>
+    <div class="row rv" style="margin-top:clamp(14px,1.6vw,20px)">
+      <div class="b"><h4>Агенты по направлениям</h4><p>Отдельные системы под продажи, документы, аналитику, найм - каждая со своей зоной.</p></div>
+      <div class="b"><h4>Память системы</h4><p>Правила, ошибки и решения хранятся отдельно и накапливаются. Это то, что нельзя быстро повторить.</p></div>
+      <div class="b"><h4>Управление из мессенджера</h4><p>Руководитель получает сигналы и отвечает одним словом.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Как проходит внедрение</h2></div>
+  <div class="deep">
+    <div class="row rv">
+      <div class="b"><h4>Смотрим, что уже есть</h4><p>Какие сервисы, где данные, кто ведёт техчасть.</p></div>
+      <div class="b"><h4>Собираем контур</h4><p>Сервер, хранение, дашборд, интеграции - под ваш состав.</p></div>
+      <div class="b"><h4>Переносим процессы</h4><p>По одному, чтобы работа не встала.</p></div>
+    </div>
+    <div class="row rv" style="margin-top:clamp(14px,1.6vw,20px)">
+      <div class="b"><h4>Учим управлять</h4><p>Показываем, как менять и дорабатывать своими руками.</p></div>
+    </div>
+  </div>
+  <div class="limits rv">
+    <span>Чего не делаем:</span>
+    <span>не забираем ваши данные к себе</span>
+    <span>не привязываем к себе навсегда</span>
+    <span>не трогаем то, что у вас и так работает</span>
+  </div>
+</section>
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Что спрашивают</h2></div>
+  <div class="qa rv">
+    <details><summary>«У нас уже есть CRM»</summary><p>Мы её не заменяем, а достраиваем: данные остаются в вашей CRM, поверх появляется то, чего в ней нет.</p></details>
+    <details><summary>«Это дорого поддерживать»</summary><p>Движок работает обычным кодом, обращения к модели идут точечно. Поддержка - это не команда разработчиков, а 1 человек с доступом.</p></details>
+    <details><summary>«А если модель закроют или подорожает?»</summary><p>Модель подключается сбоку и меняется на другую. Система построена так, чтобы не зависеть от одного поставщика.</p></details>
+    <details><summary>«Заблокируют за рассылку?»</summary><p>Система не рассылает. Она пишет каждому отдельно, с паузами и в пределах дневного лимита аккаунта - так, как пишет человек. Лимиты и интервалы зашиты внутрь, выйти за них она физически не даст.</p></details>
+    <details><summary>«Откуда у вас мой номер?»</summary><p>Из открытых источников: сайт компании, отраслевые каталоги, профессиональные сети и реестры. Мы не покупаем базы и не берём данные, которые человек не публиковал сам.</p></details>
+    <details><summary>«У нас уже есть свой отдел продаж, они справляются»</summary><p>Значит вам не нужен ещё один канал лидов - вам нужно снять с людей ту часть, которая съедает их день. Система делает подготовительную работу, а разговоры остаются за вашими людьми.</p></details>
+    <details><summary>«Мы такое сами напишем»</summary><p>Собрать инструмент - это неделя. Собрать систему, которая работает годами, - это накопленные ошибки: лимиты, тон, отказы, каналы, что делать, когда человек ответил не по делу. Мы продаём не код, а прожитый путь.</p></details>
+  </div>
+</section>
 
 <section class="wrap sect">
   <div class="final rv">

@@ -11,6 +11,25 @@
 .eco-card p{margin:0;color:var(--dim,#A8B0C0)}
 .eco-card a{margin-top:auto;padding-top:12px;color:var(--acc,#F79A21);text-decoration:none;font-weight:700}
 @media(max-width:760px){.eco{grid-template-columns:1fr}}
+
+/* Глубина продукта. 03.08.2026 */
+.deep{margin-top:clamp(30px,5vh,60px)}
+.deep .row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px)}
+.deep .b{background:var(--panel,#14171C);border:1px solid var(--line,rgba(255,255,255,.08));
+  border-radius:16px;padding:clamp(16px,1.8vw,24px)}
+.deep .b h4{margin:0 0 8px;font-size:16.5px;color:#EEF2F8}
+.deep .b p{margin:0;color:#B0BAC9;font-size:14.5px;line-height:1.55}
+.qa{margin-top:clamp(24px,4vh,44px)}
+.qa details{border-bottom:1px solid var(--line,rgba(255,255,255,.08));padding:16px 0}
+.qa summary{cursor:pointer;font-weight:800;font-size:clamp(16px,1.4vw,19px);color:#EEF2F8;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"+ ";color:var(--acc,#F79A21)}
+.qa details[open] summary::before{content:"− "}
+.qa p{margin:10px 0 0;color:#B0BAC9;max-width:78ch}
+.limits{margin-top:clamp(22px,3.4vh,36px);display:flex;flex-wrap:wrap;gap:10px}
+.limits span{border:1px solid rgba(255,92,99,.3);color:#D7B4B6;border-radius:999px;
+  padding:8px 14px;font-size:13.5px}
+@media(max-width:860px){.deep .row{grid-template-columns:1fr}}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -392,6 +411,56 @@
 
 
 
+
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Как снимаем данные</h2></div>
+  <div class="deep">
+    <div class="row rv">
+      <div class="b"><h4>Сплошной обход</h4><p>Обходим весь раздел, а не выборку. 1 страница даёт впечатление, раздел целиком даёт распределение.</p></div>
+      <div class="b"><h4>Индексация</h4><p>Закрывается первой: если страницы закрыты от поиска, разговор о содержании бессмысленен.</p></div>
+      <div class="b"><h4>Скорость</h4><p>Замеряем вес страницы и что его создаёт. Два прогона, чтобы увидеть разброс, а не одно красивое число.</p></div>
+    </div>
+    <div class="row rv" style="margin-top:clamp(14px,1.6vw,20px)">
+      <div class="b"><h4>Содержание</h4><p>Объём, структура, таблицы, иллюстрации, связность - по каждой странице одинаковый набор.</p></div>
+      <div class="b"><h4>Спрос</h4><p>По каждой теме снимаем, что реально ищут. Очередь работ строится по спросу, а не по объёму текста.</p></div>
+      <div class="b"><h4>Видимость</h4><p>Смотрим, кто отвечает по вашим темам в поиске и в ответах нейросетей.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Как проходит внедрение</h2></div>
+  <div class="deep">
+    <div class="row rv">
+      <div class="b"><h4>Обход</h4><p>Снимаем данные по всем страницам раздела.</p></div>
+      <div class="b"><h4>Сведение</h4><p>Спрос × состояние страницы = очередь работ.</p></div>
+      <div class="b"><h4>Отчёт</h4><p>Находки, распределение, конкретные страницы, объём работ.</p></div>
+    </div>
+    <div class="row rv" style="margin-top:clamp(14px,1.6vw,20px)">
+      <div class="b"><h4>Разбор с вашей командой</h4><p>Отделяем «знаем и не считаем важным» от «берём в работу».</p></div>
+    </div>
+  </div>
+  <div class="limits rv">
+    <span>Чего не делаем:</span>
+    <span>не обещаем позиции и трафик</span>
+    <span>не пишем тексты за вас</span>
+    <span>не берём данные из ваших систем без доступа</span>
+  </div>
+</section>
+
+<section class="wrap sect">
+  <div class="shead rv"><h2>Что спрашивают</h2></div>
+  <div class="qa rv">
+    <details><summary>«У нас уже был аудит»</summary><p>Обычный аудит - прогон через готовый краулер и чек-лист со светофорами. Спросите у него, откуда взялась любая цифра. В нашем под каждым числом лежит файл замера, который можно открыть.</p></details>
+    <details><summary>«Мы и сами знаем свои проблемы»</summary><p>Половина находок наверняка известна вашим специалистам. Ценность в другом: видно распределение и порядок - что чинится настройкой, что шаблоном, а что редактурой.</p></details>
+    <details><summary>«Сколько это займёт?»</summary><p>Экспресс-разбор - час-полтора. Полный, с доказательной сборкой и списками страниц, - несколько дней.</p></details>
+    <details><summary>«Заблокируют за рассылку?»</summary><p>Система не рассылает. Она пишет каждому отдельно, с паузами и в пределах дневного лимита аккаунта - так, как пишет человек. Лимиты и интервалы зашиты внутрь, выйти за них она физически не даст.</p></details>
+    <details><summary>«Откуда у вас мой номер?»</summary><p>Из открытых источников: сайт компании, отраслевые каталоги, профессиональные сети и реестры. Мы не покупаем базы и не берём данные, которые человек не публиковал сам.</p></details>
+    <details><summary>«У нас уже есть свой отдел продаж, они справляются»</summary><p>Значит вам не нужен ещё один канал лидов - вам нужно снять с людей ту часть, которая съедает их день. Система делает подготовительную работу, а разговоры остаются за вашими людьми.</p></details>
+    <details><summary>«Мы такое сами напишем»</summary><p>Собрать инструмент - это неделя. Собрать систему, которая работает годами, - это накопленные ошибки: лимиты, тон, отказы, каналы, что делать, когда человек ответил не по делу. Мы продаём не код, а прожитый путь.</p></details>
+  </div>
+</section>
 
 <section class="wrap sect">
   <div class="final rv">
