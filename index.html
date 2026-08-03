@@ -48,6 +48,33 @@
 .ecard .more h4{color:#EEF2F8;font-weight:800}
 .ecard .more ul{color:#B8C2D2}
 .ecard p{color:#AEB8C8}
+
+/* Первый экран крупнее: главная мысль должна бить. 03.08.2026 */
+.hero h1{font-size:clamp(38px,5.6vw,88px);line-height:1.02;letter-spacing:-.03em}
+.hero .eyebrow{font-size:12.5px;letter-spacing:.24em}
+
+/* Большой кейс: цифровой отдел продаж. 03.08.2026 */
+.bigcase{position:relative;overflow:hidden;border-radius:26px;margin-top:clamp(28px,5vh,54px);
+  padding:clamp(28px,4vw,60px);border:1px solid rgba(247,154,33,.28);
+  background:linear-gradient(135deg,rgba(247,154,33,.10),rgba(20,23,28,.9) 45%)}
+.bigcase::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+  border-radius:50%;background:radial-gradient(circle,rgba(247,154,33,.18),transparent 65%)}
+.bigcase .tag{font-family:var(--mono,monospace);font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--acc,#F79A21)}
+.bigcase h2{font-size:clamp(28px,4vw,58px);line-height:1.04;letter-spacing:-.025em;margin:14px 0 18px;max-width:20ch}
+.bigcase p{color:#B8C2D2;max-width:64ch;font-size:clamp(15px,1.2vw,18px)}
+.bigcase .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,34px);
+  margin-top:clamp(24px,4vh,42px);position:relative;z-index:1}
+.bigcase .n b{display:block;font-family:var(--display);font-weight:800;
+  font-size:clamp(30px,4.4vw,62px);color:var(--acc,#F79A21);letter-spacing:-.03em;line-height:1}
+.bigcase .n span{display:block;margin-top:8px;color:#AEB8C8;font-size:14.5px;line-height:1.4}
+.bigcase .how{margin-top:clamp(22px,3.6vh,36px);display:grid;grid-template-columns:repeat(4,1fr);
+  gap:14px;position:relative;z-index:1}
+.bigcase .how div{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;padding:16px 18px;color:#C9D1DE;font-size:14.5px}
+.bigcase .how b{color:#EEF2F8;display:block;margin-bottom:4px}
+@media(max-width:900px){.bigcase .nums,.bigcase .how{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.bigcase .nums,.bigcase .how{grid-template-columns:1fr}}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -358,9 +385,9 @@
 <section class="wrap hero">
   <div class="hero-grid">
     <div>
-      <span class="eyebrow">ИИ-трансформация бизнеса · экспертиза в рекламе и диджитале</span>
-      <h1>Переводим работу агентства на искусственный интеллект. <span class="amber">Системы остаются у вас.</span></h1>
-      <p class="lead">Мы знаем, как устроено агентство изнутри: продажи, производство, отчётность, найм. Эти процессы мы переводим на системы, которые работают сами - внутри вашего контура и на ваших данных.</p>
+      <span class="eyebrow">AI-трансформация бизнеса · экспертиза в рекламе и диджитале</span>
+      <h1>Делаем <span class="amber">AI-трансформацию</span> рекламных агентств. Все системы остаются у вас.</h1>
+      <p class="lead">Мы знаем, как устроено агентство изнутри: продажи, производство, отчётность, найм. Эти процессы мы переводим на системы: они работают сами, внутри вашего контура и на ваших данных.</p>
       <p class="lead" style="margin-top:14px">Берите одно направление или весь контур: состав определяет ваша задача.</p>
       <div class="killer">В агентстве львиная доля работы уходит не на клиента, а на подготовку: найти нужных людей, собрать предложение, свести отчёты, обучить нового сотрудника. <b>Эту часть мы переводим на системы</b> - и они работают на вашем сервере, с вашими данными и по вашим правилам. Люди остаются на том, ради чего их наняли.</div>
       <div class="hero-cta">
@@ -549,6 +576,27 @@
           <li>разбор, который выдержит проверку вашими специалистами</li>
         </ul>
       </div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- БОЛЬШОЙ КЕЙС -->
+<section class="wrap sect">
+  <div class="bigcase rv">
+    <span class="tag">Кейс · продажа автобетононасосов</span>
+    <h2>Отдел продаж, в котором не работает ни одного человека</h2>
+    <p>Мы собрали компании цифровой отдел продаж целиком: система сама находит покупателей и поставщиков, ведёт переписку и звонки, разбирает разговоры, готовит сравнительные расчёты и коммерческие, ведёт сделки в CRM и отчитывается владельцу в мессенджер. Руководителю остаётся отвечать «да» или «нет».</p>
+    <div class="nums">
+      <div class="n"><b>200+ млн ₽</b><span>годовой выручки проходит через систему</span></div>
+      <div class="n"><b>0</b><span>менеджеров в отделе продаж</span></div>
+      <div class="n"><b>5 минут</b><span>от разговора с клиентом до готового расчёта у него на почте</span></div>
+    </div>
+    <div class="how">
+      <div><b>Находит</b>покупателей и поставщиков по рынку, без списков и биржи лидов</div>
+      <div><b>Разговаривает</b>ведёт переписку и звонки, расшифровывает и разбирает каждый разговор</div>
+      <div><b>Считает</b>собирает сравнительные расчёты и коммерческие по данным из открытых источников</div>
+      <div><b>Отчитывается</b>сделки в CRM, сводки владельцу в мессенджер, решение за человеком</div>
     </div>
   </div>
 </section>
