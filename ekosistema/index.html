@@ -33,7 +33,7 @@
 .ecard.open .more{grid-template-rows:1fr}
 .ecard .more>div{overflow:hidden}
 .ecard .more .in{padding-top:16px;border-top:1px solid var(--line,rgba(255,255,255,.08));margin-top:14px}
-.ecard .more h4{margin:14px 0 6px;font-size:15px;color:var(--ink,#F3F5F8)}
+.ecard .more h3{margin:14px 0 6px;font-size:15px;color:var(--ink,#F3F5F8)}
 .ecard .more ul{margin:0;padding-left:18px;color:var(--dim,#A8B0C0);font-size:14.5px;line-height:1.6}
 .ecard .icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
   background:color-mix(in srgb,var(--c) 16%,transparent);margin-bottom:4px}
@@ -45,7 +45,7 @@
 .ecard .res{color:#C9D1DE}
 .ecard .res b{color:var(--c);font-weight:800}
 .ecard .kind{color:var(--c);opacity:.95}
-.ecard .more h4{color:#EEF2F8;font-weight:800}
+.ecard .more h3{color:#EEF2F8;font-weight:800}
 .ecard .more ul{color:#B8C2D2}
 .ecard p{color:#AEB8C8}
 
@@ -227,7 +227,7 @@
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
   .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 18px 22px;position:relative}
   .step .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber);letter-spacing:.1em}
-  .step h4{font-family:'Unbounded',sans-serif;font-weight:600;font-size:16.5px;margin:12px 0 8px}
+  .step h3{font-family:'Unbounded',sans-serif;font-weight:600;font-size:16.5px;margin:12px 0 8px}
   .step p{font-size:14px;color:var(--tx-mut);line-height:1.5}
   .step .opt{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tx-dim);letter-spacing:.1em}
   .fromyou{margin-top:20px;font-size:15px;color:var(--tx-mut)}
@@ -476,14 +476,14 @@
       <div class="res">Результат: <b>встречи в календаре</b>, а не список контактов</div>
       <button class="go" type="button">Подробнее</button>
       <div class="more"><div><div class="in">
-        <h4>Что делает</h4>
+        <h3>Что делает</h3>
         <ul>
           <li>находит компании по вашим критериям</li>
           <li>достаёт прямой контакт первого лица, а не общий ящик</li>
           <li>пишет персонально под задачу компании</li>
           <li>ведёт переписку до времени в календаре</li>
         </ul>
-        <h4>Кому это нужно</h4>
+        <h3>Кому это нужно</h3>
         <ul>
           <li>агентствам, у которых поток встреч держится на людях</li>
           <li>тем, кто хочет выбирать клиентов, а не ждать входящих</li>
@@ -498,14 +498,14 @@
       <div class="res">Результат: <b>механика остаётся в компании</b></div>
       <button class="go" type="button">Подробнее</button>
       <div class="more"><div><div class="in">
-        <h4>Что делаем</h4>
+        <h3>Что делаем</h3>
         <ul>
           <li>разбираем ваши реальные переписки</li>
           <li>ставим механику захода и доведения до встречи</li>
           <li>учим руководителя читать поток по цифрам</li>
           <li>сопровождаем первые недели работы</li>
         </ul>
-        <h4>Что остаётся</h4>
+        <h3>Что остаётся</h3>
         <ul>
           <li>механика внутри компании, а не в голове одного человека</li>
           <li>новый сотрудник входит в неё за дни</li>
@@ -520,14 +520,14 @@
       <div class="res">Результат: <b>предложение в тот же день</b></div>
       <button class="go" type="button">Подробнее</button>
       <div class="more"><div><div class="in">
-        <h4>Что делает сама машина</h4>
+        <h3>Что делает сама машина</h3>
         <ul>
           <li>разбирает клиента и его рынок</li>
           <li>считает экономику по вашим тарифам</li>
           <li>собирает документ в вашем оформлении</li>
           <li>копит опыт: видно, что читают и где срываются</li>
         </ul>
-        <h4>Где это решает</h4>
+        <h3>Где это решает</h3>
         <ul>
           <li>длинный цикл с крупными брендами</li>
           <li>много услуг и тарифов, каждый раз под клиента</li>
@@ -542,14 +542,14 @@
       <div class="res">Результат: <b>данные остаются у вас</b></div>
       <button class="go" type="button">Подробнее</button>
       <div class="more"><div><div class="in">
-        <h4>Что встаёт к вам</h4>
+        <h3>Что встаёт к вам</h3>
         <ul>
           <li>сервер, хранение и дашборд</li>
           <li>интеграции с вашей CRM, сайтом и телефонией</li>
           <li>аналитика и генерация документов</li>
           <li>мультиагентные системы под ваши направления</li>
         </ul>
-        <h4>Почему это надёжно</h4>
+        <h3>Почему это надёжно</h3>
         <ul>
           <li>движок на коде, модель подключается сбоку</li>
           <li>данные и переписки не уходят наружу</li>
@@ -564,13 +564,13 @@
       <div class="res">Результат: <b>очередь работ</b>, а не список замечаний</div>
       <button class="go" type="button">Подробнее</button>
       <div class="more"><div><div class="in">
-        <h4>Как смотрим</h4>
+        <h3>Как смотрим</h3>
         <ul>
           <li>обходим весь раздел, а не выборку страниц</li>
           <li>под каждой цифрой лежит файл замера</li>
           <li>снимаем спрос и видимость, а не только технику</li>
         </ul>
-        <h4>Что получаете</h4>
+        <h3>Что получаете</h3>
         <ul>
           <li>очередь работ вместо списка замечаний</li>
           <li>разбор, который выдержит проверку вашими специалистами</li>
@@ -609,11 +609,11 @@
     <p>Без долгих проектов и теории в вакууме. Поставили - и она пошла.</p>
   </div>
   <div class="steps">
-    <div class="step rv"><div class="n">01</div><h4>Разбор</h4><p>Смотрим ваши ниши, предложения, кого считаете целевым клиентом и кто у них принимает решение.</p></div>
-    <div class="step rv"><div class="n">02</div><h4>Установка</h4><p>Система разворачивается на вашем компьютере. Работает локально, ваши данные остаются у вас.</p></div>
-    <div class="step rv"><div class="n">03</div><h4>Настройка под вас</h4><p>Зашиваем ваши отрасли, портрет ЛПР, тон и правила. Машина начинает говорить вашим голосом.</p></div>
-    <div class="step rv"><div class="n">04</div><h4>Первый живой заход</h4><p>Запускаем на ваших реальных компаниях и смотрим ответы вместе. Правим на ходу.</p></div>
-    <div class="step rv"><div class="n">05</div><h4>Передача управления</h4><p>Показываю, как ей управлять из Telegram и дорабатывать дальше своими руками.</p></div>
+    <div class="step rv"><div class="n">01</div><h3>Разбор</h3><p>Смотрим ваши ниши, предложения, кого считаете целевым клиентом и кто у них принимает решение.</p></div>
+    <div class="step rv"><div class="n">02</div><h3>Установка</h3><p>Система разворачивается на вашем компьютере. Работает локально, ваши данные остаются у вас.</p></div>
+    <div class="step rv"><div class="n">03</div><h3>Настройка под вас</h3><p>Зашиваем ваши отрасли, портрет ЛПР, тон и правила. Машина начинает говорить вашим голосом.</p></div>
+    <div class="step rv"><div class="n">04</div><h3>Первый живой заход</h3><p>Запускаем на ваших реальных компаниях и смотрим ответы вместе. Правим на ходу.</p></div>
+    <div class="step rv"><div class="n">05</div><h3>Передача управления</h3><p>Показываю, как ей управлять из Telegram и дорабатывать дальше своими руками.</p></div>
   </div>
   <p class="fromyou rv"><b>От вас нужно:</b> компьютер, ваши ниши и понимание, кто ваш клиент. Всё.</p>
 </section>
