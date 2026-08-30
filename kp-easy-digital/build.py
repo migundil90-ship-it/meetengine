@@ -39,7 +39,7 @@ html = """<!doctype html>
 <html lang="ru"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MEETENGINE x easy - тренинг холодного выхода на маркдиров брендов</title>
+<title>MEETENGINE x easy - системный выход на ЛПР в брендах</title>
 <style>%s</style>
 <style>%s</style>
 </head><body>
