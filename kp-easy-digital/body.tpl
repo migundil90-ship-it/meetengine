@@ -9,11 +9,11 @@
   </div>
   <div class="cover-rule r" style="--i:1;width:min(760px,80vw);margin-left:auto;margin-right:auto"></div>
   <h1 class="r" style="--i:2;max-width:19ch">Как easy будет <span class="o">системно выводить</span> ЛПР в брендах на встречу</h1>
-  <p class="lead r" style="--i:3;margin:clamp(18px,3vh,32px) auto 0;text-align:center">Тренинг холодного выхода на первых лиц маркетинга. 3 сессии, разведка под ваши 4 сегмента, 30 дней разбора живых переписок. Механика остаётся у вас.</p>
+  <p class="lead r" style="--i:3;margin:clamp(18px,3vh,32px) auto 0;text-align:center">Тренинг холодного выхода на первых лиц маркетинга. 3 сессии, 30 дней разбора живых переписок. Механика остаётся у вас.</p>
   <div class="pills r" style="--i:4">
     <span class="tag o">Тренинг &#183; 200 000 &#8381;</span>
     <span class="tag">3 сессии + 30 дней сопровождения</span>
-    <span class="tag">12 материалов, остаются навсегда</span>
+    <span class="tag">10 материалов, остаются навсегда</span>
   </div>
   <div class="foot r" style="--i:5;margin-top:clamp(26px,4vh,48px)">Михаил Габитов &#183; Telegram @mihailgabitov242<br>для easy digital agency &#183; eda.xyz</div>
 </section>
@@ -229,30 +229,7 @@
   <p class="note r" style="--i:2">Обе крайности ломают один и тот же разговор, и обе снимаются одинаково - <b>тоном, в котором один взрослый человек пишет другому</b>. Это самое быстрое в применении из всего тренинга: копируется в тот же день.</p>
 </section>
 
-<!-- 12 · 40 КОМПАНИЙ -->
-<section class="slide">
-  <div class="eyebrow r" style="--i:0">Наша работа до тренинга</div>
-  <h2 class="r" style="--i:1;max-width:24ch">40 компаний, разобранных<br>под ваши сегменты</h2>
-  <div class="two r" style="--i:2">
-    <div>
-      <p class="kicker">Вы называете бренды, с которыми хотите работать. Мы разбираем каждый и отдаём готовую строку, с которой менеджер начинает работу утром понедельника, ничего не придумывая.</p>
-      <table class="tbl" style="margin-top:20px">
-        <tr><th>Что в строке</th></tr>
-        <tr><td>Компания и её сегмент</td></tr>
-        <tr><td>Имя и должность решающего</td></tr>
-        <tr><td>Личный контакт, а не общий ящик</td></tr>
-        <tr><td>Второй контакт в компании</td></tr>
-        <tr><td>Что у них происходит прямо сейчас</td></tr>
-        <tr><td>Угол захода под ваш продукт</td></tr>
-      </table>
-    </div>
-    <div class="card acc">
-      <div class="tag o">почему это идёт до сессий</div>
-      <p style="font-size:clamp(13.5px,1.15vw,16.5px)">Чтобы на сессиях команда работала <strong>на своих живых компаниях, а не на учебных</strong>. На выходе из третьей сессии у вас на руках 40 готовых строк и первые отправленные письма.</p>
-      <p style="margin-top:18px">Каждую строку мы проверяем: сайт открыт, человек в компании работает сегодня, контакт живой. <b>Строку, которую не смогли проверить, мы не ставим</b> и говорим об этом прямо.</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- 13 · ПРОГРАММА -->
 <section class="slide">
@@ -302,27 +279,25 @@
 <!-- 15 · МАТЕРИАЛЫ -->
 <section class="slide">
   <div class="eyebrow r" style="--i:0">Что остаётся у вас</div>
-  <h2 class="r" style="--i:1;max-width:24ch">12 документов.<br>Навсегда и без нас</h2>
+  <h2 class="r" style="--i:1;max-width:24ch">10 документов.<br>Навсегда и без нас</h2>
   <div class="two r" style="--i:2">
     <div>
       <ul class="list">
         <li class="plus"><i>01</i><span><b>Плейбук верха воронки</b> - головной документ, в вашем фирменном стиле</span></li>
         <li class="plus"><i>02</i><span><b>Методика поиска ЛПР</b> - как находят человека и его контакт</span></li>
-        <li class="plus"><i>03</i><span><b>Карта решающих людей</b> по вашим 4 сегментам</span></li>
-        <li class="plus"><i>04</i><span><b>Таблицы связок</b>: задача сегмента &#8594; ваш продукт под неё</span></li>
-        <li class="plus"><i>05</i><span><b>Библиотека первых касаний</b> - живые письма с разбором</span></li>
-        <li class="plus"><i>06</i><span><b>Библиотека дожимов</b> - живые короткие и развёрнутые, с разбором</span></li>
+        <li class="plus"><i>03</i><span><b>Таблицы связок</b>: задача сегмента &#8594; ваш продукт под неё</span></li>
+        <li class="plus"><i>04</i><span><b>Библиотека первых касаний</b> - живые письма с разбором</span></li>
+        <li class="plus"><i>05</i><span><b>Библиотека дожимов</b> - живые короткие и развёрнутые, с разбором</span></li>
       </ul>
     </div>
     <div>
       <ul class="list">
-        <li class="plus"><i>07</i><span><b>Тон и язык</b> - признаки живого письма и градиент обращения</span></li>
-        <li class="plus"><i>08</i><span><b>Доведение до встречи</b> - от ответа до назначенного времени</span></li>
-        <li class="plus"><i>09</i><span><b>Матрица возражений и лист проверки письма</b></span></li>
-        <li class="plus"><i>10</i><span><b>Структура воронки</b> под вашу систему учёта</span></li>
-        <li class="plus"><i>11</i><span><b>Рамка контроля для руководителя</b> - что смотреть, чтобы видеть затык</span></li>
-        <li class="plus"><i>12</i><span><b>40 компаний</b> с найденными ЛПР и личными контактами</span></li>
-      </ul>
+        <li class="plus"><i>06</i><span><b>Тон и язык</b> - признаки живого письма и градиент обращения</span></li>
+        <li class="plus"><i>07</i><span><b>Доведение до встречи</b> - от ответа до назначенного времени</span></li>
+        <li class="plus"><i>08</i><span><b>Матрица возражений и лист проверки письма</b></span></li>
+        <li class="plus"><i>09</i><span><b>Структура воронки</b> под вашу систему учёта</span></li>
+        <li class="plus"><i>10</i><span><b>Рамка контроля для руководителя</b> - что смотреть, чтобы видеть затык</span></li>
+        </ul>
       <p class="note">Плюс записи всех 3 сессий и текстовые расшифровки. Всё собрано в HTML, открывается с любого устройства, ничего не требует установки.</p>
     </div>
   </div>
@@ -370,11 +345,9 @@
       </div>
     </div>
     <div>
-      <div class="pack"><span class="k">01</span><span class="v"><b>Разведка до тренинга:</b> карта решающих людей и таблицы связок по 4 вашим сегментам</span><span class="n">до старта</span></div>
-      <div class="pack"><span class="k">02</span><span class="v"><b>40 компаний</b> с найденными ЛПР, личными контактами и углом захода</span><span class="n">до старта</span></div>
-      <div class="pack"><span class="k">03</span><span class="v"><b>3 сессии по 2 часа</b> онлайн, с записью и расшифровкой, работа на ваших живых компаниях</span><span class="n">3 недели</span></div>
-      <div class="pack"><span class="k">04</span><span class="v"><b>30 дней сопровождения:</b> правка каждого письма в общем чате и 2 сверки по цифрам</span><span class="n">30 дней</span></div>
-      <div class="pack"><span class="k">05</span><span class="v"><b>12 документов</b> в вашем стиле - остаются у компании навсегда</span><span class="n">навсегда</span></div>
+      <div class="pack"><span class="k">01</span><span class="v"><b>3 сессии по 2 часа</b> онлайн, с записью и расшифровкой, работа на ваших живых компаниях</span><span class="n">3 недели</span></div>
+      <div class="pack"><span class="k">02</span><span class="v"><b>30 дней сопровождения:</b> правка каждого письма в общем чате и 2 сверки по цифрам</span><span class="n">30 дней</span></div>
+      <div class="pack"><span class="k">03</span><span class="v"><b>10 документов</b> в вашем стиле - остаются у компании навсегда</span><span class="n">навсегда</span></div>
     </div>
   </div>
   <p class="note r" style="--i:2;margin-left:auto;margin-right:auto;text-align:center">Оплата разовая, а механика остаётся у команды и продолжает работать дальше сама - <b>ей пользуются и через год, и на новых людях</b>.</p>
@@ -407,19 +380,4 @@
   <p class="note r" style="--i:3">Разница между этими путями - <b>3 недели работы и одно решение</b>. Всё остальное у вас уже есть: имя, портфолио, 3 отдела и продукт, который людям нравится смотреть.</p>
 </section>
 
-<!-- 19 · ФИНАЛ -->
-<section class="slide center">
-  <div class="r" style="--i:0">
-    <div class="lockup" style="justify-content:center">
-      <div class="logo">MEET<span>ENGINE</span></div>
-      <div class="x">&#215;</div>
-      <img src="{{src:eda.xyz}}" alt="easy digital agency" style="max-height:clamp(22px,3vh,40px)">
-    </div>
-  </div>
-  <h1 class="r" style="--i:1;max-width:19ch;margin-top:clamp(24px,4vh,44px)">Вы делаете вещи,<br>на которые <span class="o">смотрят</span>.<br>Добавим к этому ровный<br>поток встреч с теми,<br>кто их заказывает.</h1>
-  <p class="lead r" style="--i:2;margin:clamp(20px,3vh,34px) auto 0;text-align:center">Давайте созвонимся - разберу ваши сегменты и покажу на 3 ваших живых компаниях, как это выглядит. Дальше решите сами.</p>
-  <div class="r" style="--i:3;margin-top:clamp(26px,4vh,44px)">
-    <a class="cta" href="https://t.me/mihailgabitov242">Написать в Telegram &#8594;</a>
-  </div>
-  <div class="foot r" style="--i:4;margin-top:clamp(26px,4vh,46px)">Михаил Габитов &#183; Telegram @mihailgabitov242<br>ИП Габитов Михаил Вадимович &#183; ИНН 720320014854</div>
-</section>
+
