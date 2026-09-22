@@ -580,17 +580,18 @@ p:last-child{margin-bottom:0}
 @keyframes pulse{0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.35; transform:scale(.8)}}
 .board-rows{display:grid}
 .row{
-  display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:16px;
+  display:grid; grid-template-columns:200px 1fr auto; align-items:center; gap:24px;
   padding:14px 20px; border-bottom:1px solid var(--deep-line);
   transition:background .2s;
 }
 .row:last-child{border-bottom:none}
 .row:hover{background:rgba(255,255,255,.03)}
 .row .lg{
-  width:34px; height:34px; border-radius:8px; background:#fff; padding:4px;
+  width:200px; height:72px; border-radius:12px; background:#fff; padding:10px 16px;
   display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
-.row .lg img{width:100%; height:100%; object-fit:contain}
+/* те же лого, что в сетке брендов, и та же мера: одна видимая площадь у всех */
+.row .lg img{width:calc(var(--w,180) * .7px); max-width:100%; height:auto}
 .row .who b{display:block; font-family:var(--disp); font-weight:600; font-size:16px; color:var(--deep-ink); letter-spacing:-.01em}
 .row .who span{font-size:13.5px; color:var(--deep-soft)}
 .row .st{
@@ -601,7 +602,9 @@ p:last-child{margin-bottom:0}
 .row .lg.ondark{background:#1b2330}
 .board-note{padding:16px 20px; font-size:14.5px; color:var(--deep-soft); border-top:1px solid var(--deep-line)}
 @media(max-width:560px){
-  .row{grid-template-columns:34px 1fr; gap:12px; padding:12px 14px}
+  .row{grid-template-columns:112px 1fr; gap:14px; padding:12px 14px}
+  .row .lg{width:112px; height:52px; padding:8px 10px; border-radius:10px}
+  .row .lg img{width:calc(var(--w,180) * .42px)}
   .row .st{grid-column:2; font-size:10.5px}
 }
 
@@ -764,10 +767,10 @@ p:last-child{margin-bottom:0}
 .brands{list-style:none; margin:0; padding:0; display:grid; gap:14px;
   grid-template-columns:repeat(4,1fr)}
 @media(max-width:940px){.brands{grid-template-columns:repeat(3,1fr)}}
-.brand{position:relative; height:128px; border-radius:var(--radius); background:#fff;
+.brand{position:relative; height:150px; border-radius:var(--radius); background:#fff;
   border:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:26px 30px;
   transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s, border-color .25s}
-.brand img{width:calc(var(--w,180) * 1px); max-width:88%; height:auto}
+.brand img{width:calc(var(--w,180) * 1.15px); max-width:90%; height:auto}
 .brand span{position:absolute; left:0; right:0; bottom:10px; text-align:center; font-size:11.5px;
   font-family:var(--mono); letter-spacing:.06em; text-transform:uppercase; color:#8a909b; opacity:0; transition:opacity .2s}
 .brand:hover{transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:transparent}
@@ -966,15 +969,15 @@ section[id]{scroll-margin-top:84px}
         <span class="live"><i></i> live</span>
       </div>
       <div class="board-rows">
-        <div class="row"><span class="lg"><img src="logos/magnit.png" alt="Магнит" loading="lazy"></span><span class="who"><b>Магнит</b><span>инфлюенс-лид</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg"><img src="logos/yandex.png" alt="Яндекс" loading="lazy"></span><span class="who"><b>Яндекс</b><span>маркетинг Еды</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg"><img src="logos/pg.com.png" alt="Procter &amp; Gamble" loading="lazy"></span><span class="who"><b>Procter &amp; Gamble</b><span>бренд-маркетинг · Gillette, Old Spice</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg"><img src="logos/sportmaster.png" alt="Спортмастер" loading="lazy"></span><span class="who"><b>Спортмастер</b><span>бренд-лид Demix</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg"><img src="logos/kaspersky.png" alt="Касперский" loading="lazy"></span><span class="who"><b>Касперский</b><span>директор по маркетингу</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg"><img src="logos/megafon.png" alt="МегаФон" loading="lazy"></span><span class="who"><b>МегаФон</b><span>digital мобильного приложения</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg ondark"><img src="logos/domrf.png" alt="Банк ДОМ.РФ" loading="lazy"></span><span class="who"><b>Банк ДОМ.РФ</b><span>маркетинг розницы и премиума</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg"><img src="logos/evalar.png" alt="Эвалар" loading="lazy"></span><span class="who"><b>Эвалар</b><span>директор по маркетингу</span></span><span class="st">встреча состоялась</span></div>
-        <div class="row"><span class="lg"><img src="logos/samolet.png" alt="ГК Самолет" loading="lazy"></span><span class="who"><b>ГК Самолет</b><span>маркетинг</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/magnit.png" alt="Магнит" style="--w:214" loading="lazy"></span><span class="who"><b>Магнит</b><span>инфлюенс-лид</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/yandex.png" alt="Яндекс" style="--w:172" loading="lazy"></span><span class="who"><b>Яндекс</b><span>маркетинг Еды</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/pg.com.png" alt="Procter &amp; Gamble" style="--w:141" loading="lazy"></span><span class="who"><b>Procter &amp; Gamble</b><span>бренд-маркетинг · Gillette, Old Spice</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/sportmaster.png" alt="Спортмастер" style="--w:220" loading="lazy"></span><span class="who"><b>Спортмастер</b><span>бренд-лид Demix</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/kaspersky.png" alt="Касперский" style="--w:212" loading="lazy"></span><span class="who"><b>Касперский</b><span>директор по маркетингу</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/megafon.png" alt="МегаФон" style="--w:220" loading="lazy"></span><span class="who"><b>МегаФон</b><span>digital мобильного приложения</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/domrf.png" alt="Банк ДОМ.РФ" style="--w:156" loading="lazy"></span><span class="who"><b>Банк ДОМ.РФ</b><span>маркетинг розницы и премиума</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/evalar.png" alt="Эвалар" style="--w:130" loading="lazy"></span><span class="who"><b>Эвалар</b><span>директор по маркетингу</span></span><span class="st">встреча состоялась</span></div>
+        <div class="row"><span class="lg"><img src="logos/brand/samolet.png" alt="ГК Самолет" style="--w:220" loading="lazy"></span><span class="who"><b>ГК Самолет</b><span>маркетинг</span></span><span class="st">встреча состоялась</span></div>
       </div>
       <div class="board-note">Компании настоящие, сайты открыты, цифры реальные, клиенты на связи. Спрашивайте.</div>
     </div>
