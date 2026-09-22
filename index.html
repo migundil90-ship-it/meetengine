@@ -599,7 +599,6 @@ p:last-child{margin-bottom:0}
   color:var(--ok); display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
 }
 .row .st::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--ok)}
-.row .lg.ondark{background:#1b2330}
 .board-note{padding:16px 20px; font-size:14.5px; color:var(--deep-soft); border-top:1px solid var(--deep-line)}
 @media(max-width:560px){
   .row{grid-template-columns:112px 1fr; gap:14px; padding:12px 14px}
@@ -630,7 +629,6 @@ p:last-child{margin-bottom:0}
 .case-top{display:flex; align-items:center; gap:12px}
 .case .lg{width:36px; height:36px; border-radius:9px; background:#fff; border:1px solid var(--line-2); padding:5px; flex:none; display:flex; align-items:center; justify-content:center}
 .case .lg img{width:100%; height:100%; object-fit:contain}
-.case .lg.ondark{background:#1b2330; border-color:#1b2330}
 .case .nm{display:block; font-family:var(--disp); font-weight:700; font-size:17px; letter-spacing:-.015em; line-height:1.25}
 .case .sub{display:block; font-size:13px; line-height:1.35; color:var(--faint); margin-top:3px}
 .case .res{
@@ -757,29 +755,28 @@ p:last-child{margin-bottom:0}
 .case .lg{width:auto; height:52px; min-width:52px; max-width:100%; padding:10px 14px; border-radius:10px;
   background:#fff; border:1px solid var(--line-2); display:flex; align-items:center; justify-content:center}
 .case .lg img{width:auto; height:100%; max-width:170px; object-fit:contain}
-.case .lg.ondark{background:#161b24; border-color:#161b24}
 .case .lg-word{font-family:var(--disp); font-weight:800; font-size:17px; letter-spacing:-.02em;
   color:var(--ink); background:var(--bg-2); border-color:var(--line)}
 .case .lg-mark{color:var(--hot); background:var(--hot-soft); border-color:transparent}
 .case .who{display:block}
 
 /* ─── бренды: крупная сетка, каждое лого в своей плитке ─────── */
-.brands{list-style:none; margin:0; padding:0; display:grid; gap:10px;
-  grid-template-columns:repeat(6,1fr)}
-@media(max-width:1100px){.brands{grid-template-columns:repeat(5,1fr)}}
-@media(max-width:940px){.brands{grid-template-columns:repeat(4,1fr)}}
+/* не сетка, а ряды с переносом: неполный последний ряд встаёт по центру, а не влево */
+.brands{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap;
+  gap:10px; justify-content:center; --кол:6}
+.brand{flex:0 0 calc((100% - (var(--кол) - 1) * 10px) / var(--кол))}
+@media(max-width:1100px){.brands{--кол:5}}
+@media(max-width:940px){.brands{--кол:4}}
 .brand{position:relative; height:104px; border-radius:var(--radius); background:#fff;
   border:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:26px 30px;
   transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s, border-color .25s}
 .brand img{width:calc(var(--w,130) * 1px); max-width:86%; height:auto}
-/* белое лого на белой плитке пропадает: такой плитке даём тёмный фон */
-.brand.ondark{background:#141922; border-color:#141922}
-.brand.ondark span{color:#aeb6c4}
 .brand span{position:absolute; left:0; right:0; bottom:10px; text-align:center; font-size:11.5px;
   font-family:var(--mono); letter-spacing:.06em; text-transform:uppercase; color:#8a909b; opacity:0; transition:opacity .2s}
 .brand:hover{transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:transparent}
 .brand:hover span{opacity:1}
-@media(max-width:560px){.brands{grid-template-columns:repeat(3,1fr); gap:8px} .brand{height:78px; padding:12px}
+@media(max-width:560px){.brands{--кол:3; gap:8px}
+  .brand{flex-basis:calc((100% - 16px) / 3); height:78px; padding:12px}
   .brand img{width:calc(var(--w,130) * .78px)}}
 
 /* ─── добавка к обучению: автоматизация ───────────────────── */
@@ -1009,7 +1006,7 @@ section[id]{scroll-margin-top:84px}
     <div class="cases">
     <!--КЕЙСЫ:лидген-->
       <article class="case rise" data-delay="0">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/impression-agency.ru.png" alt="Impression" loading="lazy"></span><span class="who"><span class="nm">Impression</span><span class="sub">инфлюенс · автоблогеры</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/impression-agency.ru-ink.png" alt="Impression" loading="lazy"></span><span class="who"><span class="nm">Impression</span><span class="sub">инфлюенс · автоблогеры</span></span></div>
         <div class="res"><em>56 из 70</em> целевых CMO выведены на встречу</div>
         <p>Задача была не «найти контакт», а сделать так, чтобы директор по маркетингу корпорации пришёл именно к нам, а не к десяти агентствам с тем же письмом.</p>
         <div class="bar">4 месяца</div>
@@ -1021,31 +1018,31 @@ section[id]{scroll-margin-top:84px}
         <div class="bar">2 недели до первых сделок</div>
       </article>
       <article class="case rise" data-delay="2">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/romashka.media.png" alt="Ромашка Медиа" loading="lazy"></span><span class="who"><span class="nm">Ромашка Медиа</span><span class="sub">инфлюенс-маркетинг</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/romashka.media-ink.png" alt="Ромашка Медиа" loading="lazy"></span><span class="who"><span class="nm">Ромашка Медиа</span><span class="sub">инфлюенс-маркетинг</span></span></div>
         <div class="res">До <em>40 встреч в месяц</em></div>
         <p>Банки, ритейл, телеком, экосистемы, фарма, красота, продукты, недвижимость - всё в один поток. От 5 встреч в неделю стабильно.</p>
         <div class="bar">стабильный поток</div>
       </article>
       <article class="case rise" data-delay="0">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/b2boost.png" alt="B2Boost" loading="lazy"></span><span class="who"><span class="nm">B2Boost</span><span class="sub">построение B2B-отделов продаж</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/b2boost-ink.png" alt="B2Boost" loading="lazy"></span><span class="who"><span class="nm">B2Boost</span><span class="sub">построение B2B-отделов продаж</span></span></div>
         <div class="res"><em>6-7 встреч в неделю</em> с гендиректорами</div>
         <p>Самый тяжёлый заход: в холодную выйти на собственника и продать ему встречу, где скажут, что его отдел продаж надо перестраивать. И он приходит.</p>
         <div class="bar">первые лица</div>
       </article>
       <article class="case rise" data-delay="1">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/easydigital.png" alt="Easy Digital" loading="lazy"></span><span class="who"><span class="nm">Easy Digital</span><span class="sub">digital полного цикла · бренд · веб</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/easydigital-ink.png" alt="Easy Digital" loading="lazy"></span><span class="who"><span class="nm">Easy Digital</span><span class="sub">digital полного цикла · бренд · веб</span></span></div>
         <div class="res"><em>17 встреч</em> за 1,5 месяца</div>
         <p>Директора по маркетингу и руководители digital. Компании с бюджетами на брендинг, веб и продакшн.</p>
         <div class="bar">1,5 месяца</div>
       </article>
       <article class="case rise" data-delay="2">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/secretgang.png" alt="Secret Gang" loading="lazy"></span><span class="who"><span class="nm">Secret Gang</span><span class="sub">креатив · брендинг · полный цикл</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/secretgang-ink.png" alt="Secret Gang" loading="lazy"></span><span class="who"><span class="nm">Secret Gang</span><span class="sub">креатив · брендинг · полный цикл</span></span></div>
         <div class="res"><em>10 встреч</em> за 14 дней</div>
         <p>Директора по маркетингу и креативные директора. Холодный заход на бренды под креатив и брендинг.</p>
         <div class="bar">14 дней</div>
       </article>
       <article class="case rise" data-delay="0">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/thejames.png" alt="THE JAMES" loading="lazy"></span><span class="who"><span class="nm">THE JAMES</span><span class="sub">PR · коммуникации</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/thejames-ink.png" alt="THE JAMES" loading="lazy"></span><span class="who"><span class="nm">THE JAMES</span><span class="sub">PR · коммуникации</span></span></div>
         <div class="res"><em>37 встреч</em> за месяц</div>
         <p>Выводили на встречи PR-директоров и PR-менеджеров.</p>
         <div class="bar">1 месяц</div>
@@ -1069,7 +1066,7 @@ section[id]{scroll-margin-top:84px}
         <div class="bar">B2B · 2 направления</div>
       </article>
       <article class="case rise" data-delay="1">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/spritemedia.png" alt="SpriteMedia" loading="lazy"></span><span class="who"><span class="nm">SpriteMedia</span><span class="sub">инфлюенс-маркетинг · реклама у блогеров</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/spritemedia-ink.png" alt="SpriteMedia" loading="lazy"></span><span class="who"><span class="nm">SpriteMedia</span><span class="sub">инфлюенс-маркетинг · реклама у блогеров</span></span></div>
         <div class="res">Выход на <em>ЛПР брендов</em> под рекламу у блогеров</div>
         <p>Холодный выход на директоров по маркетингу брендов и довод до встречи с командой агентства.</p>
         <div class="bar">лидогенерация</div>
@@ -1126,7 +1123,7 @@ section[id]{scroll-margin-top:84px}
         <div class="bar">1 созвон · материалы у клиента</div>
       </article>
       <article class="case rise" data-delay="2">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/romashka.media.png" alt="Ромашка / АДСБЛОГГЕР" loading="lazy"></span><span class="who"><span class="nm">Ромашка / АДСБЛОГГЕР</span><span class="sub">инфлюенс-маркетинг</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/romashka.media-ink.png" alt="Ромашка / АДСБЛОГГЕР" loading="lazy"></span><span class="who"><span class="nm">Ромашка / АДСБЛОГГЕР</span><span class="sub">инфлюенс-маркетинг</span></span></div>
         <div class="res"><em>3 сессии</em> с командой плюс поток встреч</div>
         <p>Сначала обучили команду, потом взяли на себя и сам поток: обучение и лидогенерация в одном проекте. После второй сессии генеральный сам попросил доступ к механике.</p>
         <div class="bar">обучение + ведение потока</div>
@@ -1144,7 +1141,7 @@ section[id]{scroll-margin-top:84px}
         <div class="bar">поток встреч + обучение</div>
       </article>
       <article class="case rise" data-delay="2">
-        <div class="case-top"><span class="lg ondark"><img src="logos/case/asap.png" alt="ASAP Digital" loading="lazy"></span><span class="who"><span class="nm">ASAP Digital</span><span class="sub">SMM · блогеры · аналитика брендов</span></span></div>
+        <div class="case-top"><span class="lg"><img src="logos/case/asap-ink.png" alt="ASAP Digital" loading="lazy"></span><span class="who"><span class="nm">ASAP Digital</span><span class="sub">SMM · блогеры · аналитика брендов</span></span></div>
         <div class="res">Обучение команды <em>сентябрь 2026</em></div>
         <p>Команда креативного digital-агентства забирает себе механику выхода на ЛПР брендов: личные контакты, первое письмо, цепочку до встречи.</p>
         <div class="bar">обучение команды</div>
@@ -1190,7 +1187,7 @@ section[id]{scroll-margin-top:84px}
       <li class="brand rise" data-delay="5"><img src="logos/brand/wildberries.png" alt="Wildberries" style="--w:160" loading="lazy"><span>Wildberries</span></li>
       <li class="brand rise" data-delay="0"><img src="logos/brand/avito.ru.png" alt="Avito" style="--w:135" loading="lazy"><span>Avito</span></li>
       <li class="brand rise" data-delay="1"><img src="logos/brand/mts.ru.png" alt="МТС" style="--w:136" loading="lazy"><span>МТС</span></li>
-      <li class="brand ondark rise" data-delay="2"><img src="logos/brand/beeline.png" alt="Билайн" style="--w:59" loading="lazy"><span>Билайн</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/beeline-ink.png" alt="Билайн" style="--w:59" loading="lazy"><span>Билайн</span></li>
       <li class="brand rise" data-delay="3"><img src="logos/brand/sberhealth.ru.png" alt="СберЗдоровье" style="--w:160" loading="lazy"><span>СберЗдоровье</span></li>
       <li class="brand rise" data-delay="4"><img src="logos/brand/vkusvill.png" alt="ВкусВилл" style="--w:160" loading="lazy"><span>ВкусВилл</span></li>
       <li class="brand rise" data-delay="5"><img src="logos/brand/samokat.ru.png" alt="Самокат" style="--w:160" loading="lazy"><span>Самокат</span></li>
@@ -1199,16 +1196,16 @@ section[id]{scroll-margin-top:84px}
       <li class="brand rise" data-delay="2"><img src="logos/brand/citilink.ru.png" alt="Ситилинк" style="--w:142" loading="lazy"><span>Ситилинк</span></li>
       <li class="brand rise" data-delay="3"><img src="logos/brand/fix-price.com.png" alt="Fix Price" style="--w:121" loading="lazy"><span>Fix Price</span></li>
       <li class="brand rise" data-delay="4"><img src="logos/brand/okmarket.ru.png" alt="Окей" style="--w:126" loading="lazy"><span>Окей</span></li>
-      <li class="brand ondark rise" data-delay="5"><img src="logos/brand/lemanapro.png" alt="Лемана Про" style="--w:134" loading="lazy"><span>Лемана Про</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/lemanapro-ink.png" alt="Лемана Про" style="--w:134" loading="lazy"><span>Лемана Про</span></li>
       <li class="brand rise" data-delay="0"><img src="logos/brand/petrovich.ru.png" alt="Петрович" style="--w:144" loading="lazy"><span>Петрович</span></li>
       <li class="brand rise" data-delay="1"><img src="logos/brand/pik.png" alt="ПИК" style="--w:106" loading="lazy"><span>ПИК</span></li>
       <li class="brand rise" data-delay="2"><img src="logos/brand/ostrovok.ru.png" alt="Островок" style="--w:158" loading="lazy"><span>Островок</span></li>
       <li class="brand rise" data-delay="3"><img src="logos/brand/dodopizza.png" alt="Додо Пицца" style="--w:160" loading="lazy"><span>Додо Пицца</span></li>
-      <li class="brand ondark rise" data-delay="4"><img src="logos/brand/dellin.png" alt="Деловые Линии" style="--w:160" loading="lazy"><span>Деловые Линии</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/dellin-ink.png" alt="Деловые Линии" style="--w:160" loading="lazy"><span>Деловые Линии</span></li>
       <li class="brand rise" data-delay="5"><img src="logos/brand/growfood.pro.png" alt="GrowFood" style="--w:51" loading="lazy"><span>GrowFood</span></li>
       <li class="brand rise" data-delay="0"><img src="logos/brand/tanuki.ru.png" alt="Тануки" style="--w:81" loading="lazy"><span>Тануки</span></li>
-      <li class="brand ondark rise" data-delay="1"><img src="logos/brand/skillbox.png" alt="Skillbox" style="--w:144" loading="lazy"><span>Skillbox</span></li>
-      <li class="brand ondark rise" data-delay="2"><img src="logos/brand/netology.png" alt="Нетология" style="--w:160" loading="lazy"><span>Нетология</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/skillbox-ink.png" alt="Skillbox" style="--w:144" loading="lazy"><span>Skillbox</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/netology-ink.png" alt="Нетология" style="--w:160" loading="lazy"><span>Нетология</span></li>
       <li class="brand rise" data-delay="3"><img src="logos/brand/yango.yandex.com.png" alt="YANGO" style="--w:118" loading="lazy"><span>YANGO</span></li>
       <li class="brand rise" data-delay="4"><img src="logos/brand/ingosstrah.png" alt="Ингосстрах" style="--w:160" loading="lazy"><span>Ингосстрах</span></li>
       <li class="brand rise" data-delay="5"><img src="logos/brand/invitro.png" alt="Инвитро" style="--w:159" loading="lazy"><span>Инвитро</span></li>
@@ -1220,7 +1217,7 @@ section[id]{scroll-margin-top:84px}
       <li class="brand rise" data-delay="5"><img src="logos/brand/cherkizovo.com.png" alt="Черкизово" style="--w:141" loading="lazy"><span>Черкизово</span></li>
       <li class="brand rise" data-delay="0"><img src="logos/brand/borjomi.png" alt="Боржоми" style="--w:157" loading="lazy"><span>Боржоми</span></li>
       <li class="brand rise" data-delay="1"><img src="logos/brand/flowwow.com.png" alt="Flowwow" style="--w:160" loading="lazy"><span>Flowwow</span></li>
-      <li class="brand ondark rise" data-delay="2"><img src="logos/brand/tsum.png" alt="ЦУМ" style="--w:78" loading="lazy"><span>ЦУМ</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/tsum-ink.png" alt="ЦУМ" style="--w:78" loading="lazy"><span>ЦУМ</span></li>
     <!--/БРЕНДЫ-->
     </ul>
   </div>
