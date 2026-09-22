@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="lit-wait">
+<html lang="ru" class="lit-wait" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -764,19 +764,23 @@ p:last-child{margin-bottom:0}
 .case .who{display:block}
 
 /* ─── бренды: крупная сетка, каждое лого в своей плитке ─────── */
-.brands{list-style:none; margin:0; padding:0; display:grid; gap:14px;
-  grid-template-columns:repeat(4,1fr)}
-@media(max-width:940px){.brands{grid-template-columns:repeat(3,1fr)}}
-.brand{position:relative; height:150px; border-radius:var(--radius); background:#fff;
+.brands{list-style:none; margin:0; padding:0; display:grid; gap:10px;
+  grid-template-columns:repeat(6,1fr)}
+@media(max-width:1100px){.brands{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:940px){.brands{grid-template-columns:repeat(4,1fr)}}
+.brand{position:relative; height:104px; border-radius:var(--radius); background:#fff;
   border:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:26px 30px;
   transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s, border-color .25s}
-.brand img{width:calc(var(--w,180) * 1.15px); max-width:90%; height:auto}
+.brand img{width:calc(var(--w,130) * 1px); max-width:86%; height:auto}
+/* белое лого на белой плитке пропадает: такой плитке даём тёмный фон */
+.brand.ondark{background:#141922; border-color:#141922}
+.brand.ondark span{color:#aeb6c4}
 .brand span{position:absolute; left:0; right:0; bottom:10px; text-align:center; font-size:11.5px;
   font-family:var(--mono); letter-spacing:.06em; text-transform:uppercase; color:#8a909b; opacity:0; transition:opacity .2s}
 .brand:hover{transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:transparent}
 .brand:hover span{opacity:1}
-@media(max-width:560px){.brands{grid-template-columns:repeat(2,1fr); gap:10px} .brand{height:96px; padding:18px}
-  .brand img{width:calc(var(--w,180) * .68px)}}
+@media(max-width:560px){.brands{grid-template-columns:repeat(3,1fr); gap:8px} .brand{height:78px; padding:12px}
+  .brand img{width:calc(var(--w,130) * .78px)}}
 
 /* ─── добавка к обучению: автоматизация ───────────────────── */
 .addon{margin:4px 0 20px; padding:14px 16px; border-radius:10px; background:var(--hot-soft); border:1px dashed color-mix(in srgb,var(--hot) 45%,transparent)}
@@ -1166,22 +1170,57 @@ section[id]{scroll-margin-top:84px}
   <div class="wrap">
     <ul class="brands">
     <!--БРЕНДЫ-->
-      <li class="brand rise" data-delay="0"><img src="logos/brand/magnit.png" alt="Магнит" style="--w:214" loading="lazy"><span>Магнит</span></li>
-      <li class="brand rise" data-delay="1"><img src="logos/brand/yandex.png" alt="Яндекс" style="--w:172" loading="lazy"><span>Яндекс</span></li>
-      <li class="brand rise" data-delay="2"><img src="logos/brand/pg.com.png" alt="Procter &amp; Gamble" style="--w:141" loading="lazy"><span>Procter &amp; Gamble</span></li>
-      <li class="brand rise" data-delay="3"><img src="logos/brand/sportmaster.png" alt="Спортмастер" style="--w:220" loading="lazy"><span>Спортмастер</span></li>
-      <li class="brand rise" data-delay="0"><img src="logos/brand/kaspersky.png" alt="Касперский" style="--w:212" loading="lazy"><span>Касперский</span></li>
-      <li class="brand rise" data-delay="1"><img src="logos/brand/megafon.png" alt="МегаФон" style="--w:220" loading="lazy"><span>МегаФон</span></li>
-      <li class="brand rise" data-delay="2"><img src="logos/brand/domrf.png" alt="Банк ДОМ.РФ" style="--w:156" loading="lazy"><span>Банк ДОМ.РФ</span></li>
-      <li class="brand rise" data-delay="3"><img src="logos/brand/evalar.png" alt="Эвалар" style="--w:130" loading="lazy"><span>Эвалар</span></li>
-      <li class="brand rise" data-delay="0"><img src="logos/brand/samolet.png" alt="ГК Самолет" style="--w:220" loading="lazy"><span>ГК Самолет</span></li>
-      <li class="brand rise" data-delay="1"><img src="logos/brand/alfabank.png" alt="Альфа-Банк" style="--w:207" loading="lazy"><span>Альфа-Банк</span></li>
-      <li class="brand rise" data-delay="2"><img src="logos/brand/aeroflot.png" alt="Аэрофлот" style="--w:205" loading="lazy"><span>Аэрофлот</span></li>
-      <li class="brand rise" data-delay="3"><img src="logos/brand/aviasales.png" alt="Aviasales" style="--w:193" loading="lazy"><span>Aviasales</span></li>
-      <li class="brand rise" data-delay="0"><img src="logos/brand/abbott.com.png" alt="Abbott" style="--w:220" loading="lazy"><span>Abbott</span></li>
-      <li class="brand rise" data-delay="1"><img src="logos/brand/4fresh.ru.png" alt="4fresh" style="--w:201" loading="lazy"><span>4fresh</span></li>
-      <li class="brand rise" data-delay="2"><img src="logos/brand/absolutins.ru.png" alt="Абсолют Страхование" style="--w:199" loading="lazy"><span>Абсолют Страхование</span></li>
-      <li class="brand rise" data-delay="3"><img src="logos/brand/aravia-prof.ru.png" alt="Aravia" style="--w:157" loading="lazy"><span>Aravia</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/magnit.png" alt="Магнит" style="--w:156" loading="lazy"><span>Магнит</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/yandex.png" alt="Яндекс" style="--w:126" loading="lazy"><span>Яндекс</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/pg.com.png" alt="Procter &amp; Gamble" style="--w:103" loading="lazy"><span>Procter &amp; Gamble</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/sportmaster.png" alt="Спортмастер" style="--w:160" loading="lazy"><span>Спортмастер</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/kaspersky.png" alt="Касперский" style="--w:155" loading="lazy"><span>Касперский</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/megafon.png" alt="МегаФон" style="--w:160" loading="lazy"><span>МегаФон</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/domrf.png" alt="Банк ДОМ.РФ" style="--w:114" loading="lazy"><span>Банк ДОМ.РФ</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/evalar.png" alt="Эвалар" style="--w:93" loading="lazy"><span>Эвалар</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/samolet.png" alt="ГК Самолет" style="--w:160" loading="lazy"><span>ГК Самолет</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/alfabank.png" alt="Альфа-Банк" style="--w:151" loading="lazy"><span>Альфа-Банк</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/aeroflot.png" alt="Аэрофлот" style="--w:150" loading="lazy"><span>Аэрофлот</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/aviasales.png" alt="Aviasales" style="--w:141" loading="lazy"><span>Aviasales</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/abbott.com.png" alt="Abbott" style="--w:160" loading="lazy"><span>Abbott</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/4fresh.ru.png" alt="4fresh" style="--w:147" loading="lazy"><span>4fresh</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/absolutins.ru.png" alt="Абсолют Страхование" style="--w:146" loading="lazy"><span>Абсолют Страхование</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/aravia-prof.ru.png" alt="Aravia" style="--w:115" loading="lazy"><span>Aravia</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/ozon.ru.png" alt="Ozon" style="--w:145" loading="lazy"><span>Ozon</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/wildberries.png" alt="Wildberries" style="--w:160" loading="lazy"><span>Wildberries</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/avito.ru.png" alt="Avito" style="--w:135" loading="lazy"><span>Avito</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/mts.ru.png" alt="МТС" style="--w:136" loading="lazy"><span>МТС</span></li>
+      <li class="brand ondark rise" data-delay="2"><img src="logos/brand/beeline.png" alt="Билайн" style="--w:59" loading="lazy"><span>Билайн</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/sberhealth.ru.png" alt="СберЗдоровье" style="--w:160" loading="lazy"><span>СберЗдоровье</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/vkusvill.png" alt="ВкусВилл" style="--w:160" loading="lazy"><span>ВкусВилл</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/samokat.ru.png" alt="Самокат" style="--w:160" loading="lazy"><span>Самокат</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/start.ru.png" alt="START" style="--w:94" loading="lazy"><span>START</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/dns.png" alt="DNS" style="--w:89" loading="lazy"><span>DNS</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/citilink.ru.png" alt="Ситилинк" style="--w:142" loading="lazy"><span>Ситилинк</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/fix-price.com.png" alt="Fix Price" style="--w:121" loading="lazy"><span>Fix Price</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/okmarket.ru.png" alt="Окей" style="--w:126" loading="lazy"><span>Окей</span></li>
+      <li class="brand ondark rise" data-delay="5"><img src="logos/brand/lemanapro.png" alt="Лемана Про" style="--w:134" loading="lazy"><span>Лемана Про</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/petrovich.ru.png" alt="Петрович" style="--w:144" loading="lazy"><span>Петрович</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/pik.png" alt="ПИК" style="--w:106" loading="lazy"><span>ПИК</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/ostrovok.ru.png" alt="Островок" style="--w:158" loading="lazy"><span>Островок</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/dodopizza.png" alt="Додо Пицца" style="--w:160" loading="lazy"><span>Додо Пицца</span></li>
+      <li class="brand ondark rise" data-delay="4"><img src="logos/brand/dellin.png" alt="Деловые Линии" style="--w:160" loading="lazy"><span>Деловые Линии</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/growfood.pro.png" alt="GrowFood" style="--w:51" loading="lazy"><span>GrowFood</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/tanuki.ru.png" alt="Тануки" style="--w:81" loading="lazy"><span>Тануки</span></li>
+      <li class="brand ondark rise" data-delay="1"><img src="logos/brand/skillbox.png" alt="Skillbox" style="--w:144" loading="lazy"><span>Skillbox</span></li>
+      <li class="brand ondark rise" data-delay="2"><img src="logos/brand/netology.png" alt="Нетология" style="--w:160" loading="lazy"><span>Нетология</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/yango.yandex.com.png" alt="YANGO" style="--w:118" loading="lazy"><span>YANGO</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/ingosstrah.png" alt="Ингосстрах" style="--w:160" loading="lazy"><span>Ингосстрах</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/invitro.png" alt="Инвитро" style="--w:159" loading="lazy"><span>Инвитро</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/gemotest.png" alt="Гемотест" style="--w:160" loading="lazy"><span>Гемотест</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/medsi.png" alt="Медси" style="--w:101" loading="lazy"><span>Медси</span></li>
+      <li class="brand rise" data-delay="2"><img src="logos/brand/biocad.ru.png" alt="BIOCAD" style="--w:154" loading="lazy"><span>BIOCAD</span></li>
+      <li class="brand rise" data-delay="3"><img src="logos/brand/naturasiberica.ru.png" alt="Natura Siberica" style="--w:117" loading="lazy"><span>Natura Siberica</span></li>
+      <li class="brand rise" data-delay="4"><img src="logos/brand/splat.ru.png" alt="SPLAT" style="--w:68" loading="lazy"><span>SPLAT</span></li>
+      <li class="brand rise" data-delay="5"><img src="logos/brand/cherkizovo.com.png" alt="Черкизово" style="--w:141" loading="lazy"><span>Черкизово</span></li>
+      <li class="brand rise" data-delay="0"><img src="logos/brand/borjomi.png" alt="Боржоми" style="--w:157" loading="lazy"><span>Боржоми</span></li>
+      <li class="brand rise" data-delay="1"><img src="logos/brand/flowwow.com.png" alt="Flowwow" style="--w:160" loading="lazy"><span>Flowwow</span></li>
+      <li class="brand ondark rise" data-delay="2"><img src="logos/brand/tsum.png" alt="ЦУМ" style="--w:78" loading="lazy"><span>ЦУМ</span></li>
     <!--/БРЕНДЫ-->
     </ul>
   </div>
