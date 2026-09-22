@@ -3,14 +3,334 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MEETENGINE — агентство B2B-маркетинга и корпоративное обучение</title>
-<meta name="description" content="Выводим ваших ЛПР на встречи — сами или ставим эту технологию внутрь вашего отдела продаж. Агентство B2B-маркетинга и корпоративное обучение.">
-<meta property="og:title" content="MEETENGINE — агентство B2B-маркетинга и корпоративное обучение">
+<title>MEETENGINE - агентство B2B-маркетинга и корпоративное обучение</title>
+<meta name="description" content="Выводим ваших ЛПР на встречи - сами или ставим эту технологию внутрь вашего отдела продаж. Агентство B2B-маркетинга и корпоративное обучение.">
+<meta property="og:title" content="MEETENGINE - агентство B2B-маркетинга и корпоративное обучение">
 <meta property="og:description" content="Встречи с директорами по маркетингу и первыми лицами. Выводим на встречи с ЛПР или передаём технологию вашей команде.">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800&family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* шрифты лежат у нас: сторож пуша не выпускает страницу, которая тянет их извне */
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-400-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-500-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-500-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-600-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-600-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-700-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-700-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/GolosText-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-400-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-500-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-500-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/IBMPlexMono-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-500-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-500-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-600-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-600-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-700-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-700-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-800-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-800-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-800-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/WixMadeforDisplay-800-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
 <style>
 :root{
   --ink:#0e1116;
@@ -565,7 +885,7 @@ section[id]{scroll-margin-top:84px}
     <div>
       <p class="eyebrow" style="--d:0s">Агентство B2B-маркетинга · корпоративное обучение</p>
       <h1><span class="ln"><i style="--d:.06s">Встречи с теми,</i></span><span class="ln"><i style="--d:.16s">кто <em>решает</em></i></span></h1>
-      <p class="lead" style="--d:.3s">Выводим директоров по маркетингу, гендиректоров и собственников на встречи с вами. Ведём этот поток сами — или ставим технологию внутрь вашего отдела продаж, и дальше вы делаете это без нас.</p>
+      <p class="lead" style="--d:.3s">Выводим директоров по маркетингу, гендиректоров и собственников на встречи с вами. Ведём этот поток сами - или ставим технологию внутрь вашего отдела продаж, и дальше вы делаете это без нас.</p>
       <div class="hero-cta" style="--d:.4s">
         <a class="btn btn-hot" href="#lidgen">Хочу поток встреч <span class="arr">→</span></a>
         <a class="btn btn-line" href="#obuchenie">Хочу обучить команду</a>
@@ -580,14 +900,14 @@ section[id]{scroll-margin-top:84px}
     <aside class="chain rise" data-delay="2">
       <p class="cap">Путь до встречи</p>
       <ol>
-        <li><b>Первое письмо</b><span>Короткое, на один экран телефона, без ссылок и вложений. Задача — чтобы с вами начали разговаривать.</span></li>
+        <li><b>Первое письмо</b><span>Короткое, на один экран телефона, без ссылок и вложений. Задача - чтобы с вами начали разговаривать.</span></li>
         <li class="pause"><b>+ сутки · лёгкий дожим</b></li>
         <li><b>Письмо про его рынок</b><span>Наблюдение о том, как в отрасли обычно устроено, и что мы с этим делаем.</span></li>
         <li class="pause"><b>+ сутки · лёгкий дожим</b></li>
         <li><b>Письмо про его компанию</b><span>Говорим про то, что видно у него самого. Самое персональное письмо в цепочке.</span></li>
         <li class="win"><b>Чужой результат и вопрос → встреча</b><span>Что получилось у похожей компании и один вопрос. Здесь человек обычно и отвечает.</span></li>
       </ol>
-      <p class="foot-note">Ответил на любом шаге — цепочка останавливается, дальше говорит человек.</p>
+      <p class="foot-note">Ответил на любом шаге - цепочка останавливается, дальше говорит человек.</p>
     </aside>
   </div>
 </section>
@@ -666,11 +986,11 @@ section[id]{scroll-margin-top:84px}
     <div class="head rise">
       <p class="eyebrow">Направление 01 · агентство B2B-маркетинга</p>
       <h2>Выводим вас на встречи с ЛПР</h2>
-      <p class="lead">Вы получаете календарь, в котором стоят встречи с людьми, принимающими решения. Всё, что до встречи, — на нас: список компаний, выход на нужного человека, переписка до согласия.</p>
+      <p class="lead">Вы получаете календарь, в котором стоят встречи с людьми, принимающими решения. Всё, что до встречи, - на нас: список компаний, выход на нужного человека, переписка до согласия.</p>
     </div>
 
     <div class="steps rise">
-      <div class="st"><span class="n">01</span><h4>Собираем целевой список</h4><p>Компании, у которых есть бюджет на ваш продукт, — по отрасли, размеру и признакам, а не по справочнику.</p></div>
+      <div class="st"><span class="n">01</span><h4>Собираем целевой список</h4><p>Компании, у которых есть бюджет на ваш продукт, - по отрасли, размеру и признакам, а не по справочнику.</p></div>
       <div class="st"><span class="n">02</span><h4>Достаём личные контакты</h4><p>Имя, телефон и телеграм человека, который отвечает за ваше направление. Не общий ящик и не секретарь.</p></div>
       <div class="st"><span class="n">03</span><h4>Ведём переписку</h4><p>Первое письмо и цепочка касаний с поводом, взятым с их стороны. До ответа и до согласия на встречу.</p></div>
       <div class="st"><span class="n">04</span><h4>Передаём встречу вам</h4><p>Вы приходите и продаёте. Вся переписка и контакт остаются у вас.</p></div>
@@ -696,7 +1016,7 @@ section[id]{scroll-margin-top:84px}
       <article class="case rise" data-delay="2">
         <div class="case-top"><span class="lg ondark"><img src="logos/case/romashka.media.png" alt="Ромашка Медиа" loading="lazy"></span><span class="who"><span class="nm">Ромашка Медиа</span><span class="sub">инфлюенс-маркетинг</span></span></div>
         <div class="res">До <em>40 встреч в месяц</em></div>
-        <p>Банки, ритейл, телеком, экосистемы, фарма, красота, продукты, недвижимость — всё в один поток. От 5 встреч в неделю стабильно.</p>
+        <p>Банки, ритейл, телеком, экосистемы, фарма, красота, продукты, недвижимость - всё в один поток. От 5 встреч в неделю стабильно.</p>
         <div class="bar">стабильный поток</div>
       </article>
       <article class="case rise" data-delay="0">
@@ -738,7 +1058,7 @@ section[id]{scroll-margin-top:84px}
       <article class="case rise" data-delay="0">
         <div class="case-top"><span class="lg"><img src="logos/case/brobrolab.png" alt="BroBro Lab" loading="lazy"></span><span class="who"><span class="nm">BroBro Lab</span><span class="sub">сервис и магазин техники Apple · Москва</span></span></div>
         <div class="res">Два B2B-направления: <em>партнёры</em> и <em>корпоративный парк</em></div>
-        <p>Искали магазины техники Apple, которые будут отдавать устройства в сервис BroBro Lab. И выходили на компании с большим парком техники Apple — под закупку и сервисное обслуживание.</p>
+        <p>Искали магазины техники Apple, которые будут отдавать устройства в сервис BroBro Lab. И выходили на компании с большим парком техники Apple - под закупку и сервисное обслуживание.</p>
         <div class="bar">B2B · 2 направления</div>
       </article>
       <article class="case rise" data-delay="1">
@@ -757,7 +1077,7 @@ section[id]{scroll-margin-top:84px}
     <div class="head rise">
       <p class="eyebrow">Направление 02 · корпоративное обучение</p>
       <h2>Ставим технологию внутрь вашего отдела</h2>
-      <p class="lead">Один созвон с вашей командой — и механика выхода на ЛПР остаётся у вас. Работает у любого менеджера, не только у звёздного, и не уходит вместе с человеком.</p>
+      <p class="lead">Один созвон с вашей командой - и механика выхода на ЛПР остаётся у вас. Работает у любого менеджера, не только у звёздного, и не уходит вместе с человеком.</p>
     </div>
 
     <div class="two rise">
@@ -765,7 +1085,7 @@ section[id]{scroll-margin-top:84px}
         <h3>Что делаем на созвоне</h3>
         <ul class="ticks">
           <li>Разбираем, <b>кто ваши настоящие ЛПР</b> и через какую точку входа к ним заходить</li>
-          <li>Показываем, <b>как достать личный контакт</b> — телефон и телеграм конкретного человека</li>
+          <li>Показываем, <b>как достать личный контакт</b> - телефон и телеграм конкретного человека</li>
           <li>Пишем <b>ваше первое письмо</b> прямо на созвоне, на ваших живых компаниях</li>
           <li>Раскладываем <b>всю цепочку до встречи</b> и разбираем отказы</li>
         </ul>
@@ -789,7 +1109,7 @@ section[id]{scroll-margin-top:84px}
       <article class="case rise" data-delay="0">
         <div class="case-top"><span class="lg"><img src="logos/case/adplay.ru.png" alt="ADPLAY" loading="lazy"></span><span class="who"><span class="nm">ADPLAY</span><span class="sub">рекламная сеть · площадки</span></span></div>
         <div class="res">Интенсив на <em>4 часа</em> и 10 материалов команде</div>
-        <p>Провели внедрение, собрали рабочие материалы под их продукт. Потом разобрали живые переписки команды и поправили первую строку — человек, который до этого молчал, ответил в тот же час.</p>
+        <p>Провели внедрение, собрали рабочие материалы под их продукт. Потом разобрали живые переписки команды и поправили первую строку - человек, который до этого молчал, ответил в тот же час.</p>
         <div class="bar">внедрение + разбор переписок</div>
       </article>
       <article class="case rise" data-delay="1">
@@ -807,7 +1127,7 @@ section[id]{scroll-margin-top:84px}
       <article class="case rise" data-delay="0">
         <div class="case-top"><span class="lg"><img src="logos/case/adplay.ru.png" alt="ADPLAY · консалт" loading="lazy"></span><span class="who"><span class="nm">ADPLAY · консалт</span><span class="sub">возвращение молчащих площадок</span></span></div>
         <div class="res">Разобрали <em>переписки и голосовые</em> всей команды</div>
-        <p>Прошли путь одной сделки от первого письма до договора. Показали, где сеть теряет уже подключённые площадки и почему интерес не доходит до работы. Все цифры в разборе — их собственные, ни одной своей.</p>
+        <p>Прошли путь одной сделки от первого письма до договора. Показали, где сеть теряет уже подключённые площадки и почему интерес не доходит до работы. Все цифры в разборе - их собственные, ни одной своей.</p>
         <div class="bar">разбор работы + план</div>
       </article>
       <article class="case rise" data-delay="1">
@@ -871,8 +1191,8 @@ section[id]{scroll-margin-top:84px}
       <h2>Четыре цифры, из-за которых холодный выход перестал быть спорным</h2>
     </div>
     <div class="nums rise">
-      <div class="num"><b><span class="cnt" data-to="92">0</span>%</b><p>продавцов сдаются после 4-го касания. При этом 80% успешных холодных продаж требуют минимум 5. Пятое касание делает 1 менеджер из 12 — там и лежат встречи</p><span class="src">Pipedrive, Martal, Spotio, 2025</span></div>
-      <div class="num"><b><span class="cnt" data-to="72">0</span>%</b><p>заказчиков отвечают только на персонализированные сообщения. Шаблон, разосланный по базе, не доходит ни до кого — его удаляют рефлекторно</p><span class="src">Pipedrive, Martal, Spotio, 2025</span></div>
+      <div class="num"><b><span class="cnt" data-to="92">0</span>%</b><p>продавцов сдаются после 4-го касания. При этом 80% успешных холодных продаж требуют минимум 5. Пятое касание делает 1 менеджер из 12 - там и лежат встречи</p><span class="src">Pipedrive, Martal, Spotio, 2025</span></div>
+      <div class="num"><b><span class="cnt" data-to="72">0</span>%</b><p>заказчиков отвечают только на персонализированные сообщения. Шаблон, разосланный по базе, не доходит ни до кого - его удаляют рефлекторно</p><span class="src">Pipedrive, Martal, Spotio, 2025</span></div>
       <div class="num"><b><span class="cnt" data-to="78">0</span>%</b><p>российских компаний уже работают холодным каналом, но отдельное подразделение под него есть только у четверти: остальные смешивают холод со входящими, и приоритет уходит на лёгкое</p><span class="src">Исследование B2B PORT</span></div>
       <div class="num"><b><span class="cnt" data-to="30">0</span>%</b><p>покупателей на финальном решении требуют встречи с живым экспертом. Порталы, боты и рассылки довели их до сомнения, снять его может только человек</p><span class="src">Forrester, прогноз на 2026</span></div>
     </div>
@@ -889,13 +1209,13 @@ section[id]{scroll-margin-top:84px}
       <div class="pr rise">
         <div class="kind">лидогенерация</div>
         <div class="val"><b>Считаем под вас</b></div>
-        <p>Целевой список, выход на ЛПР и переписка до встречи. Объём и условия считаем под вашу нишу и цикл сделки — на коротком созвоне.</p>
+        <p>Целевой список, выход на ЛПР и переписка до встречи. Объём и условия считаем под вашу нишу и цикл сделки - на коротком созвоне.</p>
         <a class="btn btn-line" href="#zov">Посчитать под нас <span class="arr">→</span></a>
       </div>
       <div class="pr hot rise">
         <div class="kind">обучение команды</div>
         <div class="val"><b>30 000 ₽</b><span>один раз</span></div>
-        <p>Созвон 1,5-2 часа с вашей командой и все материалы после него. Меньше трети оклада менеджера — за механику, которая работает у всех и остаётся навсегда.</p>
+        <p>Созвон 1,5-2 часа с вашей командой и все материалы после него. Меньше трети оклада менеджера - за механику, которая работает у всех и остаётся навсегда.</p>
         <div class="addon">
           <div class="addon-top"><span>+ автоматизация</span><b>+30 000 ₽</b></div>
           <p>Ставим систему в ваш рабочий контур: по каждой вашей компании она сама собирает точки персонализации и весь каскад касаний наперёд. Менеджеру остаётся отправлять в нужный момент.</p>
@@ -903,7 +1223,7 @@ section[id]{scroll-margin-top:84px}
         <a class="btn btn-hot" href="#zov">Записаться <span class="arr">→</span></a>
       </div>
     </div>
-    <p class="tiny rise" style="margin-top:22px;max-width:70ch">Менеджера вы нанимаете вслепую: он красиво продал себя на собеседовании, а вы платите ему 2-3 оклада, пока он раскачивается, — и только потом понимаете, тянет он или нет. Здесь вы платите один раз и получаете механику, в которую новый сейлз входит за день.</p>
+    <p class="tiny rise" style="margin-top:22px;max-width:70ch">Менеджера вы нанимаете вслепую: он красиво продал себя на собеседовании, а вы платите ему 2-3 оклада, пока он раскачивается, - и только потом понимаете, тянет он или нет. Здесь вы платите один раз и получаете механику, в которую новый сейлз входит за день.</p>
   </div>
 </section>
 
@@ -911,15 +1231,15 @@ section[id]{scroll-margin-top:84px}
   <div class="wrap">
     <div class="head rise">
       <p class="eyebrow">Честно, до звонка</p>
-      <h2>Кому подходит — и кому нет</h2>
+      <h2>Кому подходит - и кому нет</h2>
     </div>
     <div class="two rise">
       <div class="col fit-ok">
         <h4>Подходит, если</h4>
         <ul class="ticks">
-          <li>продукт дорогой, цикл длинный, ЛПР — первые лица</li>
+          <li>продукт дорогой, цикл длинный, ЛПР - первые лица</li>
           <li>нужен предсказуемый поток встреч, а не разовые лиды</li>
-          <li>есть отдел продаж или менеджеры — если хотите забрать механику себе</li>
+          <li>есть отдел продаж или менеджеры - если хотите забрать механику себе</li>
           <li>надоело зависеть от одного звёздного менеджера</li>
         </ul>
       </div>
@@ -928,11 +1248,11 @@ section[id]{scroll-margin-top:84px}
         <ul class="ticks">
           <li>работаете только по входящим и исходящий не нужен</li>
           <li>нужен разовый лид «за процент»</li>
-          <li>товар массовый и дешёвый — там работает реклама, а не встречи</li>
+          <li>товар массовый и дешёвый - там работает реклама, а не встречи</li>
         </ul>
       </div>
     </div>
-    <p class="tiny rise" style="margin-top:20px">Мы прямо говорим «не подходит», когда это так, — чтобы не тратить ваше и наше время.</p>
+    <p class="tiny rise" style="margin-top:20px">Мы прямо говорим «не подходит», когда это так, - чтобы не тратить ваше и наше время.</p>
   </div>
 </section>
 
@@ -963,7 +1283,7 @@ section[id]{scroll-margin-top:84px}
       <div>
         <p class="eyebrow">Основатель</p>
         <h2 style="font-size:clamp(23px,2.6vw,32px);margin-bottom:18px">Михаил Габитов</h2>
-        <p>Я вижу компании с сильными продуктами, которые приносят в разы меньше, чем могли бы, — просто потому что менеджер пишет директору по маркетингу что-то, от чего хочется закрыть чат. Продукт хороший. Заход — нет.</p>
+        <p>Я вижу компании с сильными продуктами, которые приносят в разы меньше, чем могли бы, - просто потому что менеджер пишет директору по маркетингу что-то, от чего хочется закрыть чат. Продукт хороший. Заход - нет.</p>
         <p>Я хочу, чтобы вся B2B-коммуникация в России стала адекватной. Чтобы не только топы умели говорить на одном языке, а любая команда знала, как зайти к человеку так, чтобы он захотел работать с ней. Годами.</p>
         <p>Я не учу «продавать». Я ставлю отделу продаж тон, из-за которого с вами хотят строить отношения.</p>
       </div>
@@ -978,11 +1298,11 @@ section[id]{scroll-margin-top:84px}
       <h2>Ответы на частые вопросы</h2>
     </div>
     <div class="faq rise">
-      <details><summary>Вы приводите лидов или учите команду?</summary><div>И то, и другое — это два разных направления. Можем выводить вас на встречи с ЛПР как агентство, а можем за один созвон передать механику вашей команде, и дальше она работает без нас. Второе стоит 30 000 ₽ и остаётся у вас навсегда.</div></details>
+      <details><summary>Вы приводите лидов или учите команду?</summary><div>И то, и другое - это два разных направления. Можем выводить вас на встречи с ЛПР как агентство, а можем за один созвон передать механику вашей команде, и дальше она работает без нас. Второе стоит 30 000 ₽ и остаётся у вас навсегда.</div></details>
       <details><summary>Сколько времени занимает обучение и есть ли сопровождение?</summary><div>Один созвон 1,5-2 часа. Сопровождения после него нет, и это осознанно: весь заход собирается прямо на созвоне, на ваших компаниях, и остаётся у вас в записи и материалах. Поэтому это стоит 30 000 ₽, а не в разы больше. Если хотите, чтобы персонализацию и каскад касаний по каждой компании собирала машина, ставим автоматизацию ещё за 30 000 ₽.</div></details>
       <details><summary>У нас узкая ниша и сложный продукт. Сработает?</summary><div>Уже адаптировали под FMCG, инфлюенс, PR, брендинг, веб-разработку, логистику, adtech и IT, event, построение B2B-отделов. Механика одна, меняется язык захода.</div></details>
-      <details><summary>Это заработает без звёздных менеджеров?</summary><div>Да. Постоянный поток встреч обычно умеют давать только звёздные — их мало, они дорогие и однажды уходят. Мы раскладываем этот навык на систему и передаём любому менеджеру.</div></details>
-      <details><summary>Откуда берутся контакты ЛПР?</summary><div>Из открытых источников и из того, что человек сам о себе оставил: сайт компании, реестры юрлиц, публичные выступления и профили. Мы не торгуем базами и не продаём контакты — мы показываем, как дойти до нужного человека.</div></details>
+      <details><summary>Это заработает без звёздных менеджеров?</summary><div>Да. Постоянный поток встреч обычно умеют давать только звёздные - их мало, они дорогие и однажды уходят. Мы раскладываем этот навык на систему и передаём любому менеджеру.</div></details>
+      <details><summary>Откуда берутся контакты ЛПР?</summary><div>Из открытых источников и из того, что человек сам о себе оставил: сайт компании, реестры юрлиц, публичные выступления и профили. Мы не торгуем базами и не продаём контакты - мы показываем, как дойти до нужного человека.</div></details>
       <details><summary>Кейсы можно проверить?</summary><div>Да. Компании настоящие, сайты открыты, цифры реальные, клиенты на связи. Спрашивайте.</div></details>
     </div>
   </div>
@@ -991,7 +1311,7 @@ section[id]{scroll-margin-top:84px}
 <section class="band zov" id="zov">
   <div class="wrap">
     <div class="zov-in rise">
-      <h2>15 минут — и вы увидите, как создать поток встреч с вашими ЛПР</h2>
+      <h2>15 минут - и вы увидите, как создать поток встреч с вашими ЛПР</h2>
       <p class="lead">Разберём, кто ваши настоящие ЛПР, через какую точку входа к ним заходить и что выгоднее: чтобы поток вели мы или чтобы механика стояла у вас. Без презентаций.</p>
       <div class="hero-cta" style="--d:.4s">
         <a class="btn btn-hot" href="https://t.me/mihailgabitov242" target="_blank" rel="noopener">Написать в Telegram <span class="arr">→</span></a>
